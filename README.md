@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 layout js
 components which is being reused for all
 pages
@@ -37,3 +38,7 @@ to learn"
 bootstarap inn ext js
 lfst in next js
 
+=======
+# SACC_website
+SACC official website
+>>>>>>> ae726ab90e2cd64df20be9a69f7d514021d40e61
