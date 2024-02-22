@@ -1,5 +1,5 @@
 import Bottom from '@components/bottom';
-
+import Link from 'next/link';
 const Home = () => {
   return (
     <section id="main">
@@ -18,7 +18,7 @@ const Home = () => {
           <h2>Presents</h2>
           <h2>YEARBOOK</h2>
           <h3>For 2k24 Graduates Only</h3>
-          <a href="/login" className="btn">
+          <a href="/api/login" className="btn">
             Login with CAS
            
           </a>
