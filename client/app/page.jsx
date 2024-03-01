@@ -1,8 +1,18 @@
+
 import Bottom from '@components/bottom';
+import Navbartest from '@components/navbar';
 import Link from 'next/link';
+import { Nav } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+
 const Home = () => {
   return (
+    // <Navbartest/>
+    <section>
+      <Navbartest />
     <section id="main">
+      {/* <Navbartest/> */}
+      {/* <Nav/> */}
       <section className="showcase">
         <div className="video-container">
           <video
@@ -20,11 +30,12 @@ const Home = () => {
           <h3>For 2k24 Graduates Only</h3>
           <a href="/api/login" className="btn">
             Login with CAS
-           
+
           </a>
         </div>
       </section>
       <Bottom />
+    </section>
     </section>
   );
 };
