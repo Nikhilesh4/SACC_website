@@ -27,14 +27,17 @@ const EmblaCarousel = (props) => {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {yearbook.map((item, index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__inner">
-                <img src={item.image} alt={item.name} style={{ width: '500px', height: '500px', objectFit: 'contain' }} />
-                <p>{item.name}</p>
-              </div>
+        {yearbook.map((item, index) => (
+          <div
+            className={`embla__slide ${selectedSnap === index ? 'is-selected' : ''}`}
+            key={index}
+          >
+            <div className="embla__slide__inner">
+              <img src={item.image} alt={item.name} style={{ width: '500px', height: '500px', objectFit: 'contain' }} />
+              <p>{item.name}</p>
             </div>
-          ))}
+          </div>
+        ))}
         </div>
       </div>
 
