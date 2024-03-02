@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {
   PrevButton,
   NextButton,
@@ -13,6 +13,21 @@ import useEmblaCarousel from 'embla-carousel-react';
 const EmblaCarousel = (props) => {
   const { yearbook, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [backgroundImage, setBackgroundImage] = useState('');
+  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+
+  useEffect(() => {
+    if (yearbook[selectedSnap]) {
+      setBackgroundImage(yearbook[selectedSnap].image);
+    }
+  }, [selectedSnap, yearbook]);
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${backgroundImage})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backdropFilter = 'blur(10px)';
+  }, [backgroundImage]);
 
   const {
     prevBtnDisabled,
@@ -21,7 +36,7 @@ const EmblaCarousel = (props) => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi);
 
-  const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+  // const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
   return (
     <section className="embla">

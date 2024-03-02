@@ -15,23 +15,23 @@
     margin-left: calc(var(--slide-spacing) * -1);
     perspective: 1000px;
   }
-  .embla__container {
+  /* .embla__container {
     perspective: 1000px;
   }
 
   .embla__slide {
-    transform: scale(0.8);
+    transform: scale(0.2);
     transition: transform 0.5s;
   }
 
   .embla__slide.is-selected {
     transform: scale(1);
-  }
+  } */
   .embla__slide {
     flex: 0 0 var(--slide-size);
     min-width: 0;
     padding-left: var(--slide-spacing);
-    transform: scale(0.8);
+    transform: scale(0.6);
     transition: transform 0.5s;
   }
   .embla__slide.is-selected {
