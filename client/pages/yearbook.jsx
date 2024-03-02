@@ -14,7 +14,7 @@ export default function Yearbook() {
 
   return (
     <div>
-      <h1 style={{alignContent: 'center',textAlign: 'center'}}>Yearbook Page</h1>
+      <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1>
       <YearbookCaro yearbook={yearbookData} />
       {/* <img src="/assets/images/test3.png" alt="test1" width={500} height={300} /> */}
       {/* <div className="embla__pagination">

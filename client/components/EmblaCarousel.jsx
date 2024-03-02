@@ -12,7 +12,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 const EmblaCarousel = (props) => {
   const { yearbook, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [emblaRef, emblaApi] = useEmblaCarousel({options,align: 'center'});
   const [backgroundImage, setBackgroundImage] = useState('');
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
