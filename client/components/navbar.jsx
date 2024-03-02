@@ -29,7 +29,7 @@ const NavbarComponent = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
         <Nav className="mr-auto">
           <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="#home">
+            <Nav.Link className="px-3" href="#about">
               About Us
             </Nav.Link>
             {/* <Nav.Link className="px-3" href="#education">
@@ -39,14 +39,14 @@ const NavbarComponent = () => {
         </Nav>
 
         <Fade cascade>
-        <Navbar.Brand href="#home" className="brand-name mx-auto">
+        <Navbar.Brand href="#main" className="brand-name mx-auto">
               SACC
             </Navbar.Brand>
         </Fade>
 
         <Nav className="mr-auto">
           <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="#about">
+            <Nav.Link className="px-3" href="./yearbook">
               Year Book
             </Nav.Link>
             {/* <Nav.Link className="px-3" href="#project">

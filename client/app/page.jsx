@@ -4,7 +4,7 @@ import Navbartest from '@components/navbar';
 import Link from 'next/link';
 import { Nav } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-
+// import Yearbook from '.@app/yearbook';
 const Home = () => {
   return (
     // <Navbartest/>
@@ -16,7 +16,7 @@ const Home = () => {
       <section className="showcase">
         <div className="video-container">
           <video
-            src="/Yearbook_portal_full.mp4"
+            src="./assets/videos/campus.mp4"
             autoPlay
             muted
             loop
