@@ -27,8 +27,9 @@ const Home = () => {
           <h1>SACC</h1>
           <h2 style={{paddingBottom:'8px'}}>Presents</h2>
           <h2>YEARBOOK</h2>
-          <div>For 2k24 Graduates Only</div>
-          <a href="/api/login" className="btn">
+
+          <h3>For 2k24 Graduates Only</h3>
+          <a href="localhost:5000/login" className="btn">
             Login with CAS
 
           </a>

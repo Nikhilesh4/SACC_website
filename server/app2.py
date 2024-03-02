@@ -5,18 +5,18 @@ from os import getenv
 from jwt import encode, decode
 from cas import CASClient
 
-# from db import Database, Person
 
 questions = [{"id": 1, "text": "Who is the most popular in your batch?"},
              {"id": 2, "text": "Best athlete in your batch?"}]
 
 persons = {1: "Amey", 2: "Prithvi", 3: "Kunal", 4: "Harsh", 5: "Ishan"}
 
+
 DEBUG = getenv("DEBUG", "False").lower() in ("true", "1", "t")
 SECRET_KEY = getenv("SECRET_KEY", "secret-key")
 CAS_SERVER_URL = getenv("CAS_SERVER_URL")
 SERVICE_URL = getenv("SERVICE_URL")
-REDIRECT_URL = getenv("REDIRECT_URL", "/home")
+REDIRECT_URL = getenv("REDIRECT_URL", "localhost:3000")
 JWT_SECRET = getenv("JWT_SECRET", "jwt-secret")
 DB_USER = getenv("DB_USER")
 DB_PASSWORD = getenv("DB_PASSWORD")
@@ -152,56 +152,10 @@ def logout_callback():
 
 
 # END OF AUTHENTICATION MODULE
-
-
-@app.route('/')
-def front_page():
-    logged_in = verify_token()
-    if logged_in:
-        return redirect(url_for('home'))
-    return render_template('front_page.html')
-
-
 @app.route('/home')
 @login_required
 def home(current_user=None):
-    return render_template('home.html', username=current_user["uid"], email=current_user["email"], first_name=current_user["first_name"], last_name=current_user["last_name"], roll_no=current_user["roll_no"])
-
-
-@app.route('/faq')
-def faq():
-    return render_template('faq.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-
-@app.route('/polls')
-@login_required
-def polls(current_user=None):
-    return render_template('polls.html', questions=questions, persons=persons)
-
-
-@app.route('/polls/submit', methods=['POST'])
-@login_required
-def submit_polls(current_user=None):
-    selected_answers = {int(key): value for key, value in request.form.items()}
-    print(selected_answers)
-    return "Polls submitted successfully"
-
-
-@app.route('/signup')
-def signup():
-    email = request.form
-    print(email)
-    return render_template('signup.html')
+    return redirect("http://localhost:3000")
 
 
 if __name__ == '__main__':
@@ -226,4 +180,4 @@ if __name__ == '__main__':
     # print(db.get_person("2022"))
     # print(db.get_all_persons())
 
-    app.run(debug=DEBUG, host="0.0.0.0", port=80)
+    app.run(debug=DEBUG, host="0.0.0.0", port=5000)
