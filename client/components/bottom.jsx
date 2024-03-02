@@ -10,7 +10,7 @@ const Bottom = () => {
 
 		<h2>Follow Us On Social Media</h2>
 
-		<div class="social">
+		<div className="social">
 		<a href="https://www.instagram.com/alumnicell_iiith/" target="_blank"><i class="fab fa-instagram fa-3x"></i></a>
 			<a href="https://www.facebook.com/iiith.alumnicell" target="_blank"><i class="fab fa-facebook fa-3x"></i></a>
 			<a href="https://www.linkedin.com/company/alumni-cell-iiit-h/" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
