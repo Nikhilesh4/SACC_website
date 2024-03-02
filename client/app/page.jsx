@@ -18,7 +18,7 @@ const Home = () => {
           <h2>Presents</h2>
           <h2>YEARBOOK</h2>
           <h3>For 2k24 Graduates Only</h3>
-          <a href="/api/login" className="btn">
+          <a href="localhost:5000/login" className="btn">
             Login with CAS
            
           </a>
