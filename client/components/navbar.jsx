@@ -16,7 +16,11 @@ const NavbarComponent = () => {
     }
   };
 
+ // Add event listener only if window is defined
+ if (typeof window !== 'undefined') {
   window.addEventListener("scroll", changeBackground);
+}
+
   return (
     <>
       <Navbar
@@ -39,7 +43,7 @@ const NavbarComponent = () => {
         </Nav>
 
         <Fade cascade>
-        <Navbar.Brand href="#main" className="brand-name mx-auto">
+        <Navbar.Brand href="." className="brand-name mx-auto">
               SACC
             </Navbar.Brand>
         </Fade>

@@ -24,9 +24,10 @@ const EmblaCarousel = (props) => {
 
   useEffect(() => {
     document.body.style.backgroundImage = `url(${backgroundImage})`;
-    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundSize = '50% 100%';
     document.body.style.backgroundPosition = 'center';
-    document.body.style.backdropFilter = 'blur(10px)';
+    document.body.style.backdropFilter = 'blur(15px)';
+    document.body.style.backgroundRepeat = 'no-repeat';
   }, [backgroundImage]);
 
   const {
@@ -58,8 +59,8 @@ const EmblaCarousel = (props) => {
 
       <div className="embla__controls">
         <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} style={{color: 'white', backgroundColor: 'black'}} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} style={{color: 'white', backgroundColor: 'black'}} />
         </div>
 
         <SelectedSnapDisplay

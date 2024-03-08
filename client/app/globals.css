@@ -184,4 +184,6 @@ h1 {
 
 .social a {
 	margin: 0 5px;
+	display: inline-block;
+	text-align: center;
 }

@@ -16,7 +16,7 @@ const Home = () => {
       <section className="showcase">
         <div className="video-container">
           <video
-            src="./assets/videos/campus.mp4"
+            src="./assets/Yearbook_portal_full.mp4"
             autoPlay
             muted
             loop
