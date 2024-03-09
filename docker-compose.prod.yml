@@ -1,0 +1,30 @@
+version: '3.8'
+
+volumes:
+    mysql-data:
+
+services:
+    backend:
+        build:
+            context: ./backend
+        env_file:
+            - ./.env
+        tty: true
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        env_file:
+            - ./.env
+        tty: true
+
+    nginx:
+        build: ./nginx/
+        restart: unless-stopped
+        # ports:
+        #     - 80:80
+        #     - 443:443
+        depends_on:
+            - backend
+            - frontend
