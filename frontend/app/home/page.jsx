@@ -24,13 +24,10 @@ const Home = () => {
           ></video>
         </div>
         <div className="content">
-          <h1>SACC</h1>
-          <h2 style={{paddingBottom:'8px'}}>Presents</h2>
-          <h2>YEARBOOK</h2>
-
-          <h3>Class of 2k19 Released</h3>
-          <a href="/api/login" className="btn">
-            Yearbook 2019
+          <h1>YEARBOOK</h1>
+          <h2 style={{paddingBottom:'8px'}}>Class of 2k19 Released</h2>
+          <a href="./yearbook" className="btn">
+            Yearbook 2k19
 
           </a>
         </div>
