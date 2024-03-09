@@ -30,10 +30,15 @@ const NavbarComponent = () => {
         bg="dark"
         expand="lg"
       >
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
+        <Fade cascade>
+        <Navbar.Brand href="." className="justify-content-center">
+          <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{marginLeft:"5rem"}}/>
+        </Navbar.Brand>
+        </Fade>
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" style={{marginRight:"9rem"}}>
         <Nav className="mr-auto">
           <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="#about">
+            <Nav.Link className="px-3" href="#about" >
               About Us
             </Nav.Link>
             {/* <Nav.Link className="px-3" href="#education">
@@ -50,8 +55,8 @@ const NavbarComponent = () => {
 
         <Nav className="mr-auto">
           <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="./yearbook">
-              Year Book
+            <Nav.Link className="px-3" href="./api/login">
+              Login
             </Nav.Link>
             {/* <Nav.Link className="px-3" href="#project">
               Projects
