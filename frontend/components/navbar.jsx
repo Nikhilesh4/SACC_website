@@ -70,13 +70,13 @@ const NavbarComponent = () => {
 
           <Nav className="mr-auto">
             <Fade cascade damping={0.5}>
-              authenticated ?
+              {authenticated ?
               <Nav.Link className="px-3" href="/yearbook">
                 Yearbook
               </Nav.Link>
               : <Nav.Link className="px-3" href="/api/login">
                 Login
-              </Nav.Link>
+              </Nav.Link>}
               {/* <Nav.Link className="px-3" href="#project">
               Projects
             </Nav.Link> */}
