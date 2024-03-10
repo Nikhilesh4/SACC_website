@@ -13,9 +13,9 @@ const NavbarComponent = () => {
   useEffect(() => {
     var arrayb = document.cookie;
     arrayb = arrayb.split(';');
-    console.log(arrayb);
+    // console.log(arrayb);
     for (const item of arrayb) {
-      console.log(item);
+      // console.log(item);
       if (item.includes("Authorization_YearBook")) {
         setAuthenticated(true);
       }

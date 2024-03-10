@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import YearbookCaro from '../components/yearbookcaro';
+import YearbookCaro from '@components/yearbookcaro';
 import '@styles/yearbook.scss';
-import Bottom from '../components/bottom';
-import Navbar from '../components/navbar';
+import Bottom from '@components/bottom';
+import Navbartest from '@components/navbar';
 // import '@styles/carousel.scss';
 import '@styles/globals.scss'
 import '@styles/embla.css'
@@ -15,9 +15,9 @@ export default function Yearbook() {
   useEffect(() => {
     var arrayb = document.cookie;
     arrayb = arrayb.split(';');
-    console.log(arrayb);
+    // console.log(arrayb);
     for (const item of arrayb) {
-      console.log(item);
+      // console.log(item);
       if (item.includes("Authorization_YearBook")) {
         setAuthenticated(true);
       }
@@ -41,7 +41,7 @@ export default function Yearbook() {
   return (
     authenticated ?
       <section>
-        <Navbar />
+        <Navbartest />
         <section id='main'>
           <section className='showcase'>
             {/* <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1> */}
@@ -63,7 +63,7 @@ export default function Yearbook() {
         <Bottom />
       </section>
       : <section>
-        <Navbar />
+        <Navbartest />
         <section>
           <div>
             <h1 style={{ marginTop: "25rem", textAlign: "center" }}> You are not authenticated to view this page.</h1></div>
