@@ -1,12 +1,27 @@
 "use client";
 // @client
 import React from "react";
+import { useState, useEffect } from 'react';
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Fade from 'react-awesome-reveal';
 // import Fade from './fade.jsx';
 // import '@styles/navbar.scss';
 import '@styles/navbar.scss';
 const NavbarComponent = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    var arrayb = document.cookie;
+    arrayb = arrayb.split(';');
+    console.log(arrayb);
+    for (const item of arrayb) {
+      console.log(item);
+      if (item.includes("Authorization_YearBook")) {
+        setAuthenticated(true);
+      }
+    }
+  }, []);
+
   const changeBackground = () => {
     let header = document.getElementsByClassName("header-nav")[0];
     if (window.scrollY < 200) {
@@ -55,7 +70,11 @@ const NavbarComponent = () => {
 
           <Nav className="mr-auto">
             <Fade cascade damping={0.5}>
-              <Nav.Link className="px-3" href="./api/login">
+              authenticated ?
+              <Nav.Link className="px-3" href="/yearbook">
+                Yearbook
+              </Nav.Link>
+              : <Nav.Link className="px-3" href="/api/login">
                 Login
               </Nav.Link>
               {/* <Nav.Link className="px-3" href="#project">

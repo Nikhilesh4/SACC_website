@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import YearbookCaro from '../components/yearbookcaro';
 import '@styles/yearbook.scss';
 import Bottom from '../components/bottom';
-import Navbartest from '../components/navbar';
+import Navbar from '../components/navbar';
 // import '@styles/carousel.scss';
 import '@styles/globals.scss'
 import '@styles/embla.css'
@@ -62,17 +62,18 @@ export default function Yearbook() {
         </section>
         <Bottom />
       </section>
-
-      :
-      <section>
-        <Navbartest />
+      : <section>
+        <Navbar />
         <section>
           <div>
             <h1 style={{ marginTop: "25rem", textAlign: "center" }}> You are not authenticated to view this page.</h1></div>
           <div style={{ textAlign: "center", alignContent: "center", alignItems: "center", marginBottom: "12rem" }}>
-            <h2><a href="./api/login" className="btn">
-              Login CAS
-            </a></h2></div>
+            <h2>
+              <a href="/api/login" className="btn">
+                Login CAS
+              </a>
+            </h2>
+          </div>
         </section>
 
         <Bottom />
