@@ -1,17 +1,17 @@
 
 import Bottom from '@components/bottom';
-import Navbartest from '@components/navbar';
+import Navbar from '@components/navbar';
 import Link from 'next/link';
 import { Nav } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 // import Yearbook from '.@app/yearbook';
 const Home = () => {
   return (
-    // <Navbartest/>
+    // <Navbar/>
     <section>
-      <Navbartest />
+      <Navbar />
       <section id="main">
-        {/* <Navbartest/> */}
+        {/* <Navbar/> */}
         {/* <Nav/> */}
         <section className="showcase">
           <div className="video-container">
