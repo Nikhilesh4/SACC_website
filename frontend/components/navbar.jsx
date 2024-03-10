@@ -1,7 +1,7 @@
 "use client";
 // @client
 import React from "react";
-import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Fade from 'react-awesome-reveal';
 // import Fade from './fade.jsx';
 // import '@styles/navbar.scss';
@@ -16,10 +16,10 @@ const NavbarComponent = () => {
     }
   };
 
- // Add event listener only if window is defined
- if (typeof window !== 'undefined') {
-  window.addEventListener("scroll", changeBackground);
-}
+  // Add event listener only if window is defined
+  if (typeof window !== 'undefined') {
+    window.addEventListener("scroll", changeBackground);
+  }
 
   return (
     <>
@@ -31,39 +31,39 @@ const NavbarComponent = () => {
         expand="lg"
       >
         <Fade cascade>
-        <Navbar.Brand href="." className="justify-content-center">
-          <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{marginLeft:"5rem"}}/>
-        </Navbar.Brand>
+          <Navbar.Brand href="." className="justify-content-center">
+            <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{ marginLeft: "5rem" }} />
+          </Navbar.Brand>
         </Fade>
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" style={{marginRight:"9rem"}}>
-        <Nav className="mr-auto">
-          <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="#about" >
-              About Us
-            </Nav.Link>
-            {/* <Nav.Link className="px-3" href="#education">
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" style={{ marginRight: "9rem" }}>
+          <Nav className="mr-auto">
+            <Fade cascade damping={0.5}>
+              <Nav.Link className="px-3" href="#about" >
+                About Us
+              </Nav.Link>
+              {/* <Nav.Link className="px-3" href="#education">
               Education
             </Nav.Link> */}
-          </Fade>
-        </Nav>
+            </Fade>
+          </Nav>
 
-        <Fade cascade>
-        <Navbar.Brand href="." className="brand-name mx-auto">
+          <Fade cascade>
+            <Navbar.Brand href="." className="brand-name mx-auto">
               SACC
             </Navbar.Brand>
-        </Fade>
+          </Fade>
 
-        <Nav className="mr-auto">
-          <Fade cascade damping={0.5}>
-            <Nav.Link className="px-3" href="./api/login">
-              Login
-            </Nav.Link>
-            {/* <Nav.Link className="px-3" href="#project">
+          <Nav className="mr-auto">
+            <Fade cascade damping={0.5}>
+              <Nav.Link className="px-3" href="./api/login">
+                Login
+              </Nav.Link>
+              {/* <Nav.Link className="px-3" href="#project">
               Projects
             </Nav.Link> */}
-          </Fade>
-        </Nav>
-      </Navbar.Collapse>
+            </Fade>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     </>
   );

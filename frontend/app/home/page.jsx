@@ -10,30 +10,30 @@ const Home = () => {
     // <Navbartest/>
     <section>
       <Navbartest />
-    <section id="main">
-      {/* <Navbartest/> */}
-      {/* <Nav/> */}
-      <section className="showcase">
-        <div className="video-container">
-          <video
-            src="./assets/Yearbook_portal_full.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          ></video>
-        </div>
-        <div className="content">
-          <h1>YEARBOOK</h1>
-          <h2 style={{paddingBottom:'8px'}}>Class of 2k19 Released</h2>
-          <a href="./yearbook" className="btn">
-            Yearbook 2k19
+      <section id="main">
+        {/* <Navbartest/> */}
+        {/* <Nav/> */}
+        <section className="showcase">
+          <div className="video-container">
+            <video
+              src="./assets/Yearbook_portal_full.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            ></video>
+          </div>
+          <div className="content">
+            <h1>YEARBOOK</h1>
+            <h2 style={{ paddingBottom: '8px' }}>Class of 2k19 Released</h2>
+            <a href="./yearbook" className="btn">
+              Yearbook 2k19
 
-          </a>
-        </div>
+            </a>
+          </div>
+        </section>
+        <Bottom />
       </section>
-      <Bottom />
-    </section>
     </section>
   );
 };

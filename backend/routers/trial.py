@@ -3,6 +3,7 @@ from routers.authentication import login_required
 
 blueprint = Blueprint("trial", __name__)
 
+
 @blueprint.route("/trial")
 @login_required
 def index(current_user=None):
