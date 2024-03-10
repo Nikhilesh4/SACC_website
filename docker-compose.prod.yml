@@ -1,14 +1,11 @@
 version: '3.8'
 
-volumes:
-    mysql-data:
-
 services:
     backend:
         build:
             context: ./backend
         env_file:
-            - ./.env
+            - $SACC_CONFIG_PATH/.env
         tty: true
 
     frontend:
@@ -16,7 +13,7 @@ services:
             context: ./frontend
             dockerfile: Dockerfile
         env_file:
-            - ./.env
+            - $SACC_CONFIG_PATH/.env
         tty: true
 
     nginx:

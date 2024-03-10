@@ -41,7 +41,7 @@ export default function Yearbook() {
   return (
     authenticated ?
       <section>
-        <Navbartest />
+        <Navbar />
         <section id='main'>
           <section className='showcase'>
             {/* <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1> */}
