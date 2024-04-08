@@ -1,6 +1,7 @@
-version: '3.8'
 
-services:    
+
+services:
+
     backend:
         build:
             context: ./backend
@@ -25,7 +26,11 @@ services:
         restart: unless-stopped
         ports:
             - 80:80
-            - 443:443
+                    #    - 443:443
         depends_on:
             - backend
             - frontend
+
+
+
+

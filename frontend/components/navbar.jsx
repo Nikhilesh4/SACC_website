@@ -4,6 +4,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Fade from 'react-awesome-reveal';
+import Button from 'react-bootstrap/Button';
 // import Fade from './fade.jsx';
 // import '@styles/navbar.scss';
 import '@styles/navbar.scss';
@@ -44,10 +45,11 @@ const NavbarComponent = () => {
         collapseOnSelect
         bg="dark"
         expand="lg"
+
       >
         <Fade cascade>
           <Navbar.Brand href="." className="justify-content-center">
-            <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{ marginLeft: "5rem" }} />
+            {/* <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{ marginLeft: "5rem" }} /> */}
           </Navbar.Brand>
         </Fade>
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" style={{ marginRight: "9rem" }}>
@@ -71,18 +73,24 @@ const NavbarComponent = () => {
           <Nav className="mr-auto">
             <Fade cascade damping={0.5}>
               {authenticated ?
-              <Nav.Link className="px-3" href="/yearbook">
-                Yearbook
-              </Nav.Link>
-              : <Nav.Link className="px-3" href="/api/login">
-                Login
-              </Nav.Link>}
+                <Nav.Link className="px-3" href="/yearbook">
+                  Yearbook
+                </Nav.Link>
+                : <Nav.Link className="px-3" href="/api/login">
+                  Login
+                </Nav.Link>}
               {/* <Nav.Link className="px-3" href="#project">
               Projects
             </Nav.Link> */}
             </Fade>
           </Nav>
         </Navbar.Collapse>
+
+
+           { authenticated && <Button style={{ marginRight: "2rem" }} href="#" variant="danger" active>Get PDF</Button> }
+
+
+
       </Navbar>
     </>
   );
