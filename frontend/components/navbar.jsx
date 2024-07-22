@@ -1,19 +1,19 @@
 "use client";
 // @client
 import React from "react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import Fade from 'react-awesome-reveal';
-import Button from 'react-bootstrap/Button';
+import Fade from "react-awesome-reveal";
+import Button from "react-bootstrap/Button";
 // import Fade from './fade.jsx';
 // import '@styles/navbar.scss';
-import '@styles/navbar.scss';
+import "@styles/navbar.scss";
 const NavbarComponent = () => {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     var arrayb = document.cookie;
-    arrayb = arrayb.split(';');
+    arrayb = arrayb.split(";");
     // console.log(arrayb);
     for (const item of arrayb) {
       // console.log(item);
@@ -33,7 +33,7 @@ const NavbarComponent = () => {
   };
 
   // Add event listener only if window is defined
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     window.addEventListener("scroll", changeBackground);
   }
 
@@ -45,17 +45,20 @@ const NavbarComponent = () => {
         collapseOnSelect
         bg="dark"
         expand="lg"
-
       >
         <Fade cascade>
-          <Navbar.Brand href="." className="justify-content-center">
-            {/* <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{ marginLeft: "5rem" }} /> */}
-          </Navbar.Brand>
+          {/* <Navbar.Brand href="." className="justify-content-center"> */}
+          {/* <img src="./assets/images/SACC_logo.png" alt="SACC" width={50} height={50} style={{ marginLeft: "5rem" }} /> */}
+          {/* </Navbar.Brand> */}
         </Fade>
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" style={{ marginRight: "9rem" }}>
+        <Navbar
+          id="responsive-navbar-nav"
+          className="justify-content-center m-auto "
+          //  style={{ marginRight: "9rem" }}
+        >
           <Nav className="mr-auto">
             <Fade cascade damping={0.5}>
-              <Nav.Link className="px-3" href="#about" >
+              <Nav.Link className="px-3" href="#about">
                 About Us
               </Nav.Link>
               {/* <Nav.Link className="px-3" href="#education">
@@ -72,28 +75,37 @@ const NavbarComponent = () => {
 
           <Nav className="mr-auto">
             <Fade cascade damping={0.5}>
-              {authenticated ?
+              {authenticated ? (
                 <Nav.Link className="px-3" href="/yearbook">
                   Yearbook
                 </Nav.Link>
-                : <Nav.Link className="px-3" href="/api/login">
+              ) : (
+                <Nav.Link className="px-3" href="/api/login">
                   Login
-                </Nav.Link>}
+                </Nav.Link>
+              )}
               {/* <Nav.Link className="px-3" href="#project">
               Projects
             </Nav.Link> */}
             </Fade>
           </Nav>
-        </Navbar.Collapse>
-
-
-           { authenticated && <Button style={{ marginRight: "2rem" }} href="#" variant="danger" active>Get PDF</Button> }
-
-
-
+          {authenticated && (
+            // <Button className="my-auto" href="#" variant="dark" active>
+              <a
+                target="_blank"
+                href="../../Yearbook_2019.pdf"
+                download="yearbook_2019.pdf"
+                className="text-white"
+              >
+                <Button className="my-auto"> Get PDF</Button>
+               
+              </a>
+            // </Button>
+          )}
+        </Navbar>
       </Navbar>
     </>
   );
-}
+};
 
 export default NavbarComponent;
