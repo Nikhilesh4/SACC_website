@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import YearbookCaro from '@components/yearbookcaro';
 import '@styles/yearbook.scss';
-import Bottom from '@components/bottom';
+import Bottom from '@components/footer';
 import Navbartest from '@components/navbar';
 // import '@styles/carousel.scss';
 import '@styles/globals.scss'

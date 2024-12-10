@@ -46,7 +46,9 @@ const NavbarComponent = () => {
           <Nav.Link className="px-3 text-white active" href={authenticated ? "/yearbooks" : "/api/login"}>Yearbooks</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
+          {!authenticated && (
+            <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

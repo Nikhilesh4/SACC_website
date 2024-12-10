@@ -1,5 +1,5 @@
 
-import Bottom from '@components/bottom';
+import Bottom from '@components/footer';
 import Navbar from '@components/navbar';
 import Link from 'next/link';
 import { Nav } from 'react-bootstrap';
