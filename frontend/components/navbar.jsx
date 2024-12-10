@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import "@styles/navbar.scss";
 
-const NavbarComponent = () => {
+const NavbarComponent = ({ isSticky = false }) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -15,21 +15,13 @@ const NavbarComponent = () => {
     }
   }, []);
 
-  const changeBackground = () => {
-    const header = document.getElementsByClassName("header-nav")[0];
-    if (window.scrollY < 100) {
-      header.classList.remove("sticky");
-    } else {
-      header.classList.add("sticky");
-    }
-  };
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeBackground);
-  }
-
   return (
-    <Navbar className="header-nav" fixed="top" bg="dark" expand="lg">
+    <Navbar 
+      className={`header-nav ${isSticky ? 'sticky' : ''}`} 
+      fixed="top" 
+      bg="dark" 
+      expand="lg"
+    >
       <Navbar.Brand href="/">
         <img
           src="/assets/images/collegeLogo.png"
@@ -46,9 +38,7 @@ const NavbarComponent = () => {
           <Nav.Link className="px-3 text-white active" href={authenticated ? "/yearbooks" : "/api/login"}>Yearbooks</Nav.Link>
         </Nav>
         <Nav>
-          {!authenticated && (
-            <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
-          )}
+          <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

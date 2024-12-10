@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import ParentBox from '../components/parent_box';
-import Navbar from '../components/navbar';
+import NavbarComponent from '../components/navbar';
 import { Box, CssBaseline, Container } from '@mui/material';
 import '@styles/globals.scss'
+import Bottom from '@components/footer';
 
 // const ameyimg = "/assets/images/amey.png";
 
@@ -108,25 +109,16 @@ export default function Home() {
 
   return (
     <section>
-      <div><Navbar /></div>
-      <Box sx={{ backgroundColor: '#fff', color: '#3a4052', minHeight: '100vh', marginTop: '10vh' }}>
+      <NavbarComponent isSticky={true} />
+
+      <Box sx={{ backgroundColor: '#1D141A', color: 'white', minHeight: '100vh', marginTop: '68px' }}>
         <CssBaseline />
           <ParentBox title="Meet the team" members={members} />
           <ParentBox title="Other Contributers" members={other_contributers} />
           <ParentBox title="Special Mentions" members={special_mentions} />
       </Box>
+      
+      <div><Bottom /></div>
     </section>
   );
 }
-
-//   return (
-//     <section>
-//       <div><Navbar /></div>
-//       <div style={{ backgroundColor: '#ffffff', margin: '0', paddingTop: '7vh', color: '#3a4052'}}>
-//         <ParentBox title="Meet the team" members={members} />
-//         <ParentBox title="Other Contributers" members={other_contributers} />
-//         <ParentBox title="Special Mentions" members={special_mentions} />
-//       </div>
-//     </section>
-//   );
-// }
