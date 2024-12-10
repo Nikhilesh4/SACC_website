@@ -30,8 +30,8 @@ const NavbarComponent = ({ isSticky = false }) => {
           style={{ width: '169px', height: '50px' }}
         />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
+      {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
         <Nav className="mx-auto">
           <Nav.Link className="px-3 text-white" href="/">Home</Nav.Link>
           <Nav.Link className="px-3 text-white" href="/team">Team</Nav.Link>
