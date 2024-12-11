@@ -15,6 +15,12 @@ const NavbarComponent = ({ isSticky = false }) => {
     }
   }, []);
 
+  const handleLogout = () => {
+    document.cookie = "Authorization_YearBook=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    setAuthenticated(false);
+    window.location.href = "/";
+  };
+
   return (
     <Navbar 
       className={`header-nav ${isSticky ? 'sticky' : ''}`} 
@@ -34,11 +40,17 @@ const NavbarComponent = ({ isSticky = false }) => {
       {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
         <Nav className="mx-auto">
           <Nav.Link className="px-3 text-white" href="/">Home</Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/about">About</Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/event">Events</Nav.Link>
           <Nav.Link className="px-3 text-white" href="/team">Team</Nav.Link>
           <Nav.Link className="px-3 text-white active" href={authenticated ? "/yearbooks" : "/api/login"}>Yearbooks</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
+          {authenticated ? (
+            <Nav.Link className="px-3 text-white loginButton" onClick={handleLogout}>Logout</Nav.Link>
+          ) : (
+            <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
