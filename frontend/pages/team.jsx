@@ -8,29 +8,13 @@ import Bottom from '@components/footer';
 // const ameyimg = "/assets/images/amey.png";
 
 export default function Home() {
-  const coordinators=[
-    {
-      name: "Rohan Gupta",
-      imgSrc: "/assets/images/Rohan.jpeg",
-      twitterLink: "#",
-      linkedinLink: "#",
-      githubLink: "#",
-      position :"Head",
-    },
-  ]
   const members = [
-
-    
-    // Add more members as needed
-  ];
-  const Events=[
     {
-      name: "Bipasha Garg",
-      imgSrc: "/assets/images/Bipasha.jpg",
+      name: "Amey Karan",
+      imgSrc: "/assets/images/amey.png",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
-      position:"Head",
     },
     {
       name: "Ashna Dua",
@@ -39,32 +23,19 @@ export default function Home() {
       linkedinLink: "#",
       githubLink: "#",
     },
-  ]
-  const Outreach = [
     {
-      name: "Deekshitha",
-      imgSrc: "/assets/images/Deekshitha.jpg",
-      twitterLink: "#",
-      linkedinLink: "#",
-      githubLink: "#",
-      position:"Head",
-    },
-    {
-      name: "Gnaneswar",
-      imgSrc: "/assets/images/Gnaneswar.jpeg",
+      name: "Shubham Goel",
+      imgSrc: "/assets/images/Shubham.jpeg",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
     },
-  ];
-  const Tech=[
     {
       name: "Kriti Gupta",
       imgSrc: "/assets/images/Kriti.jpg",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
-      position:"Head",
     },
     {
       name: "Bhav Beri",
@@ -73,15 +44,36 @@ export default function Home() {
       linkedinLink: "#",
       githubLink: "#",
     },
-  ]
-  const Content=[
+    {
+      name: "Rohan Gupta",
+      imgSrc: "/assets/images/Rohan.jpeg",
+      twitterLink: "#",
+      linkedinLink: "#",
+      githubLink: "#",
+    },
+    // Add more members as needed
+  ];
+  const other_contributers = [
+    {
+      name: "Deekshitha",
+      imgSrc: "/assets/images/Deekshitha.jpg",
+      twitterLink: "#",
+      linkedinLink: "#",
+      githubLink: "#",
+    },
+    {
+      name: "Gnaneswar",
+      imgSrc: "/assets/images/Gnaneswar.jpeg",
+      twitterLink: "#",
+      linkedinLink: "#",
+      githubLink: "#",
+    },
     {
       name: "Pratyush",
       imgSrc: "/assets/images/Pratyush.jpg",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
-      position:"Head",
     },
     {
       name: "Kunal Angadi",
@@ -90,26 +82,15 @@ export default function Home() {
       linkedinLink: "#",
       githubLink: "#",
     },
-  ]
-  const Social=[
     {
-      name: "Amey Karan",
-      imgSrc: "/assets/images/amey.png",
-      twitterLink: "#",
-      linkedinLink: "#",
-      githubLink: "#",
-      position:"Head",
-    },
-    
-    {
-      name: "Shubham Goel",
-      imgSrc: "/assets/images/Shubham.jpeg",
+      name: "Bipasha Garg",
+      imgSrc: "/assets/images/Bipasha.jpg",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
     },
-  ]
-  const video = [
+  ];
+  const special_mentions = [
     {
       name: "Clubs Council",
       imgSrc: "/assets/images/Clubs_Council.jpeg",
@@ -117,16 +98,12 @@ export default function Home() {
       linkedinLink: "#",
       githubLink: "#",
     },
-   
-  ];
-  const Design=[
     {
       name: "Aditya Jain Pansari",
       imgSrc: "/assets/images/Aditya.jpeg",
       twitterLink: "#",
       linkedinLink: "#",
       githubLink: "#",
-      position:"Head",
     },
   ];
 
@@ -134,16 +111,11 @@ export default function Home() {
     <section>
       <NavbarComponent isSticky={true} />
 
-      <Box sx={{ backgroundColor: '#1D141A', color: 'white', minHeight: '100vh', marginTop: '55px' }}>
+      <Box sx={{ backgroundColor: '#1D141A', color: 'white', minHeight: '100vh', marginTop: '68px' }}>
         <CssBaseline />
-          <ParentBox title="Co-ordinators" members={coordinators} />
-          <ParentBox title="Events" members={Events} />
-          <ParentBox title="Outreach" members={Outreach} />
-          <ParentBox title="Tech" members={Tech} />
-          <ParentBox title="Design" members={Design} />
-          <ParentBox title="Content-writing" members={Content} />
-          <ParentBox title="Social media" members={Social} />
-          <ParentBox title="Videography" members={video} />
+          <ParentBox title="Meet the team" members={members} />
+          <ParentBox title="Other Contributers" members={other_contributers} />
+          <ParentBox title="Special Mentions" members={special_mentions} />
       </Box>
       
       <div><Bottom /></div>

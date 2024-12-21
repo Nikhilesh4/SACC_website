@@ -16,7 +16,7 @@ const NavbarComponent = ({ isSticky = false }) => {
   }, []);
 
   const handleLogout = () => {
-    document.cookie = "Authorization_YearBook=; max-age=0; path=/;";
+    document.cookie = "Authorization_YearBook=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     setAuthenticated(false);
     window.location.href = "/";
   };

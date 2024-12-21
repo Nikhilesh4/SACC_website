@@ -21,6 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.0",
+    "framer-motion": "^11.13.5",
     "next": "14.1.0",
     "react": "^18",
     "react-awesome-reveal": "^4.2.8",
