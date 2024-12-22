@@ -22,10 +22,10 @@ const NavbarComponent = ({ isSticky = false }) => {
   };
 
   return (
-    <Navbar 
-      className={`header-nav ${isSticky ? 'sticky' : ''}`} 
-      fixed="top" 
-      bg="dark" 
+    <Navbar
+      className={`header-nav ${isSticky ? "sticky" : ""}`}
+      fixed="top"
+      bg="dark"
       expand="lg"
     >
       <Navbar.Brand href="/">
@@ -33,23 +33,41 @@ const NavbarComponent = ({ isSticky = false }) => {
           src="/assets/images/collegeLogo.png"
           alt="Logo"
           className="logo"
-          style={{ width: '169px', height: '50px' }}
+          style={{ width: "169px", height: "50px" }}
         />
       </Navbar.Brand>
+      {/* Add Navbar.Toggle here */}
+      <Navbar.Toggle aria-controls="responsive-navbar-nav"  style={{backgroundColor:"#FBFBFB"}}/>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
-      {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
         <Nav className="mx-auto">
-          <Nav.Link className="px-3 text-white" href="/">Home</Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/about">About</Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/event">Events</Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/team">Team</Nav.Link>
-          <Nav.Link className="px-3 text-white active" href={authenticated ? "/yearbooks" : "/api/login"}>Yearbooks</Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/">
+            Home
+          </Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/about">
+            About
+          </Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/event">
+            Events
+          </Nav.Link>
+          <Nav.Link className="px-3 text-white" href="/team">
+            Team
+          </Nav.Link>
+          <Nav.Link
+            className="px-3 text-white active"
+            href={authenticated ? "/yearbooks" : "/api/login"}
+          >
+            Yearbooks
+          </Nav.Link>
         </Nav>
         <Nav>
           {authenticated ? (
-            <Nav.Link className="px-3 text-white loginButton" onClick={handleLogout}>Logout</Nav.Link>
+            <Nav.Link className="px-3 text-white loginButton" onClick={handleLogout}>
+              Logout
+            </Nav.Link>
           ) : (
-            <Nav.Link className="px-3 text-white loginButton" href="/api/login">Login</Nav.Link>
+            <Nav.Link className="px-3 text-white loginButton" href="/api/login">
+              Login
+            </Nav.Link>
           )}
         </Nav>
       </Navbar.Collapse>
