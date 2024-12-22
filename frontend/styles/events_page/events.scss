@@ -9,7 +9,7 @@
 
 
 // COLORS FOR THE SMALL CARDS
-// Directions for changing from an idiot: 
+// Directions for changing: 
 // do ctrl-f to search for 'dscc'
 // Then its self explanatory
 // Tried to automate : it didnt work the first time; thought it wasnt worth the effort debugging
@@ -108,6 +108,7 @@
    
     text-align: center;
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
 
    
    

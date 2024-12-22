@@ -17,7 +17,7 @@ import { Box, CssBaseline, Card, CardActionArea, CardContent, Container } from '
 // CONTROLS: 
 
 // Enable hover effect on the events div for laptops and desktops: If set to false, user has to click to view event details
-const enableHoverEffect = true; 
+const enableHoverEffect = false; 
 
 
 
@@ -77,7 +77,7 @@ const EventsTitle = ({isMobile, onComplete}) => {
   };
   
 
-  const EventsGrid = ({isMobile,titleAnimationComplete}) => {
+const EventsGrid = ({isMobile,titleAnimationComplete}) => {
     const [hoveredEvent, setHoveredEvent] = useState(null);
 
     const handleMouseEnter = (id) => {
