@@ -1,7 +1,7 @@
 .backdrop {
     margin-top: 68px;
 
-    background-color: #1D141A;
+    background-color: #1f121A;
     color: white;
 
     display: flex;
@@ -67,3 +67,37 @@
         margin: 0;
     }
 }
+.yearbook-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0rem; /* Space between text and image */
+    flex-wrap: wrap; /* Allows wrapping for responsiveness */
+  }
+  
+  .text-content {
+    max-width: 100%; /* Adjust based on design preference */
+  }
+  
+  .image {
+    max-width: 35%; /* Prevents the image from taking too much space */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: contain; /* Ensures image doesn't distort */
+  }
+  
+  @media (max-width: 768px) {
+    .yearbook-container {
+      flex-direction: column; /* Stack text and image vertically */
+      align-items: center; /* Center-aligns content */
+    }
+  
+    .text-content {
+      max-width: 100%; /* Full width for text */
+      text-align: center; /* Optional: Center text */
+    }
+  
+    .image {
+      display: none; /* Hides the image on smaller screens */
+    }
+  }
+  
