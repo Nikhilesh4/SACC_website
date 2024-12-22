@@ -5,65 +5,193 @@ import { Box, Typography, CssBaseline, GlobalStyles } from '@mui/material';
 import '@styles/globals.scss';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function AboutSACC() {
-    useEffect(() => {
-      const cursor = document.createElement('div');
-      cursor.id = 'custom-cursor';
-      cursor.style.position = 'absolute';
-      cursor.style.width = '15px';
-      cursor.style.height = '15px';
-      cursor.style.border = '2px solid #FF6363';
-      cursor.style.borderRadius = '50%';
-      cursor.style.pointerEvents = 'none';
-      cursor.style.zIndex = '9999';
-      cursor.style.transition = 'transform 0.1s ease-out';
-      document.body.appendChild(cursor);
-    
-      const trailDuration = 300; // milliseconds for how long the trails last
-    
-      // Function to create the trail effect
-      const createTrail = (x, y) => {
-        const trail = document.createElement('div');
-        trail.style.position = 'absolute';
-        trail.style.width = '10px';
-        trail.style.height = '10px';
-        trail.style.borderRadius = '50%';
-        trail.style.backgroundColor = '#FF6363';
-        trail.style.pointerEvents = 'none';
-        trail.style.zIndex = '9998';
-        trail.style.left = `${x - 5}px`;
-        trail.style.top = `${y - 5}px`;
-        trail.style.transition = `opacity ${trailDuration / 1000}s ease-out, transform ${trailDuration / 1000}s ease-out`;
-    
-        document.body.appendChild(trail);
-    
-        setTimeout(() => {
-          trail.style.opacity = '0';
-          trail.style.transform = 'scale(0)';
-        }, 10);
-    
-        setTimeout(() => {
-          document.body.removeChild(trail);
-        }, trailDuration);
-      };
-    
-      const moveCursor = (e) => {
-        cursor.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 7}px)`;
-        createTrail(e.clientX, e.clientY); // Create a trail effect
-      };
-    
-      document.addEventListener('mousemove', moveCursor);
-      return () => {
-        document.body.removeChild(cursor);
-        document.removeEventListener('mousemove', moveCursor);
-      };
-    }, []);    
+  const [windowWidth, setWindowWidth] = useState(0);
 
+  // Track window resize to handle responsiveness
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Listen to window resize event
+    window.addEventListener('resize', handleResize);
+
+    // Set initial window width
+    handleResize();
+
+    return () => {
+      // Clean up the event listener when the component is unmounted
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // If window width is less than 600px, hide the regular content and show mobile view
+  if (windowWidth < 600) {
+    return (
+      <>
+        <CssBaseline />
+        <GlobalStyles
+          styles={{
+            html: { margin: 0, padding: 0, width: '100%', height: '100%' },
+            body: { margin: 0, padding: 0, width: '100%', height: '100%', overflowX: 'hidden', overflowY: 'hidden' },
+          }}
+        />
+
+        <Head>
+          <title>About SACC</title>
+        </Head>
+
+        <NavbarComponent isSticky={true} />
+
+        {/* Mobile View */}
+        <Box
+          sx={{
+            backgroundColor: '#1D141A',
+            color: 'white',
+            minHeight: '100vh',
+            marginTop: '68px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            padding: '0 5%',
+            position: 'relative',
+          }}
+        >
+          {/* Oval background shape */}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            style={{
+              position: 'absolute',
+              width: '80%',
+              height: '500px',
+              backgroundColor: '#29212D',
+              borderRadius: '50%',
+              zIndex: 0,
+              top: '20%',
+              left: '10%',
+              boxShadow: '0 0 15px rgba(255, 99, 99, 0.5)',
+            }}
+          ></motion.div>
+
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{
+              fontWeight: 'bold',
+              marginBottom: '8px',
+              fontSize: '3rem', // Increased size for mobile
+                color: '#FF6363',
+                textAlign: 'center',
+                position: 'relative',
+                zIndex: 1,
+              }}
+              >
+              <span style={{ color: '#EFDFC2', fontSize: '2.5rem' }}>About</span>
+              <br />
+              <span style={{ color: '#FF6363', fontSize: '2.5rem' }}>SACC</span>
+              </Typography>
+
+              <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+              style={{
+                textAlign: 'center',
+                marginTop: '20px',
+                marginBottom: '30px',
+                position: 'relative',
+                zIndex: 1,
+              }}
+              >
+              <Typography
+                variant="h6"
+                component="p"
+                sx={{
+                fontSize: '1rem',
+                color: '#EAEAEA',
+                lineHeight: 1.8,
+                }}
+              >
+                Student Alumni Connect Cell (SACC) is a student-run organization that aims to foster connections
+                between students, alumni, and the Institute. SACC provides mentorship, organizes events, and offers
+                resources to help students and alumni engage with their alma mater and fellow alumni.
+              </Typography>
+              </motion.div>
+
+              {/* Social Media Icons for Mobile */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
+              marginTop: '15px',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            <motion.a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.4 }} // Increased hover animation size
+              transition={{ staggerChildren: 0.2 }}
+            >
+              <Image
+                src="/assets/images/insta.png"
+                alt="Instagram"
+                width={45}
+                height={45}
+              />
+            </motion.a>
+
+            <motion.a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.4 }} // Increased hover animation size
+              transition={{ staggerChildren: 0.2 }}
+            >
+              <Image
+                src="/assets/images/fb.png"
+                alt="Facebook"
+                width={45}
+                height={45}
+              />
+            </motion.a>
+
+            <motion.a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.4 }} // Increased hover animation size
+              transition={{ staggerChildren: 0.2 }}
+            >
+              <Image
+                src="/assets/images/linkedin.png"
+                alt="LinkedIn"
+                width={45}
+                height={45}
+              />
+            </motion.a>
+          </Box>
+        </Box>
+
+        <Bottom />
+      </>
+    );
+  }
+
+  // Desktop View (for widths greater than or equal to 600px)
   return (
     <>
-    <CssBaseline />
+      <CssBaseline />
       <GlobalStyles
         styles={{
           html: { margin: 0, padding: 0, width: '100%', height: '100%' },
@@ -92,8 +220,6 @@ export default function AboutSACC() {
           position: 'relative',
         }}
       >
-        <CssBaseline />
-
         {/* Vertical Line Animation */}
         <motion.div
           initial={{ height: 0 }}
@@ -104,46 +230,44 @@ export default function AboutSACC() {
             left: '5%',
             top: 0,
             width: '10px',
-            backgroundColor: '#FF6363',   // Vline color
+            backgroundColor: '#FF6363',
             zIndex: 10,
           }}
         />
 
         {/* SACC Logo Animation */}
         <motion.div
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: '-30%', opacity: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-        whileHover={{ scale: 1.2}} // Slight scaling and rotation on hover
-        style={{
+          initial={{ x: '100%', opacity: 0 }}
+          animate={{ x: '-30%', opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          whileHover={{ scale: 1.2 }}
+          style={{
             position: 'absolute',
-            top: '1.5%', // Adjust vertical alignment
-            right: '15%', // Adjust horizontal alignment
+            top: '1.5%',
+            right: '15%',
             zIndex: 10,
-        }}
+          }}
         >
-        {/* Continuous Hover Animation */}
-        <motion.div
-            animate={{ y: [0, -10, 0] }} // Up and down movement
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
             transition={{
-            duration: 2, // Duration of the hover animation
-            repeat: Infinity, // Loop the animation infinitely
-            repeatType: 'mirror', // Reverse direction after each cycle
+              duration: 2,
+              repeat: Infinity,
+              repeatType: 'mirror',
             }}
-        >
+          >
             <Image
-            src="/assets/images/SACC_logo.png"
-            alt="SACC Logo"
-            width={250}
-            height={250}
-            style={{
+              src="/assets/images/SACC_logo.png"
+              alt="SACC Logo"
+              width={250}
+              height={250}
+              style={{
                 borderRadius: '50%',
                 boxShadow: '0 0 20px rgba(255, 99, 99, 0.8)',
-            }}
+              }}
             />
+          </motion.div>
         </motion.div>
-        </motion.div>
-
 
         {/* Background Image Section */}
         <motion.div
@@ -191,85 +315,62 @@ export default function AboutSACC() {
             <br />
             <span style={{ color: '#FF6363' }}>SACC</span>
           </Typography>
-
-          {/* Underline animation for Title */}
-          <motion.span
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: '0%',
-              width: '100%',
-              height: '2px',
-              backgroundColor: '#FF6363',
-              transformOrigin: 'center',
-              transform: 'translateX(-50%)',
-            }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{
-              delay: 1.2,
-              duration: 1,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          />
         </motion.div>
 
         {/* Description Section */}
         <motion.div
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1 }}
-  style={{ position: 'relative', zIndex: 1 }}
->
-  <div
-    style={{
-      position: 'absolute',
-      top: '-500px', 
-      left: '-40px', 
-      width: '1500px', 
-      height: '800px', 
-      backgroundColor: '#29212D',
-      borderRadius: '50%', 
-      transform: 'rotate(-45deg)', 
-      zIndex: 0, 
-      border: '5px solid #FF6363', 
-      boxShadow: '0 0 15px rgba(255, 99, 99, 0.5)',
-    }}
-
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          style={{ position: 'relative', zIndex: 1 }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: '-500px',
+              left: '-40px',
+              width: '1500px',
+              height: '800px',
+              backgroundColor: '#29212D',
+              borderRadius: '50%',
+              transform: 'rotate(-45deg)',
+              zIndex: 0,
+              border: '5px solid #FF6363',
+              boxShadow: '0 0 15px rgba(255, 99, 99, 0.5)',
+            }}
           ></div>
 
-        <motion.div
-        style={{
-            borderRadius: '50px',
-            padding: '30px 20px',
-            maxWidth: '800px',
-            top: '30px',
-            left: '150px',
-            position: 'relative',
-            zIndex: 1,
-        }}
-        initial={{ opacity: 0, y: 20, x: 0 }} // Start slightly down and to the left
-        animate={{ opacity: 1, y: -30, x: 30 }} // Move up and to the right
-        transition={{
-            duration: 1, // Duration of the animation
-            ease: 'easeOut', // Smooth easing
-        }}
-        >
-        <Typography
-            variant="h6"
-            component="p"
-            sx={{
-            fontSize: '1.4rem',
-            color: '#EAEAEA',
-            lineHeight: 1.8,
+          <motion.div
+            style={{
+              borderRadius: '50px',
+              padding: '30px 20px',
+              maxWidth: '800px',
+              top: '30px',
+              left: '150px',
+              position: 'relative',
+              zIndex: 1,
             }}
-        >
-            Student Alumni Connect Cell (SACC) is a student-run organization that aims to foster connections
-            between students, alumni, and the Institute. SACC provides mentorship, organizes events, and offers
-            resources to help students and alumni engage with their alma mater and fellow alumni.
-        </Typography>
-        </motion.div>
+            initial={{ opacity: 0, y: 20, x: 0 }}
+            animate={{ opacity: 1, y: -30, x: 30 }}
+            transition={{
+              duration: 1,
+              ease: 'easeOut',
+            }}
+          >
+            <Typography
+              variant="h6"
+              component="p"
+              sx={{
+                fontSize: '1.4rem',
+                color: '#EAEAEA',
+                lineHeight: 1.8,
+              }}
+            >
+              Student Alumni Connect Cell (SACC) is a student-run organization that aims to foster connections
+              between students, alumni, and the Institute. SACC provides mentorship, organizes events, and offers
+              resources to help students and alumni engage with their alma mater and fellow alumni.
+            </Typography>
+          </motion.div>
         </motion.div>
 
         {/* Social Media Section */}
@@ -297,27 +398,6 @@ export default function AboutSACC() {
             }}
           >
             Follow us on social media
-            {/* Underline animation for Social Media */}
-            <motion.span
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '0%',
-                width: '100%',
-                height: '2px',
-                backgroundColor: '#FF6363',
-                transformOrigin: 'center',
-                transform: 'translateX(-50%)',
-              }}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{
-                delay: 1.2,
-                duration: 1,
-                type: 'spring',
-                stiffness: 50,
-              }}
-            />
           </Typography>
 
           <Box
@@ -375,7 +455,7 @@ export default function AboutSACC() {
           </Box>
         </motion.div>
 
-             {/* Horizontal Line at the bottom of the page */}
+        {/* Horizontal Line at the bottom of the page */}
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
@@ -385,40 +465,12 @@ export default function AboutSACC() {
             bottom: '12%',
             left: 0,
             height: '10px',
-            backgroundColor: '#FF6363',   // hline color
+            backgroundColor: '#FF6363',
             zIndex: 20,
           }}
         ></motion.div>
-
-<motion.div
-  initial={{ x: -100, opacity: 0 }}
-  animate={{ x: '-4%', opacity: 1 }}
-  transition={{ duration: 1.5, ease: 'easeOut' }}
-  whileHover={{
-    scale: 1.2, // Slight scaling on hover
-    boxShadow: '0 0 20px rgba(0, 0, 255, 0.8)', // Blue box-shadow on hover
-  }}
-  style={{
-    position: 'absolute',
-    bottom: '10%',
-    left: '1.5%',
-    zIndex: 100,
-    borderRadius: '50%',
-    overflow: 'hidden',
-  }}
->
-<motion.div
-  style={{
-    width: 150, 
-    height: 150, 
-    borderRadius: '50%', 
-    border: '25px solid #002b95', // Outline color
-    backgroundColor: '#00ed95', // Background color
-    boxShadow: '0 0 20px rgba(0, 0, 255, 0.5)', // Blue box-shadow
-  }}
-/>
-</motion.div>
       </Box>
+
       <Bottom />
     </>
   );

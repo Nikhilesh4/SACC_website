@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import YearbookCaro from '@components/yearbookcaro';
+// import YearbookCaro from '@components/yearbookcaro';
 import '@styles/yearbook.scss';
 import Bottom from '@components/footer';
 import Navbartest from '@components/navbar';
@@ -45,7 +45,7 @@ export default function Yearbook() {
         <section id='main'>
           <section className='showcase'>
             {/* <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1> */}
-            <YearbookCaro yearbook={yearbookData} />
+            {/* <YearbookCaro yearbook={yearbookData} /> */}
             {/* <img src="/assets/images/test3.png" alt="test1" width={500} height={300} /> */}
             {/* <div className="embla__pagination">
           {yearbookData.map((_, index) => (

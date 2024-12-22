@@ -24,6 +24,33 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.about-header {
+	  font-size: 3rem;
+	  text-align: center;
+	  margin-top: 10px;
+	}
+  
+	.about-description {
+	  padding: 10px;
+	  font-size: 1.2rem;
+	}
+  
+	.social-media-icons {
+	  flex-direction: column;
+	  gap: 10px;
+	}
+  
+	/* Make logo smaller on smaller screens */
+	.about-logo img {
+	  width: 150px;
+	  height: 150px;
+	}
+  
+	/* Adjust other elements accordingly */
+	/* Adjust the cursor, background, etc., as needed */
+  }  
+
 @media only screen and (max-width:430px) {
 
 	.bg-div .head-div-second-text,

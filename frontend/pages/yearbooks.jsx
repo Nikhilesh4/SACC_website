@@ -25,7 +25,7 @@ const yearbookData = [
   {
     year: '2k17',
     pdfLink: '/assets/yearbooks/2017.pdf',
-    previewImage: '/assets/images/preview2017.jpg'
+    previewImage: '../public/assets/yearbookimages/image_YB19_1.jpg'
   }
 ];
 
@@ -41,23 +41,25 @@ export default function Home() {
         <Grid container spacing={11} justifyContent="center" className="yearbooksGrid">
           {yearbookData.map((yearbook, index) => (
             <Grid item key={index}>
-              <div
-                className="yearbookPreview"
-                sx={{
-                  width: {
-                    xs: '100%',
-                    sm: '50%',
-                    md: '33.33%',
-                    lg: '25%'
-                  },
-                  padding: '0 8px'
-                }}
-              >
-                <Box className="yearbookLabel">
-                  <h4>Batch of</h4>
-                  <h2>{yearbook.year}</h2>
-                </Box>
-              </div>
+              <a href={`p_${yearbook.year}.html`} className="yearbookLink">
+                <div
+                  className="yearbookPreview"
+                  sx={{
+                    width: {
+                      xs: '100%',
+                      sm: '50%',
+                      md: '33.33%',
+                      lg: '25%'
+                    },
+                    padding: '0 8px'
+                  }}
+                >
+                  <Box className="yearbookLabel">
+                    <h4>Batch of</h4>
+                    <h2>{yearbook.year}</h2>
+                  </Box>
+                </div>
+              </a>
             </Grid>
           ))}
         </Grid>
