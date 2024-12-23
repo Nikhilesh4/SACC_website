@@ -36,8 +36,7 @@ const NavbarComponent = ({ isSticky = false }) => {
           style={{ width: "169px", height: "50px" }}
         />
       </Navbar.Brand>
-      {/* Add Navbar.Toggle here */}
-      <Navbar.Toggle aria-controls="responsive-navbar-nav"  style={{backgroundColor:"#FBFBFB"}}/>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
         <Nav className="mx-auto">
           <Nav.Link className="px-3 text-white" href="/">

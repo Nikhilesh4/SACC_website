@@ -20,7 +20,7 @@ const eventsData = [
     { id: 5, name: 'Opportunities Awareness Talk', description: 'Insights into career opportunities and growth.' }
 ];
 
-// The title events and underline 
+// The title and underline 
 const EventsTitle = ({ isMobile, onComplete }) => {
     const [underlineComplete, setUnderlineComplete] = useState(false);
 
@@ -47,7 +47,6 @@ const EventsTitle = ({ isMobile, onComplete }) => {
                 }}
                 onAnimationComplete={() => setUnderlineComplete(true)}
             />
-
         </div>
     );
 };
@@ -109,10 +108,7 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
                         <motion.Box
                             className={`large-card ${hoveredEvent === event.id ? 'active' : 'not-active'
                                 } ${isMobile ? 'mobile' : 'desktop'}`}
-
                         >
-
-
                             {hoveredEvent === event.id ? (
                                 <motion.p className="event-description"
                                     initial="hidden"
