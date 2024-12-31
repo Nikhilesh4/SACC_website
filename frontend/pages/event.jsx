@@ -1,23 +1,25 @@
 import '@styles/globals.scss';
-import Bottom from '@components/footer';
-import NavbarComponent from '@components/navbar';
 import '@styles/events_page/events.scss';
-import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
-import splitStringUsingRegex from '@lib/events_page/splitStringUsingRegex';
+import Bottom from '@components/footer';
 import Typewriter from '@lib/events_page/TypeWriter';
 import GradualSpacing from '@lib/events_page/gradualSpacing';
-import { Box, CssBaseline, Card, CardActionArea, CardContent, Container } from '@mui/material';
+import NavbarComponent from '@components/navbar';
+import splitStringUsingRegex from '@lib/events_page/splitStringUsingRegex';
+import { motion } from 'framer-motion';
+import { Box, CssBaseline, Container } from '@mui/material';
 
 // Enable hover effect on the events div for laptops and desktops: If set to false, user has to click to view event details
 const enableHoverEffect = false;
 
 const eventsData = [
-    { id: 1, name: 'College Karawan', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur pariatur excepturi quia, quibusdam tenetur, enim porro voluptas veritatis laborum ducimus placeat sit rem aut illum facilis neque. Aut, nobis iusto!' },
-    { id: 2, name: 'Chai pe Charcha', description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem repudiandae obcaecati at asperiores, tenetur optio dignissimos. Libero ullam dolores, repellendus aut numquam rem nostrum inventore eaque ratione, consectetur dicta id.' },
-    { id: 3, name: 'Convocation', description: 'Graduation ceremony for final-year students.' },
-    { id: 4, name: 'Alumni Unfiltered', description: 'Networking event with college alumni.' },
-    { id: 5, name: 'Opportunities Awareness Talk', description: 'Insights into career opportunities and growth.' }
+    { id: 1, name: 'Opportunities Awareness Talk', description: "The Opportunity Awareness Talks (OAT) aims to introduce IIIT students to diverse career paths beyond the institute's core focus on Computer Science and Electronics. Featuring distinguished alumni from various fields, each session delves into niche topics, offering insights on breaking into and excelling in those domains. Through engaging discussions and direct interaction with speakers, OAT helps students explore potential career paths and stay informed about industry trends." },
+    { id: 2, name: 'Chai pe Charcha', description: 'Chai Pe Charcha is a candid and engaging platform, bringing the IIIT family together for meaningful discussions over a cup of tea. Alumni from diverse backgrounds share their journeys, expertise and insights, covering topics from career guidance and industry trends to personal anecdotes and mentorship. Featuring interactive sessions, it fosters connections, encourages open dialogue and helps students navigate college challenges while preparing for life beyond.' },
+    { id: 3, name: 'Alumni Unfiltered', description: 'Alumni Unfiltered is a casual and dynamic talk session held during induction week, where freshers connect with alumni to seek guidance and hear stories from their college days and life experiences. This engaging platform allows open discussions on topics ranging from academics to college life, humorously addressing common rookie mistakes, emphasizing time management, and providing clarity on misconceptions. The session offers freshers valuable insights and a glimpse into the journey ahead, fostering a meaningful connection with the alumni.' },
+    { id: 4, name: 'Yearbook & Farewell', description: "SACC is involved in the farewell ceremony for the graduating batch, where they receive their yearbooks and other mementos. The Yearbook is a cherished keepsake for each graduating batch, capturing their unique journey through testimonials, inside jokes, comments, fun captions, and pictures. From the excitement of orientation to the milestone of graduation, the Yearbook allows students to relive their college days, celebrating unforgettable moments and lifelong bonds formed at IIIT." },
+    { id: 5, name: 'Convocation', description: "The Yearbook is a cherished keepsake for each graduating batch, capturing their unique journey through testimonials, inside jokes, comments, fun captions, and pictures. Adding a playful touch, it features polls like 'Most Studious', 'Best Dressed' and 'Weirdest' offering a lighthearted glimpse into the batch's collective personality. From the excitement of orientation to the milestone of graduation, the Yearbook allows students to relive their college days, celebrating unforgettable moments and lifelong bonds formed at IIIT." },
+    { id: 6, name: 'College Karawan', description: 'College Karwaan is an online compendium, curated by the SACC, that celebrates the journey of students at IIIT Hyderabad. Narrated by graduating students, these articles capture the highs, lows and defining moments of college life—from the nervous excitement of the first year to the challenges of final-year placements. Serving as a repository of priceless memories, College Karwaan preserves the legacy of those who have walked through the hallowed halls of IIIT Hyderabad.' },
+    { id: 7, name: 'Vision Talks (proposal)', description: 'An annual event that coincides with the Foundation Day of the Institute, where prominent alumni from different fields are invited to deliver talks and share their insights and experiences with the students' }
 ];
 
 // The title and underline 
@@ -72,13 +74,13 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
         }
     };
 
-    const LETTER_DELAY = 0.05;
+    const LETTER_DELAY = 0.037;
     const charRevealVariants = {
         hidden: { opacity: 0 },
         reveal: { opacity: 1 },
     };
 
-    const staggerDelay = isMobile ? 0.008 : 0.008;
+    const staggerDelay = 0.002;
     return (
         <Container maxWidth={false} className="event-grid">
             {titleAnimationComplete && eventsData.map((event) => (
@@ -157,8 +159,6 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
         </Container>
     );
 }
-
-
 
 export default function Events() {
     const [isMobile, setIsMobile] = useState(false);

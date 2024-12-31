@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 import NavbarComponent from '../components/navbar';
 import Bottom from '@components/footer';
-import { Box, Typography, CssBaseline, GlobalStyles, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, CssBaseline } from '@mui/material';
 import '@styles/globals.scss';
 import '@styles/about.scss';
 import GradualSpacing from '@lib/events_page/gradualSpacing';
@@ -69,7 +68,7 @@ export default function AboutSACC() {
           className="vertical-line"
           initial={{ height: 0 }}
           animate={{ height: '100%' }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         />
 
         <motion.div
@@ -118,9 +117,19 @@ export default function AboutSACC() {
             component="p"
             className="aboutContent"
           >
-            Student Alumni Connect Cell (SACC) is a student-run organization that aims to foster connections
-            between students, alumni, and the Institute. SACC provides mentorship, organizes events, and offers
-            resources to help students and alumni engage with their alma mater and fellow alumni.
+            The Student Alumni Connect Cell (SACC) is the link that keeps IIIT H's student community
+            and its alumni network closely connected. At its heart, SACC is all about building meaningful
+            relationships and harnessing the power of shared experiences.It does this by organizing a
+            wide range of activities, from insightful talks and candid discussions with alumni to creating
+            yearbooks and blogs that capture the true spirit of campus life.
+            <br></br>
+            <br></br>
+            SACC's mission is simple: to bridge the gap between students and alumni and provide a
+            platform to seek guidance, explore opportunities, and connect with those who've walked the
+            same path. Whether it's through career-focused events, nostalgic reflections, or casual chai
+            sessions, SACC works to ensure that the bonds formed at IIIT last a lifetime. By bringing
+            alumni and students together, SACC transforms connections into opportunities and
+            memories into legacies..
           </Typography>
         </motion.div>
 
@@ -158,7 +167,7 @@ export default function AboutSACC() {
           className="horizontal-line"
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1 }}
         />
       </Box>
 

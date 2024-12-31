@@ -136,34 +136,15 @@
         font-size: 1.5rem;
     }
 
-    &.e1 {
+    &:nth-child(odd) {
         .small-card {
-            background-color: rgba(46, 33, 42, 1);
+            background-color: rgba(46, 33, 42, 1); // Darker shade
         }
     }
 
-    &.e2 {
+    &:nth-child(even) {
         .small-card {
-            background-color: rgba(47, 44, 46, 1);
-        }
-    }
-
-    &.e3 {
-        .small-card {
-            background-color: rgba(57, 38, 51, 1);
-        }
-
-    }
-
-    &.e4 {
-        .small-card {
-            background-color: rgba(106, 97, 104, 1);
-        }
-    }
-
-    &.e5 {
-        .small-card {
-            background-color: rgba(105, 73, 98, 1);
+            background-color: rgba(57, 38, 51, 1); // Lighter shade
         }
     }
 
