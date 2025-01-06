@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-// import YearbookCaro from '@components/yearbookcaro';
+import YearbookCaro from '@components/yearbookcaro';
 import '@styles/yearbook.scss';
-import Bottom from '@components/footer';
+import Bottom from '@components/bottom';
 import Navbartest from '@components/navbar';
 // import '@styles/carousel.scss';
 import '@styles/globals.scss'
@@ -44,6 +44,13 @@ export default function Yearbook() {
         <Navbartest />
         <section id='main'>
           <section className='showcase'>
+            <iframe
+            src="/index.html" 
+            width="100%" 
+            height="940" 
+            title="Yearbook Showcase"
+            style={{ border: "none" }}
+            ></iframe>
             {/* <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1> */}
             {/* <YearbookCaro yearbook={yearbookData} /> */}
             {/* <img src="/assets/images/test3.png" alt="test1" width={500} height={300} /> */}
@@ -62,7 +69,7 @@ export default function Yearbook() {
         </section>
         <Bottom />
       </section>
-      : <section>
+      : <section>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
         <Navbartest />
         <section>
           <div>

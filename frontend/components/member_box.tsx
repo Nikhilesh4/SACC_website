@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, useTheme, useMediaQuery } from '@mui/mater
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { red } from '@mui/material/colors';
 
 type MemberBoxProps = {
   name: string;
@@ -10,9 +11,10 @@ type MemberBoxProps = {
   twitterLink: string;
   linkedinLink: string;
   githubLink: string;
+  position:string
 };
 
-const MemberBox: React.FC<MemberBoxProps> = ({ name, imgSrc, twitterLink, linkedinLink, githubLink }) => {
+const MemberBox: React.FC<MemberBoxProps> = ({ name, imgSrc, twitterLink, linkedinLink, githubLink ,position}) => {
   const theme = useTheme();
   const isPhone = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -61,9 +63,15 @@ const MemberBox: React.FC<MemberBoxProps> = ({ name, imgSrc, twitterLink, linked
           marginBottom: '2vh',
         }}
       />
-      <Typography variant="h2" align="center" sx={{ fontFamily: 'anona', fontSize: isPhone ? '1.5rem' : '2rem', marginBottom: '2rem' }}>
+      <Typography variant="h2" align="center" sx={{ fontFamily: 'anona', fontSize: isPhone ? '1.5rem' : '2rem', marginBottom: '0.25rem' }}>
         {name}
+        {/* {position} */}
       </Typography>
+      <Typography variant="h3" align="center" sx={{ fontFamily: 'Roboto', fontSize: isPhone ? '1rem' : '1.5rem', marginBottom: '0.25rem' }}>
+        {position}
+
+      </Typography>
+
       <Box
         sx={{
           textAlign: 'right',

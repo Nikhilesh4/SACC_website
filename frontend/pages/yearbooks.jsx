@@ -23,10 +23,10 @@ const yearbookData = [
     previewImage: "/assets/images/preview2018.jpg",
   },
   {
-    year: '2k17',
-    pdfLink: '/assets/yearbooks/2017.pdf',
-    previewImage: '../public/assets/yearbookimages/image_YB19_1.jpg'
-  }
+    year: "2k17",
+    pdfLink: "/assets/yearbooks/2017.pdf",
+    previewImage: "/assets/images/preview2017.jpg",
+  },
 ];
 
 export default function Home() {
@@ -44,28 +44,126 @@ export default function Home() {
           <img className="image" src="/assets/images/fly.webp" alt="Butterfly" />
         </div>
 
-        <Grid container spacing={11} justifyContent="center" className="yearbooksGrid">
-          {yearbookData.map((yearbook, index) => (
-            <Grid item key={index}>
-              <div
-                className="yearbookPreview"
-                sx={{
-                  width: {
-                    xs: '100%',
-                    sm: '50%',
-                    md: '33.33%',
-                    lg: '25%'
-                  },
-                  padding: '0 8px'
-                }}
+        <Grid
+          container
+          spacing={9}
+          justifyContent="center"
+          alignItems="center"
+          className="yearbooksGrid"
+        >
+          {yearbookData.map((yearbook, index) => {
+            const isLastInRow =
+              (index + 1) % 3 === 0 || index === yearbookData.length - 1; // Adjust for items per row
+            // const isXs = false; // Example condition for screen size
+
+            return (
+              <Grid
+                item
+                key={index}
+                xs={12}
+                sm={6}
+                md={4.15}
+                lg={4.01}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                className="yearbookContainer"
               >
-                <Box className="yearbookLabel">
-                  <h4>Batch of</h4>
-                  <h2>{yearbook.year}</h2>
-                </Box>
-              </div>
-            </Grid>
-          ))}
+                <div
+                  className="yearbookPreview"
+                  sx={{
+                    width: {
+                      xs: "100%",
+                      sm: "50%",
+                      md: "33.33%",
+                      lg: "25%",
+                    },
+                    padding: "0 8px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    position: "relative", // Ensure relative positioning for lines
+                  }}
+                >
+                  {index === 0 && !isXs && (
+                    <div className="dashedLine">
+                      <div
+                        style={{
+                          position: "relative",
+                          bottom:"26vh",
+                          right:"34%",
+                          width: "1vw",
+                          height: "auto", // Ensure the height adjusts proportionally
+                          maxWidth: "100%", // Set a max width for larger screens
+                          maxHeight: "100%", // Ensure the container doesn't grow too large
+                        }}
+                      >
+                        <img src="/assets/images/t.webp" alt="" />
+                      </div>
+                    </div>
+                  )}
+                  <Box
+                    className="yearbookLabel"
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    <h4>Batch of</h4>
+                    <h2>{yearbook.year}</h2>
+                  </Box>
+
+                  {/* Dashed Line for Even-Indexed Items */}
+                  {index % 2 === 0 && !isXs && (
+                    <div className="dashedLine">
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "40%",
+                          left: "102%",
+                          width: "30vw",
+                          height: "auto", // Ensure the height adjusts proportionally
+                          maxWidth: "100%", // Set a max width for larger screens
+                          maxHeight: "100%", // Ensure the container doesn't grow too large
+                        }}
+                      >
+                        <img
+                          src="/assets/images/p.webp"
+                          alt=""
+                          style={{
+                            width: "100%", // Make the image adapt to the container's width
+                            height: "auto", // Maintain the aspect ratio
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {index == 1 && !isXs && (
+                    <div className="dashedLine">
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "100%",
+                          width: "1vw",
+                          height: "auto", // Ensure the height adjusts proportionally
+                          maxWidth: "40%", // Set a max width for larger screens
+                          maxHeight: "100%", // Ensure the container doesn't grow too large
+                        }}
+                      >
+                        <img src="/assets/images/L.webp" alt="" />
+                      </div>
+                    </div>
+                  )}
+                  {/* SVG for Last Box in a Row */}
+                </div>
+              </Grid>
+            );
+          })}
+          {!isXs && (
+            <div style={{ width: "100%", maxWidth: "750px", height: "auto" }}>
+              <img src="/assets/images/f.webp" alt="" />
+            </div>
+          )}
         </Grid>
       </Box>
 
