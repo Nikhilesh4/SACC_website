@@ -1,11 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import YearbookCaro from '@components/yearbookcaro';
 import '@styles/yearbook.scss';
-import Bottom from '@components/bottom';
+import Bottom from '@components/footer';
 import Navbartest from '@components/navbar';
-// import '@styles/carousel.scss';
 import '@styles/globals.scss'
 import '@styles/embla.css'
 
@@ -15,23 +13,12 @@ export default function Yearbook() {
   useEffect(() => {
     var arrayb = document.cookie;
     arrayb = arrayb.split(';');
-    // console.log(arrayb);
     for (const item of arrayb) {
-      // console.log(item);
       if (item.includes("Authorization_YearBook")) {
         setAuthenticated(true);
       }
     }
 
-
-    // // Check if the user is authenticated
-    // const token = localStorage.getItem('Authorization_YearBook');
-    // console.log(token);
-    // if (token) {
-    //   setAuthenticated(true);
-    // } else {
-    //   setAuthenticated(false);
-    // }
   }, []);
 
   const yearbookData = Array.from({ length: 159 }, (_, i) => ({
@@ -45,26 +32,12 @@ export default function Yearbook() {
         <section id='main'>
           <section className='showcase'>
             <iframe
-            src="/index.html" 
-            width="100%" 
-            height="940" 
-            title="Yearbook Showcase"
-            style={{ border: "none" }}
+              src="/index.html"
+              width="100%"
+              height="940"
+              title="Yearbook Showcase"
+              style={{ border: "none" }}
             ></iframe>
-            {/* <h1 style={{alignContent: 'center',textAlign: 'center',color: 'black'}}>Yearbook :)</h1> */}
-            {/* <YearbookCaro yearbook={yearbookData} /> */}
-            {/* <img src="/assets/images/test3.png" alt="test1" width={500} height={300} /> */}
-            {/* <div className="embla__pagination">
-          {yearbookData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi.scrollTo(index)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div> */}
-            {/* idea for putting a button here to jump to a page */}
           </section>
         </section>
         <Bottom />
@@ -85,7 +58,5 @@ export default function Yearbook() {
 
         <Bottom />
       </section>
-
   );
 }
-

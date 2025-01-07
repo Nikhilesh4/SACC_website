@@ -58,7 +58,7 @@ const NavbarComponent = ({ isSticky = false }) => {
             Yearbooks
           </Nav.Link>
         </Nav>
-        <Nav>
+        <Nav style={{ width: "185px" }}>
           {authenticated ? (
             <Nav.Link className="px-3 text-white loginButton" onClick={handleLogout}>
               Logout
