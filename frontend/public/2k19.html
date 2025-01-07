@@ -275,6 +275,28 @@ body {
 	<div style="background-image:url(assets/yearbookimages/image_YB19_159.jpg);"></div>
 </div>
 
+<div class="navbar">
+	<span>Yearbook 2019</span>
+	<input type="number" id="specific-page-number" placeholder="Enter page number" style="margin-left: 20px; padding: 10px; font-size: 16px; width: 100px;">
+	<button id="download-btn" style="margin-left: 20px; padding: 10px; font-size: 16px;">Download Page</button>
+</div>
+
+<script type="text/javascript">
+	document.getElementById('download-btn').addEventListener('click', function() {
+		var pageNumberInput = document.getElementById('specific-page-number').value;
+		var pageNumber = parseInt(pageNumberInput);
+		if (pageNumber && pageNumber > 0 && pageNumber <= numberOfPages) {
+			var imageUrl = 'assets/yearbookimages/image_YB19_' + pageNumber + '.jpg';
+			var link = document.createElement('a');
+			link.href = imageUrl;
+			link.download = 'image_YB19_' + pageNumber + '.jpg';
+			link.click();
+		} else {
+			alert('Invalid page number.');
+		}
+	});
+</script>
+
 <div id="controls">
 	<label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
 </div>
