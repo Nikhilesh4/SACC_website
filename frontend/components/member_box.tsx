@@ -46,7 +46,7 @@ const MemberBox: React.FC<MemberBoxProps> = ({
     flex: isPhone ? "1" : "0 0 calc(80% - 2rem)",
     margin: isPhone ? "2%" : "6%",
     width: isPhone ? "100%" : "80%",
-    backgroundColor: "#e2e4e5",
+    backgroundColor: "#ccc",
     color: "#3a4052",
     padding: "2vh",
     border: "1px solid white",
@@ -106,10 +106,10 @@ const MemberBox: React.FC<MemberBoxProps> = ({
 
   <Box
     sx={{
-      textAlign: "right",
+      textAlign: "center",
       "& a": {
         color: "#3a4052",
-        marginRight: "5%",
+        justifyContent: "center",
         "&:hover": {
           color: "#e2e4e5",
         },

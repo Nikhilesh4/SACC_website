@@ -39,32 +39,32 @@ const NavbarComponent = ({ isSticky = false }) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
         <Nav className="mx-auto">
-          <Nav.Link className="px-3 text-white" href="/">
+          <Nav.Link className="px-4 text-white" href="/">
             Home
           </Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/about">
+          <Nav.Link className="px-4 text-white" href="/about">
             About
           </Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/event">
+          <Nav.Link className="px-4 text-white" href="/event">
             Events
           </Nav.Link>
-          <Nav.Link className="px-3 text-white" href="/team">
+          <Nav.Link className="px-4 text-white" href="/team">
             Team
           </Nav.Link>
           <Nav.Link
-            className="px-3 text-white active"
+            className="px-4 text-white active"
             href={authenticated ? "/yearbooks" : "/api/login"}
           >
             Yearbooks
           </Nav.Link>
         </Nav>
-        <Nav style={{ width: "185px" }}>
+        <Nav className="justify-content-end"> {/* Replace style={{ width: "185px" }} */}
           {authenticated ? (
-            <Nav.Link className="px-3 text-white loginButton" onClick={handleLogout}>
+            <Nav.Link className="px-4 text-white loginButton" onClick={handleLogout}>
               Logout
             </Nav.Link>
           ) : (
-            <Nav.Link className="px-3 text-white loginButton" href="/api/login">
+            <Nav.Link className="px-4 text-white loginButton" href="/api/login">
               Login
             </Nav.Link>
           )}

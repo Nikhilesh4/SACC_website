@@ -21,7 +21,7 @@ export default function Home() {
     {
       name: "Aviral Gupta",
       imgSrc: "/assets/images/Aviral.jpeg",
-      InstaID: "NA",
+      InstaID: "./team",
       linkedinLink: "https://www.linkedin.com/in/avilol/",
       githubLink: "https://github.com/avi1o1",
       position: "Vice coordinator",
@@ -32,10 +32,26 @@ export default function Home() {
     {
       name: "Aviral Gupta",
       imgSrc: "/assets/images/Aviral.jpeg",
-      InstaID: "NA",
+      InstaID: "./team",
       linkedinLink: "https://www.linkedin.com/in/avilol/",
       githubLink: "https://github.com/avi1o1",
       position: "Head",
+    },
+    {
+      name: "Arushi Tandon",
+      imgSrc: "/assets/images/Arushi-Tandon_Events.png",
+      InstaID: "https://instagram.com/_itstandon_",
+      linkedinLink: "https://www.linkedin.com/in/arushi-tandon-5139982a0",
+      githubLink: "",
+      position: "Member",
+    },
+    {
+      name: "Harry Jain",
+      imgSrc: "/assets/images/Harry_Jain_Events.jpg",
+      InstaID: "https://instagram.com/harr_yj_ain",
+      linkedinLink: "https://www.linkedin.com/in/harry-jain-3119aa322",
+      githubLink: "https://github.com/JARVISONFIRE",
+      position: "Member",
     },
     {
       name: "Konda Rithvika",
@@ -46,11 +62,12 @@ export default function Home() {
       position: "member",
     },
     {
-      name: "Harry Jain",
-      imgSrc: "/assets/images/Harry_Jain_Events.jpg",
-      InstaID: "https://instagram.com/harr_yj_ain",
-      linkedinLink: "https://www.linkedin.com/in/harry-jain-3119aa322",
-      githubLink: "https://github.com/JARVISONFIRE",
+      name: "Nikhita Ravi",
+      imgSrc: "/assets/images/Nikhita_Anjani_Ravi-Events.jpg",
+      InstaID: "https://instagram.com/nikhitarvi",
+      linkedinLink:
+        "https://www.linkedin.com/in/nikhita-anjani-ravi-94907531b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      githubLink: "https://www.github.com/n7khita-r",
       position: "Member",
     },
     {
@@ -62,24 +79,6 @@ export default function Home() {
       githubLink: "https://github.com/radheshyam2006",
       position: "Member",
     },
-    {
-      name: "Arushi Tandon",
-      imgSrc: "/assets/images/Arushi-Tandon_Events.png",
-      InstaID: "https://instagram.com/_itstandon_",
-      linkedinLink: "https://www.linkedin.com/in/arushi-tandon-5139982a0",
-      githubLink: "",
-      position: "Member",
-    },
-    {
-      name: "Nikhita Ravi",
-      imgSrc: "/assets/images/Nikhita_Anjani_Ravi-Events.jpg",
-      InstaID: "https://instagram.com/nikhitarvi",
-      linkedinLink:
-        "https://www.linkedin.com/in/nikhita-anjani-ravi-94907531b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      githubLink: "https://www.github.com/n7khita-r",
-      position: "Member",
-    },
-    
   ];
 
   const Outreach = [
@@ -92,15 +91,6 @@ export default function Home() {
       position: "Head",
     },
     {
-      name: "Akshitha Velugubantla",
-      imgSrc: "/assets/images/Akshitha_Gayatri_Outreach.jpg",
-      InstaID: "https://instagram.com/worldofakshitha",
-      linkedinLink:
-        "https://www.linkedin.com/in/akshitha-gayatri-velugubantla-718909295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      githubLink: "https://github.com/akshitha-gayatri",
-      position: "Member",
-    },
-    {
       name: "Akshat Gupta",
       imgSrc: "/assets/images/Akshat_Gupta_Outreach.jpg",
       InstaID: "https://instagram.com/gakshat4",
@@ -110,45 +100,12 @@ export default function Home() {
       position: "Member",
     },
     {
-      name: "Naman Singhal",
-      imgSrc: "/assets/images/Naman Singhal Corporate_.jpg ",
-      InstaID: "https://www.instagram.com/the_neemon",
-      linkedinLink: "https://www.linkedin.com/in/naman-singhal-4a2aaa321/",
-      githubLink: "https://github.com/the-neemon",
-      position: "Member",
-    },
-    {
-      name: "Pasumarthy Deepak",
-      imgSrc: "/assets/images/deepak_outreach_.jpg",
-      InstaID: "https://instagram.com/hunter_deepak18",
+      name: "Akshitha V",
+      imgSrc: "/assets/images/Akshitha_Gayatri_Outreach.jpg",
+      InstaID: "https://instagram.com/worldofakshitha",
       linkedinLink:
-        "https://www.linkedin.com/in/sai-deepak-1482a8286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      githubLink: "https://github.com/deepu1965",
-      position: "Member",
-    },
-    {
-      name: "Nikhilesh Nallavelli",
-      imgSrc: "/assets/images/Nikhilesh Nallavelli outreach_.jpg",
-      InstaID: "https://instagram.com/nikhileshnallavelli",
-      linkedinLink:
-        "https://www.linkedin.com/in/nikhilesh-nallavelli-b9072a313/",
-      githubLink: "https://github.com/NikhileshNallavelli",
-      position: "Member",
-    },
-    {
-      name: "Poojitha J",
-      imgSrc: "/assets/images/Poojitha J_Outreach.jpeg",
-      InstaID: "https://instagram.com/siri_376_pj",
-      linkedinLink: "https://www.linkedin.com/in/poojitha-j-1273501b7",
-      githubLink: "https://github.com/poojitha376",
-      position: "Member",
-    },
-    {
-      name: "Shravani K",
-      imgSrc: "/assets/images/SACC_logo.png",
-      InstaID: "https://instagram.com/shravaniik",
-      linkedinLink: "https://www.linkedin.com/in/shravani-kalmali/",
-      githubLink: "https://www.github.com/shravanikalmali",
+        "https://www.linkedin.com/in/akshitha-gayatri-velugubantla-718909295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      githubLink: "https://github.com/akshitha-gayatri",
       position: "Member",
     },
     {
@@ -168,7 +125,50 @@ export default function Home() {
       githubLink: "https://www.github.com/ntini773",
       position: "Member",
     },
+    {
+      name: "Naman Singhal",
+      imgSrc: "/assets/images/Naman Singhal Corporate_.jpg ",
+      InstaID: "https://www.instagram.com/the_neemon",
+      linkedinLink: "https://www.linkedin.com/in/naman-singhal-4a2aaa321/",
+      githubLink: "https://github.com/the-neemon",
+      position: "Member",
+    },
+    {
+      name: "Nikhilesh Nallavelli",
+      imgSrc: "/assets/images/Nikhilesh Nallavelli outreach_.jpg",
+      InstaID: "https://instagram.com/nikhileshnallavelli",
+      linkedinLink:
+        "https://www.linkedin.com/in/nikhilesh-nallavelli-b9072a313/",
+      githubLink: "https://github.com/NikhileshNallavelli",
+      position: "Member",
+    },
+    {
+      name: "Pasumarthy Deepak",
+      imgSrc: "/assets/images/deepak_outreach_.jpg",
+      InstaID: "https://instagram.com/hunter_deepak18",
+      linkedinLink:
+        "https://www.linkedin.com/in/sai-deepak-1482a8286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      githubLink: "https://github.com/deepu1965",
+      position: "Member",
+    },
+    {
+      name: "Poojitha J",
+      imgSrc: "/assets/images/Poojitha J_Outreach.jpeg",
+      InstaID: "https://instagram.com/siri_376_pj",
+      linkedinLink: "https://www.linkedin.com/in/poojitha-j-1273501b7",
+      githubLink: "https://github.com/poojitha376",
+      position: "Member",
+    },
+    {
+      name: "Shravani K",
+      imgSrc: "/assets/images/SACC_logo.png",
+      InstaID: "https://instagram.com/shravaniik",
+      linkedinLink: "https://www.linkedin.com/in/shravani-kalmali/",
+      githubLink: "https://www.github.com/shravanikalmali",
+      position: "Member",
+    },
   ];
+
   const Tech = [
     {
       name: "Kriti Gupta",
@@ -179,17 +179,18 @@ export default function Home() {
       position: "Head",
     },
     {
-      name: "Saarthak Sabharwal",
-      imgSrc: "/assets/images/Saarthak_Sabharwal_Tech.jpg",
-      InstaID: "www.instagram.com/5__guesswhat__7",
-      linkedinLink: "https://www.linkedin.com/in/saarthak-sabharwal/",
-      githubLink: "https://github.com/saarthak5",
+      name: "Chekka Yogeswari",
+      imgSrc: "/assets/images/Chekka Yogeswari_Tech.jpg",
+      InstaID: "./team",
+      linkedinLink:
+        "https://www.linkedin.com/in/chekka-yogeswari?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      githubLink: "https://github.com/yogeswari05",
       position: "Member",
     },
     {
       name: "Karthik Malavathula",
       imgSrc: "/assets/images/KarthikVenkat_Tech.jpg",
-      InstaID: "NA",
+      InstaID: "./team",
       linkedinLink:
       "https://www.linkedin.com/in/karthik-venkat-malavathula-7057722a2?utm_source=e&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       githubLink: "https://github.com/karthikvmala",
@@ -205,20 +206,19 @@ export default function Home() {
       position: "Member",
     },
     {
+      name: "Saarthak Sabharwal",
+      imgSrc: "/assets/images/Saarthak_Sabharwal_Tech.jpg",
+      InstaID: "www.instagram.com/5__guesswhat__7",
+      linkedinLink: "https://www.linkedin.com/in/saarthak-sabharwal/",
+      githubLink: "https://github.com/saarthak5",
+      position: "Member",
+    },
+    {
       name: "Sriyansh Suryadevara",
       imgSrc: "/assets/images/Sriyansh_Suryadevara_Teach.jpg",
       InstaID: "https://www.instagram.com/sriyansh_surya",
       linkedinLink: "www.linkedin.com/in/sriyansh-suryadevara-a98025314",
       githubLink: "https://github.com/SANS-Surya-o",
-      position: "Member",
-    },
-    {
-      name: "Chekka Yogeswari",
-      imgSrc: "/assets/images/Chekka Yogeswari_Tech.jpg",
-      InstaID: "NA",
-      linkedinLink:
-        "https://www.linkedin.com/in/chekka-yogeswari?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      githubLink: "https://github.com/yogeswari05",
       position: "Member",
     },
   ];
@@ -227,26 +227,10 @@ export default function Home() {
     {
       name: "Shlok Sand",
       imgSrc: "/assets/images/SACC_logo.png",
-      InstaID: "NA",
+      InstaID: "./team",
       linkedinLink: "https://www.linkedin.com/in/shlok-sand-5a9a51280",
-      githubLink: "NA",
+      githubLink: "./team",
       position: "Head",
-    },
-    {
-      name: "Kanishka Jepal",
-      imgSrc: "/assets/images/Kanishka_Jepal_content.jpg",
-      InstaID: "https://instagram.com/kanishkajepal",
-      linkedinLink: "NA",
-      githubLink: "NA",
-      position: "Member",
-    },
-    {
-      name: "Pritika Sinharay",
-      imgSrc: "/assets/images/SACC_logo.png",
-      InstaID: "https://www.instagram.com/_pritika.s/",
-      linkedinLink: "NA",
-      githubLink: "NA",
-      position: "Member",
     },
     {
       name: "Ishaan Romil",
@@ -254,6 +238,22 @@ export default function Home() {
       InstaID: "https://instagram.com/ishaan_romil",
       linkedinLink: "https://www.linkedin.com/in/ishaan-romil/",
       githubLink: "https://github.com/Fane1824",
+      position: "Member",
+    },
+    {
+      name: "Kanishka Jepal",
+      imgSrc: "/assets/images/Kanishka_Jepal_content.jpg",
+      InstaID: "https://instagram.com/kanishkajepal",
+      linkedinLink: "./team",
+      githubLink: "./team",
+      position: "Member",
+    },
+    {
+      name: "Pritika Sinharay",
+      imgSrc: "/assets/images/SACC_logo.png",
+      InstaID: "https://www.instagram.com/_pritika.s/",
+      linkedinLink: "./team",
+      githubLink: "./team",
       position: "Member",
     },
   ];
@@ -268,20 +268,20 @@ export default function Home() {
       position: "Head",
     },
     {
+      name: "Nidhish Jain",
+      imgSrc: "/assets/images/nidhish_jain_social.jpg",
+      InstaID: "https://instagram.com/nidhish_jain_",
+      linkedinLink: "https://www.linkedin.com/in/nidhish-jain-43ab52280",
+      githubLink: "https://github.com/Nidhishj",
+      position: "Member",
+    },
+    {
       name: "Nilanjana De",
       imgSrc: "/assets/images/NilanjanaDe_SocialMediaTeam.jpg",
       InstaID: "https://instagram.com/nilanjana.de_",
       linkedinLink:
         "https://www.linkedin.com/in/nilanjana-de-29082b291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       githubLink: "https://github.com/Jam-shop",
-      position: "Member",
-    },
-    {
-      name: "Nidhish Jain",
-      imgSrc: "/assets/images/nidhish_jain_social.jpg",
-      InstaID: "https://instagram.com/nidhish_jain_",
-      linkedinLink: "https://www.linkedin.com/in/nidhish-jain-43ab52280",
-      githubLink: "https://github.com/Nidhishj",
       position: "Member",
     },
   ];
@@ -297,20 +297,20 @@ export default function Home() {
       position: "Head",
     },
     {
-      name: " Mohith Tondepu",
-      imgSrc: "/assets/images/Mohith Tondepu_Videography Team.jpg",
-      InstaID: "https://instagram.com/mohith_176",
-      linkedinLink:
-        "https://www.linkedin.com/in/mohith-tondepu-26960b2a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      githubLink: "https://github.com/mohith176",
-      position: "Member",
-    },
-    {
       name: "Hemang Joshi",
       imgSrc: "/assets/images/IMG_20241007_121811_361.webp",
       InstaID: "https://www.instagram.com/karma.skz",
       linkedinLink: "https://www.linkedin.com/in/hemang-joshi-80b805314/",
       githubLink: "https://www.github.com/karma-skz",
+      position: "Member",
+    },
+    {
+      name: "Mohith Tondepu",
+      imgSrc: "/assets/images/Mohith Tondepu_Videography Team.jpg",
+      InstaID: "https://instagram.com/mohith_176",
+      linkedinLink:
+        "https://www.linkedin.com/in/mohith-tondepu-26960b2a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      githubLink: "https://github.com/mohith176",
       position: "Member",
     },
   ];
@@ -319,10 +319,10 @@ export default function Home() {
     {
       name: "Deekistha",
       imgSrc: "/assets/images/Deekshitha.jpg",
-      InstaID: "NA",
+      InstaID: "./team",
       linkedinLink:
-        "NA",
-      githubLink: "NA",
+        "./team",
+      githubLink: "./team",
       position: "Head",
     },
     {
@@ -351,22 +351,15 @@ export default function Home() {
       position: "Member",
     },
   ];
+
   const Admin = [
     {
       name: "Ayush Sabhasad",
       imgSrc: "/assets/images/Ayush Sabhasad Admin team.jpg",
-      InstaID: "NA",
-      linkedinLink: "NA",
-      githubLink: "NA",
+      InstaID: "./team",
+      linkedinLink: "./team",
+      githubLink: "./team",
       position: "Head",
-    },
-    {
-      name: "Kartik Gupta",
-      imgSrc: "/assets/images/Kartik Gupta_Admin and Finance.jpg",
-      InstaID: "https://instagram.com/i_m_kg.640",
-      linkedinLink: "https://www.linkedin.com/in/kartik-gupta-9a1511316/",
-      githubLink: "https://github.com/Imking640",
-      position: "Member",
     },
     {
       name: "Aryan Chaudhary",
@@ -375,6 +368,14 @@ export default function Home() {
       linkedinLink:
         "https://www.linkedin.com/in/aryan-chaudhary-45396a282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       githubLink: "https://github.com/Aryan3it",
+      position: "Member",
+    },
+    {
+      name: "Kartik Gupta",
+      imgSrc: "/assets/images/Kartik Gupta_Admin and Finance.jpg",
+      InstaID: "https://instagram.com/i_m_kg.640",
+      linkedinLink: "https://www.linkedin.com/in/kartik-gupta-9a1511316/",
+      githubLink: "https://github.com/Imking640",
       position: "Member",
     },
     {
@@ -428,15 +429,16 @@ export default function Home() {
         }}
       >
         <CssBaseline />
+        <Box sx={{ height: "37px" }} />
         <ParentBox title="Co-ordinators" members={coordinators} />
-        <ParentBox title="Admin and Finance" members={Admin} />
-        <ParentBox title="Content-writing" members={Content} />
-        <ParentBox title="Design" members={Design} />
-        <ParentBox title="Events" members={Events} />
-        <ParentBox title="Social media" members={Social} />
-        <ParentBox title="Tech" members={Tech} />
-        <ParentBox title="Outreach" members={Outreach} />
-        <ParentBox title="Videography" members={Video} />
+        <ParentBox title="Admin and Finance Team" members={Admin} />
+        <ParentBox title="Content Writing Team" members={Content} />
+        <ParentBox title="Design Team" members={Design} />
+        <ParentBox title="Events Team" members={Events} />
+        <ParentBox title="Social Media Team" members={Social} />
+        <ParentBox title="Tech Team" members={Tech} />
+        <ParentBox title="Outreach Team" members={Outreach} />
+        <ParentBox title="Videography Team" members={Video} />
         <ParentBox title="Advisory" members={Advisory} />
       </Box>
 

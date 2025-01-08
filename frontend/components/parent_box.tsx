@@ -19,7 +19,7 @@ type ParentBoxProps = {
 const ParentBox: React.FC<ParentBoxProps> = ({ title, members }) => {
   const [titleVisible, setTitleVisible] = useState(false);
   const [gridVisible, setGridVisible] = useState(false);
-  const [visibleItems, setVisibleItems] = useState<number[]>([]); // Track visible items
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   const titleRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -106,6 +106,8 @@ const ParentBox: React.FC<ParentBoxProps> = ({ title, members }) => {
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
+          marginBottom: 3,
+          marginTop: 7,
           pt: 2,
           pb: 2,
         }}
@@ -114,7 +116,7 @@ const ParentBox: React.FC<ParentBoxProps> = ({ title, members }) => {
           ref={titleRef}
           variant="h1"
           sx={{
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+            fontSize: { xs: '2.5rem', sm: '2.5rem', md: '3rem' },
             color: 'rgba(248, 114, 114, 1)',
             fontWeight: 'bold',
             fontFamily: '"Noto Sans", serif',
@@ -161,7 +163,7 @@ const ParentBox: React.FC<ParentBoxProps> = ({ title, members }) => {
               lg={3}
               key={index}
               className="grid-item"
-              id={String(index)} // Assign a unique id to each grid item
+              id={String(index)}
               sx={{
                 opacity: visibleItems.includes(index) ? 1 : 0,
                 transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',
