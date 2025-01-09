@@ -7,23 +7,19 @@ import { useMediaQuery, useTheme } from "@mui/material";
 const yearbookData = [
   {
     year: "2k20",
-    pdfLink: "/assets/yearbooks/2020.pdf",
-    previewImage: "/assets/images/preview2020.jpg",
+    previewImage: "/assets/yearbooks/2020/pageImages/0.jpg",
   },
   {
     year: "2k19",
-    pdfLink: "/assets/yearbooks/2019.pdf",
-    previewImage: "assets/yearbookimages/image_YB19_1.jpg",
-  },
-  {
-    year: "2k14",
-    pdfLink: "/assets/yearbooks/2018.pdf",
-    previewImage: "/assets/images/preview2018.jpg",
+    previewImage: "/assets/yearbooks/2019/pageImages/0.jpg",
   },
   {
     year: "2k15",
-    pdfLink: "/assets/yearbooks/2017.pdf",
-    previewImage: "/assets/images/preview2017.jpg",
+    previewImage: "/assets/yearbooks/2015/pageImages/0.jpg",
+  },
+  {
+    year: "2k14",
+    previewImage: "/assets/yearbooks/2014/pageImages/0.jpg",
   },
 ];
 
@@ -70,19 +66,14 @@ export default function Home() {
               <a
                 href={`${yearbook.year}.html`}
                 className="yearbookPreview"
+                style={{backgroundImage: `url(${yearbook.previewImage})`}}
                 sx={{
                 width: {
                   xs: "100%",
                   sm: "50%",
                   md: "33.33%",
                   lg: "25%",
-                },
-                padding: "0 8px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                position: "relative", // Ensure relative positioning for lines
-                textDecoration: "none", // Remove underline from link
+                }
                 }}
               >
                 {index === 0 && !isXs && (
@@ -104,9 +95,6 @@ export default function Home() {
                 )}
                 <Box
                 className="yearbookLabel"
-                sx={{
-                  textAlign: "center",
-                }}
                 >
                 <h4>Batch of</h4>
                 <h2>{yearbook.year}</h2>
