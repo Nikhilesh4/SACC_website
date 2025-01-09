@@ -1,405 +1,168 @@
 <!doctype html>
 <html>
 <head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="/turn.min.js"></script>
 
 <style type="text/css">
-/* Body styling */
 body {
-    background: linear-gradient(to bottom, #e8f0ff, #d1d9e6); /* Soft gradient for modern look */
-    margin: 0; /* Reset default margin */
-    padding-top: 60px; /* Space for navbar */
-    font-family: Arial, sans-serif; /* Global font for consistency */
+    background: linear-gradient(to bottom, #e8f0ff, #d1d9e6);
+    margin: 0;
+    padding-top: 60px;
+    font-family: Arial, sans-serif;
 }
 
-/* Navbar styling */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     height: 60px;
-    background-color: #333; /* Dark background for contrast */
-    color: white; /* White text for readability */
+    background-color: #333;
+    color: white;
     display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
-    z-index: 1000; /* Keeps navbar above other elements */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+    z-index: 1000;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Book container styling */
+.navbar input, .navbar button {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.navbar input {
+    width: 100px;
+}
+
 #book {
     width: 1000px;
     height: 750px;
-    margin: 20px auto; /* Center horizontally */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
-    border-radius: 10px; /* Smooth corners */
-    overflow: hidden; /* Prevent content overflow */
+    margin: 20px auto;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* Individual book pages */
 #book div {
-    background-size: cover; /* Ensure background covers the container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Avoid tiling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* Default turn page styling */
-#book .turn-page {
-    background-color: white; /* Neutral page color */
+.turn-page {
+    background-color: white;
 }
 
-/* Cover styling */
-#book .cover {
-    background: #333; /* Dark cover background */
-    color: white; /* Text contrast */
-    display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    font-size: 50px; /* Large title text */
-}
-
-/* Loader styling */
-#book .loader {
-    background-image: url(loader.gif); /* Loader animation */
-    width: 24px;
-    height: 24px;
-    display: block;
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for true center */
-}
-
-/* Page data content */
-#book .data {
-    text-align: center;
-    font-size: 40px;
-    color: #666; /* Subtle text color */
-    line-height: 750px; /* Match page height */
-}
-
-/* Controls container */
-#controls {
-    width: 800px;
-    margin: 20px auto; /* Center horizontally */
-    text-align: center;
-    font: 30px Arial, sans-serif; /* Consistent font */
-    display: flex; /* Flexbox layout */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    gap: 10px; /* Space between elements */
-    padding: 10px; /* Internal padding */
-}
-
-/* Inputs and labels */
-#controls input, #controls label {
-    font: 30px Arial, sans-serif; /* Uniform font styling */
-}
-
-/* Odd pages */
-#book .odd {
+.odd {
     background-image: linear-gradient(to left, #FFF 95%, #ddd 100%);
 }
 
-/* Even pages */
-#book .even {
+.even {
     background-image: linear-gradient(to right, #FFF 95%, #ddd 100%);
 }
 
+#controls {
+    width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font: 30px Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#controls input, #controls label {
+    font: 30px Arial, sans-serif;
+}
 </style>
 </head>
 <body>
 
-<div id="book">
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-0.jpg);"></div>
-	<div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-1.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-2.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-3.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-4.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-5.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-6.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-7.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-8.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-9.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-10.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-11.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-12.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-13.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-14.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-15.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-16.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-17.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-18.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-19.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-20.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-21.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-22.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-23.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-24.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-25.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-26.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-27.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-28.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-29.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-30.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-31.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-32.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-33.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-34.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-35.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-36.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-37.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-38.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-39.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-40.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-41.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-42.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-43.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-44.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-45.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-46.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-47.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-48.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-49.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-50.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-51.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-52.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-53.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-54.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-55.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-56.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-57.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-58.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-59.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-60.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-61.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-62.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-63.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-64.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-65.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-66.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-67.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-68.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-69.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-70.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-71.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-72.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-73.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-74.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-75.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-76.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-77.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-78.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-79.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-80.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-81.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-82.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-83.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-84.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-85.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-86.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-87.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-88.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-89.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-90.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-91.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-92.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-93.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-94.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-95.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-96.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-97.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-98.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-99.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-100.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-101.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-102.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-103.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-104.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-105.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-106.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-107.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-108.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-109.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-110.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-111.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-112.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-113.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-114.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-115.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-116.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-117.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-118.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-119.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-120.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-121.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-122.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-123.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-124.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-125.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-126.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-127.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-128.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-129.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-130.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-131.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-132.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-133.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-134.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-135.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-136.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-137.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-138.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-139.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-140.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-141.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-142.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-143.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-144.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-145.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-146.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-147.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-148.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-149.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-150.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-151.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-152.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-153.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-154.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-155.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-156.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-157.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-158.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-159.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-160.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-161.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-162.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-163.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-164.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-165.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-166.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-167.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-168.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-169.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-170.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-171.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-172.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-173.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-174.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-175.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-176.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-177.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-178.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-179.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-180.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-181.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-182.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-183.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-184.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-185.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-186.jpg);"></div>
-    <div style="background-image:url(assets/YB_14/Yearbook_2k18-1-images-187.jpg);"></div>
-</div>
-
 <div class="navbar">
-	<span>Yearbook 2014</span>
-	<input type="number" id="specific-page-number" placeholder="Enter page number" style="margin-left: 20px; padding: 10px; font-size: 16px; width: 100px;">
-	<button id="download-btn" style="margin-left: 20px; padding: 10px; font-size: 16px;">Download Page</button>
+    <span>Yearbook 2014</span>
+    <input type="number" id="specific-page-number" placeholder="Enter page number">
+    <button id="download-btn">Download Page</button>
 </div>
 
-<script type="text/javascript">
-    var numberOfPages = 188; 
-
-    document.getElementById('download-btn').addEventListener('click', function() {
-        var pageNumberInput = document.getElementById('specific-page-number').value;
-        var pageNumber = parseInt(pageNumberInput);
-        pageNumber -= 1;
-        if (pageNumber >= 0 && pageNumber <= numberOfPages) {
-            var imageUrl = 'assets/YB_14/Yearbook_2k18-1-images-' + pageNumber + '.jpg';
-            var link = document.createElement('a');
-            link.href = imageUrl;
-            link.download = 'Yearbook_2k18-1-images-' + pageNumber + '.jpg';
-            link.click();
-        } else {
-            alert('Invalid page number.');
-        }
-    });
-</script>
+<div id="book"></div>
 
 <div id="controls">
-	<label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+    <label for="page-number">Page:</label>
+    <input type="text" size="3" id="page-number">
+    of <span id="number-pages"></span>
 </div>
 
 <script type="text/javascript">
+const numberOfPages = 188;
 
-	// Sample using dynamic pages with turn.js
+// Initialize book pages
+function initializeBook() {
+    for (let i = 0; i < numberOfPages; i++) {
+        const div = document.createElement('div');
+        div.style.backgroundImage = `url(assets/yearbooks/2014/pageImages/${i}.jpg)`;
+        document.getElementById('book').appendChild(div);
+    }
+}
 
-	var numberOfPages = 188; 
+// Handle page download
+function handleDownload() {
+    const pageNumber = parseInt(document.getElementById('specific-page-number').value) - 1;
+    if (pageNumber >= 0 && pageNumber < numberOfPages) {
+        const imageUrl = `assets/yearbooks/2014/pageImages/${pageNumber}.jpg`;
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = `${pageNumber+1}.jpg`;
+        link.click();
+    } else {
+        alert('Invalid page number.');
+    }
+}
 
+// Initialize turn.js
+function initializeTurn() {
+    $('#book').turn({
+        acceleration: true,
+        pages: numberOfPages,
+        elevation: 50,
+        gradients: !$.isTouch,
+        when: {
+            turned: function(e, page) {
+                $('#page-number').val(page);
+            }
+        }
+    });
+}
 
-	// Adds the pages that the book will need
-	function addPage(page, book) {
-		// 	First check if the page is already in the book
-		if (!book.turn('hasPage', page)) {
-			// Create an element for this page
-			var element = $('<div />', {'class': 'page '+((page%2==0) ? 'odd' : 'even'), 'id': 'page-'+page}).html('<i class="loader"></i>');
-			// If not then add the page
-			book.turn('addPage', element, page);
-			// Let's assum that the data is comming from the server and the request takes 1s.
-			setTimeout(function(){
-					element.html('<div class="data">Data for page '+page+'</div>');
-			}, 1000);
-		}
-	}
-
-	$(window).ready(function(){
-		$('#book').turn({acceleration: true,
-							pages: numberOfPages,
-							elevation: 50,
-							gradients: !$.isTouch,
-							when: {
-								turning: function(e, page, view) {
-
-									// Gets the range of pages that the book needs right now
-									var range = $(this).turn('range', page);
-
-									// Check if each page is within the book
-									for (page = range[0]; page<=range[1]; page++) 
-										addPage(page, $(this));
-
-								},
-
-								turned: function(e, page) {
-									$('#page-number').val(page);
-								}
-							}
-						});
-
-		$('#number-pages').html(numberOfPages);
-
-		$('#page-number').keydown(function(e){
-
-			if (e.keyCode==13)
-				$('#book').turn('page', $('#page-number').val());
-				
-		});
-	});
-
-	$(window).bind('keydown', function(e){
-
-		if (e.target && e.target.tagName.toLowerCase()!='input')
-			if (e.keyCode==37)
-				$('#book').turn('previous');
-			else if (e.keyCode==39)
-				$('#book').turn('next');
-
-	});
-
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    initializeBook();
+    initializeTurn();
+    
+    document.getElementById('download-btn').addEventListener('click', handleDownload);
+    document.getElementById('number-pages').textContent = numberOfPages;
+    
+    document.getElementById('page-number').addEventListener('keydown', (e) => {
+        if (e.keyCode === 13) {
+            $('#book').turn('page', $('#page-number').val());
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName.toLowerCase() !== 'input') {
+            if (e.keyCode === 37) {
+                $('#book').turn('previous');
+            } else if (e.keyCode === 39) {
+                $('#book').turn('next');
+            }
+        }
+    });
+});
 </script>
-
 
 </body>
 </html>

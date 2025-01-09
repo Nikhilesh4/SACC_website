@@ -1,7 +1,5 @@
-import Head from "next/head";
-import ParentBox from "../components/parent_box";
 import NavbarComponent from "../components/navbar";
-import { Box, CssBaseline, Container, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import "@styles/yearbooks.scss";
 import "@styles/globals.scss";
 import Bottom from "@components/footer";
