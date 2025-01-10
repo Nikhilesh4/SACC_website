@@ -76,8 +76,9 @@
   // font-size: 3rem;
 
   @media (max-width: 768px) {
-    margin-left: 10vw;
-    width: calc(100% - 20vw);
+    margin-left: 3vw;
+    width: calc(100% - 6vw);
+    margin-top: 7vh;
   }
 }
 
@@ -85,9 +86,8 @@
   color: #EAEAEA;
   line-height: 1.8;
   text-align: justify;
-  // font-size: 3rem;
   
-  @media (min-width: 768) {
+  @media (max-width: 768px) {
     width: 100%;
     font-size: 1.1rem;
   }

@@ -108,7 +108,7 @@ def login():
             "Authorization_YearBook",
             token,
             httponly=False,
-            secure=False,  # TODO: change in prod
+            secure=False,
             max_age=86400,  # 1 day
         )
 
