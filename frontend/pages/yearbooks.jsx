@@ -8,24 +8,28 @@ const yearbookData = [
   {
     year: "2k20",
     previewImage: "/assets/yearbooks/2020/pageImages/0.jpg",
+    yearbookLink: "/2k20.html",
   },
   {
     year: "2k19",
     previewImage: "/assets/yearbooks/2019/pageImages/0.jpg",
+    yearbookLink: "/2k19.html",
   },
   {
     year: "2k15",
     previewImage: "/assets/yearbooks/2015/pageImages/0.jpg",
+    yearbookLink: "/2k15.html",
   },
   {
     year: "2k14",
     previewImage: "/assets/yearbooks/2014/pageImages/0.jpg",
+    yearbookLink: "/2k14.html",
   },
 ];
 
 export default function Home() {
   const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down("sm")); // Check if screen size is xs
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <section>
       <NavbarComponent isSticky={true} />
@@ -64,16 +68,16 @@ export default function Home() {
               className="yearbookContainer"
               >
               <a
-                href={`${yearbook.year}.html`}
+                href={`/yearbook?year=${yearbook.year}`}
                 className="yearbookPreview"
                 style={{backgroundImage: `url(${yearbook.previewImage})`}}
                 sx={{
-                width: {
-                  xs: "100%",
-                  sm: "50%",
-                  md: "33.33%",
-                  lg: "25%",
-                }
+                  width: {
+                    xs: "100%",
+                    sm: "50%",
+                    md: "33.33%",
+                    lg: "25%",
+                  }
                 }}
               >
                 {index === 0 && !isXs && (

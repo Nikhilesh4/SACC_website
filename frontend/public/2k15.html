@@ -1,168 +1,213 @@
 <!doctype html>
 <html>
+
 <head>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="/turn.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/turn.min.js"></script>
 
-<style type="text/css">
-body {
-    background: linear-gradient(to bottom, #e8f0ff, #d1d9e6);
-    margin: 0;
-    padding-top: 60px;
-    font-family: Arial, sans-serif;
-}
+    <style type="text/css">
+        body {
+            background: #1D141A;
+            color: white;
+            margin: 0;
+            padding-top: 60px;
+            font-family: Arial, sans-serif;
+        }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    z-index: 1000;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .heading {
+            width: 100%;
+            height: 69px;
+            margin-top: 2vh;
+            margin-top: 2vh;
 
-.navbar input, .navbar button {
-    margin-left: 20px;
-    padding: 10px;
-    font-size: 16px;
-}
+            color: white;
+            font-size: 3rem;
+            font-weight: 600;
 
-.navbar input {
-    width: 100px;
-}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-#book {
-    width: 1000px;
-    height: 750px;
-    margin: 20px auto;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    overflow: hidden;
-}
+        #book {
+            width: 63vw;
+            aspect-ratio: 4/3;
+            margin: 20px auto;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-#book div {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+        #book div {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-.turn-page {
-    background-color: white;
-}
+        .turn-page {
+            background-color: white;
+        }
 
-.odd {
-    background-image: linear-gradient(to left, #FFF 95%, #ddd 100%);
-}
+        .odd {
+            background-image: linear-gradient(to left, #FFF 95%, #ddd 100%);
+        }
 
-.even {
-    background-image: linear-gradient(to right, #FFF 95%, #ddd 100%);
-}
+        .even {
+            background-image: linear-gradient(to right, #FFF 95%, #ddd 100%);
+        }
 
-#controls {
-    width: 800px;
-    margin: 20px auto;
-    text-align: center;
-    font: 30px Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-}
+        #controls {
+            width: 100%;
 
-#controls input, #controls label {
-    font: 30px Arial, sans-serif;
-}
-</style>
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+            padding-bottom: 17px;
+            color: white;
+        }
+
+        .arrow-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .arrow-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .prev-btn {
+            left: 69px;
+        }
+
+        .next-btn {
+            right: 69px;
+        }
+
+        .arrow {
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 6px;
+        }
+
+        .arrow-left {
+            transform: rotate(135deg);
+        }
+
+        .arrow-right {
+            transform: rotate(-45deg);
+        }
+    </style>
 </head>
+
 <body>
+    <!-- <div class="heading">
+        <span>Yearbook 2015</span>
+    </div> -->
 
-<div class="navbar">
-    <span>Yearbook 2015</span>
-    <input type="number" id="specific-page-number" placeholder="Enter page number">
-    <button id="download-btn">Download Page</button>
-</div>
+    <button class="arrow-btn prev-btn" onclick="$('#book').turn('previous')">
+        <i class="arrow arrow-left"></i>
+    </button>
+    <div id="book"></div>
+    <button class="arrow-btn next-btn" onclick="$('#book').turn('next')">
+        <i class="arrow arrow-right"></i>
+    </button>
 
-<div id="book"></div>
+    <div id="controls">
+        <div style="font-size: 1.3rem;">
+            <label for="page-number">Page:</label>
+            <input type="text" size="2" id="page-number">
+            of <span id="number-pages"></span>
+        </div>
+        <div>
+            <input type="number" id="specific-page-number" placeholder="Page Num" style="width: 123px;">
+            <button id="download-btn" style="cursor: pointer;">Download Page</button>
+        </div>
+    </div>
 
-<div id="controls">
-    <label for="page-number">Page:</label>
-    <input type="text" size="3" id="page-number">
-    of <span id="number-pages"></span>
-</div>
+    <script type="text/javascript">
+        const numberOfPages = 268;
 
-<script type="text/javascript">
-const numberOfPages = 268;
-
-// Initialize book pages
-function initializeBook() {
-    for (let i = 0; i < numberOfPages; i++) {
-        const div = document.createElement('div');
-        div.style.backgroundImage = `url(assets/yearbooks/2015/pageImages/${i}.jpg)`;
-        document.getElementById('book').appendChild(div);
-    }
-}
-
-// Handle page download
-function handleDownload() {
-    const pageNumber = parseInt(document.getElementById('specific-page-number').value) - 1;
-    if (pageNumber >= 0 && pageNumber < numberOfPages) {
-        const imageUrl = `assets/yearbooks/2015/pageImages/${pageNumber}.jpg`;
-        const link = document.createElement('a');
-        link.href = imageUrl;
-        link.download = `${pageNumber+1}.jpg`;
-        link.click();
-    } else {
-        alert('Invalid page number.');
-    }
-}
-
-// Initialize turn.js
-function initializeTurn() {
-    $('#book').turn({
-        acceleration: true,
-        pages: numberOfPages,
-        elevation: 50,
-        gradients: !$.isTouch,
-        when: {
-            turned: function(e, page) {
-                $('#page-number').val(page);
+        // Initialize book pages
+        function initializeBook() {
+            for (let i = 0; i < numberOfPages; i++) {
+                const div = document.createElement('div');
+                div.style.backgroundImage = `url(assets/yearbooks/2015/pageImages/${i}.jpg)`;
+                document.getElementById('book').appendChild(div);
             }
         }
-    });
-}
 
-// Event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    initializeBook();
-    initializeTurn();
-    
-    document.getElementById('download-btn').addEventListener('click', handleDownload);
-    document.getElementById('number-pages').textContent = numberOfPages;
-    
-    document.getElementById('page-number').addEventListener('keydown', (e) => {
-        if (e.keyCode === 13) {
-            $('#book').turn('page', $('#page-number').val());
-        }
-    });
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.target.tagName.toLowerCase() !== 'input') {
-            if (e.keyCode === 37) {
-                $('#book').turn('previous');
-            } else if (e.keyCode === 39) {
-                $('#book').turn('next');
+        // Handle page download
+        function handleDownload() {
+            const pageNumber = parseInt(document.getElementById('specific-page-number').value) - 1;
+            if (pageNumber >= 0 && pageNumber < numberOfPages) {
+                const imageUrl = `assets/yearbooks/2015/pageImages/${pageNumber}.jpg`;
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = `${pageNumber + 1}.jpg`;
+                link.click();
+            } else {
+                alert('Invalid page number.');
             }
         }
-    });
-});
-</script>
 
+        // Initialize turn.js
+        function initializeTurn() {
+            $('#book').turn({
+                acceleration: true,
+                duration: 1300,
+                pages: numberOfPages,
+                elevation: 50,
+                gradients: !$.isTouch,
+                when: {
+                    turned: function (e, page) {
+                        $('#page-number').val(page);
+                    }
+                }
+            });
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeBook();
+            initializeTurn();
+
+            document.getElementById('download-btn').addEventListener('click', handleDownload);
+            document.getElementById('number-pages').textContent = numberOfPages;
+
+            document.getElementById('page-number').addEventListener('keydown', (e) => {
+                if (e.keyCode === 13) {
+                    $('#book').turn('page', $('#page-number').val());
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName.toLowerCase() !== 'input') {
+                    if (e.keyCode === 37) {
+                        $('#book').turn('previous');
+                    } else if (e.keyCode === 39) {
+                        $('#book').turn('next');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 
 import '@styles/yearbook.scss';
 import Bottom from '@components/footer';
-import Navbartest from '@components/navbar';
+import NavBarComponent from '@components/navbar';
 import '@styles/globals.scss'
 import '@styles/embla.css'
 
-export default function Yearbook() {
+// Update Yearbook component to accept year prop
+export default function Yearbook({ year = "2k19" }) { // TODO: Update default to the latest year
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -18,45 +19,36 @@ export default function Yearbook() {
         setAuthenticated(true);
       }
     }
-
   }, []);
 
-  const yearbookData = Array.from({ length: 159 }, (_, i) => ({
-    image: `/assets/yearbookimages/image_YB19_${i + 1}.jpg`,
-  }));
-
   return (
-    authenticated ?
+    <section>
+      <NavBarComponent isSticky={true} />
       <section>
-        <Navbartest />
-        <section id='main'>
-          <section className='showcase'>
+        {authenticated ? (
+          <section style={{ height: "100vh" }}>
             <iframe
-              src="/index.html"
+              src={`/${year}.html`}
               width="100%"
-              height="940"
+              height="100%"
               title="Yearbook Showcase"
               style={{ border: "none" }}
-            ></iframe>
+            />
           </section>
-        </section>
-        <Bottom />
+        ) : (
+          <section style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ textAlign: "center" }}>
+              <h1>You are not authenticated to view this page.</h1>
+            </div>
+            <div style={{ textAlign: "center", alignContent: "center", alignItems: "center"}}>
+              <h2>
+                <a href="/api/login" className="btn">Login CAS</a>
+              </h2>
+            </div>
+          </section>
+        )}
       </section>
-      : <section>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-        <Navbartest />
-        <section>
-          <div>
-            <h1 style={{ marginTop: "25rem", textAlign: "center" }}> You are not authenticated to view this page.</h1></div>
-          <div style={{ textAlign: "center", alignContent: "center", alignItems: "center", marginBottom: "12rem" }}>
-            <h2>
-              <a href="/api/login" className="btn">
-                Login CAS
-              </a>
-            </h2>
-          </div>
-        </section>
-
-        <Bottom />
-      </section>
+      <Bottom />
+    </section>
   );
 }
