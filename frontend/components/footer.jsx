@@ -52,7 +52,7 @@ const Bottom = () => {
       {/* Copyright */}
       <div className="copyright">
         <p className='copyText'>
-          © 2024 Student Alumni Connect Cell, IIIT Hyderabad
+          © 2025 Student Alumni Connect Cell, IIIT Hyderabad
         </p>
       </div>
     </section>

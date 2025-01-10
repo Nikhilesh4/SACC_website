@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 69px;
+  margin-bottom: 37px;
   
   @media (max-width: 786px) {
     flex-direction: column;
@@ -85,6 +85,7 @@
 
 .social {
   text-align: center;
+  margin-top: 13px;
 }
 
 .social-icon {

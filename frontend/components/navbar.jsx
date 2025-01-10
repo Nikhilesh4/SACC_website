@@ -5,6 +5,7 @@ import "@styles/navbar.scss";
 
 const NavbarComponent = ({ isSticky = false }) => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const cookies = document.cookie.split(";");
@@ -21,12 +22,17 @@ const NavbarComponent = ({ isSticky = false }) => {
     window.location.href = "/";
   };
 
+  const handleToggle = (expanded) => {
+    setIsMenuOpen(expanded);
+  };
+
   return (
     <Navbar
-      className={`header-nav ${isSticky ? "sticky" : ""}`}
+      className={`header-nav ${isSticky ? "sticky" : ""} ${isMenuOpen ? "menu-open" : ""}`}
       fixed="top"
       bg="dark"
       expand="lg"
+      onToggle={handleToggle}
     >
       <Navbar.Brand href="/">
         <img
@@ -36,7 +42,7 @@ const NavbarComponent = ({ isSticky = false }) => {
           style={{ width: "169px", height: "50px" }}
         />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
         <Nav className="mx-auto">
           <Nav.Link className="px-4 text-white" href="/">
@@ -58,7 +64,7 @@ const NavbarComponent = ({ isSticky = false }) => {
             Yearbooks
           </Nav.Link>
         </Nav>
-        <Nav className="justify-content-end"> {/* Replace style={{ width: "185px" }} */}
+        <Nav className="justify-content-end">
           {authenticated ? (
             <Nav.Link className="px-4 text-white loginButton" onClick={handleLogout}>
               Logout
