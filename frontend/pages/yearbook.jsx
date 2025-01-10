@@ -7,8 +7,13 @@ import NavBarComponent from '@components/navbar';
 import '@styles/globals.scss'
 import '@styles/embla.css'
 
+import { useRouter } from 'next/router';
+
 // Update Yearbook component to accept year prop
-export default function Yearbook({ year = "2k19" }) { // TODO: Update default to the latest year
+export default function Yearbook() {
+  const router = useRouter();
+  const { year = "2k19" } = router.query;
+  
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
