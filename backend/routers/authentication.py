@@ -60,7 +60,7 @@ def verify_token() -> bool:
 def login():
     # Already logged in
     if request.cookies.get("Authorization_YearBook"):
-        return redirect("/yearbook")
+        return redirect("/")
 
     next = request.args.get("next")
     ticket = request.args.get("ticket")
