@@ -21,10 +21,9 @@ services:
         restart: unless-stopped
         ports:
             - 80:80
-            - 443:443
+            # - 443:443
         depends_on:
             - backend
             - frontend
         volumes:
-            - /etc/ssl/certs/iiit.ac.in.crt
-            - /etc/ssl/private/iiit.ac.in.key
+            - /etc/ssl:/etc/ssl
