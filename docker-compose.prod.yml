@@ -19,9 +19,9 @@ services:
     nginx:
         build: ./nginx/
         restart: unless-stopped
-        ports:
-            - 80:80
-            - 443:443
+        # ports:
+        #     - 80:80
+        #     - 443:443
         depends_on:
             - backend
             - frontend
