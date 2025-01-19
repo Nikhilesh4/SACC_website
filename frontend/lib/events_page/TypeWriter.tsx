@@ -7,16 +7,19 @@ interface TypeWriterProps {
   delay?: number;
   duration?: number;
   className?: string;
+  colorFlowAnimation?: boolean;
+  dotAnimation?: boolean;
 }
 
-const TypeWriter: React.FC<TypeWriterProps> = ({ text, delay = 0.1, duration = 0.1, className="letter" }) => {
-  const letters = text.split(""); // Ensure text is always a string.
+const TypeWriter: React.FC<TypeWriterProps> = ({ text, delay = 0.1, duration = 0.1, className="letter", colorFlowAnimation=true,dotAnimation=false }) => {
+  const letters = text.split(""); 
 
   return (
     <motion.h2>
       {letters.map((l, i) => (
         <motion.span className="relative" key={i}>
-          <motion.span
+          {/* Letter animation with color flow */}
+          {colorFlowAnimation && <motion.span
             initial={{
               opacity: 0,
               color: '#FFFFFF',
@@ -34,21 +37,46 @@ const TypeWriter: React.FC<TypeWriterProps> = ({ text, delay = 0.1, duration = 0
           >
             {l}
           </motion.span>
-          <motion.span
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              delay: i * delay,
-              times: [0, 0.1, 1],
-              duration: duration,
-              ease: "easeInOut",
-            }}
-            className="dot"
-          />
+          }
+          {/* Letter animation without color flow */}
+          {
+            !colorFlowAnimation && <motion.span
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: [0, 1, 1],
+              }}
+              transition={{
+                delay: i * delay,
+                times: [0, 0.1, 1],
+                duration: 0.6,
+              }}
+              className={className}
+            >
+              {l}
+            </motion.span>
+          }
+
+          
+          {/* Dot animation */}
+          {dotAnimation &&  
+            <motion.span
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                delay: i * delay,
+                times: [0, 0.1, 1],
+                duration: duration,
+                ease: "easeInOut",
+              }}
+              className="dot"
+            />
+            }
         </motion.span>
       ))}
     </motion.h2>

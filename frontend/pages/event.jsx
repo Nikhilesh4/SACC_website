@@ -74,13 +74,18 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
         }
     };
 
+    // Animation Controls
+
+    // Char reveal delay in Typewriter (Title)
     const LETTER_DELAY = 0.037;
+    // Char reveal delay in Events Description 
+    const staggerDelay = 0.002;
+    
     const charRevealVariants = {
         hidden: { opacity: 0 },
         reveal: { opacity: 1 },
     };
 
-    const staggerDelay = 0.002;
     return (
         <Container maxWidth={false} className="event-grid">
             {titleAnimationComplete && eventsData.map((event) => (
@@ -119,14 +124,14 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
 
                                 >
                                     {
-                                        isMobile ? <Typewriter text={event.name} /> : null
+                                        isMobile ? <Typewriter text={event.name} delay={LETTER_DELAY} className='large-card-title'/> : null
                                     }
                                     {splitStringUsingRegex(event.description).map((char, i) => (
                                         <motion.span
                                             key={i}
                                             transition={{ duration: 0.5 }}
                                             variants={charRevealVariants}
-                                            className={`large-card-letter ${isMobile ? 'mobile' : 'desktop'}`}
+                                            className={`large-card-text ${isMobile ? 'mobile' : 'desktop'}`}
 
                                         >
                                             {char}
@@ -135,7 +140,8 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
                                 </motion.p>
                             )
                                 : (
-                                    <h2>{event.name}</h2>
+                                    //Large div not active : Event Name
+                                    <h2 className="large-card-title">{event.name}</h2>
                                 )}
                         </motion.Box>
 
@@ -147,7 +153,7 @@ const EventsGrid = ({ isMobile, titleAnimationComplete }) => {
                         >
 
                             {hoveredEvent === event.id &&
-                                <Typewriter text={event.name} delay={LETTER_DELAY} className='small-card-letter' />
+                                <Typewriter text={event.name} delay={LETTER_DELAY} className='small-card-text' />
                             }
 
                         </motion.Box>
