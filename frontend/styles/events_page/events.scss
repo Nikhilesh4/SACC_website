@@ -100,42 +100,69 @@
         flex: 7;
         background-color: rgba(255, 255, 255, 0.07);
 
-        &.not-active.mobile {
-            h2 {
-                font-family: 'Playwrite DE Grund', sans-serif;
+        // For centering text in large card
+        &.desktop{
+            text-align: justify; 
+        }
+        
+        &.not-active{
+            // Event Title
+            .large-card-title{
+                font-family: "Roboto", sans-serif;
+                font-size: 1.7rem;
             }
         }
 
-        &.not-active.desktop {
-            h2 {
-                font-family: 'Noto Sans', sans-serif;
+        // Active and desktop view
+        &.active.desktop{
+            // Event Description 
+            .large-card-text{
+                font-size: 1rem;
             }
         }
 
+        // Active and mobile view
+        &.active.mobile{
+            // Shadow for large card upon activation in mobile view only
+            box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
+           
+            // Tilte in mobile view only - title on small card for desktop view
+            .large-card-title{
+                font-size: 1.5rem;
+            } 
+            
+            // Event Description 
+            .large-card-text{
+                font-size: 1rem;
+            }
+        }
     }
+            
+        
+
 
     .small-card {
         flex: 3;
 
         &.active {
             box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
+            
+            .small-card-text{
+                // Small card text in desktop view - small card invisible in mobile view 
+                font-size: 1.5rem;
+                font-weight: bold;
+                font-family: "Roboto Mono", sans-serif;
+            }
+        }
+
+        // Hide small cards in mobile view
+        &.mobile{
+            display: none;
         }
 
     }
 
-    .event-description {
-        font-size: 1.5rem;
-    }
-
-    .large-card-letter {
-        font-family: "Noto Sans", sans-serif;
-    }
-
-    .small-card-letter {
-        font-family: "Roboto Mono", sans-serif;
-        font-size: 1.5rem;
-    }
-
+    
     &:nth-child(odd) {
         .small-card {
             background-color: rgba(46, 33, 42, 1); // Darker shade
@@ -161,14 +188,6 @@
 
         p {
             font-size: 16px;
-        }
-
-        .small-card {
-            display: none;
-        }
-
-        .large-card.active {
-            box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
         }
     }
 }
