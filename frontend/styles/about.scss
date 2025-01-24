@@ -2,8 +2,6 @@
   background-color: #1D141A;
   color: white;
   min-height: calc(100vh - 68px);
-  margin-top: 68px;
-  padding: 0 5%;
   position: relative;
   overflow: hidden;
 }
@@ -20,6 +18,14 @@
   @media (max-width: 768px) {
     display: none;
   }
+}
+
+.about-content-cover {
+  width: 100%;
+  border-bottom: 10px solid #FF6363;
+  margin-top: 68px;
+  padding: 0 5%;
+  margin-bottom: 5rem;
 }
 
 /* Title Styling */
@@ -126,7 +132,7 @@
 /* Socials */
 .social-section {
   margin-top: 7vh;
-  margin-bottom: 17vh;
+  margin-bottom: 5rem;
   text-align: center;
   width: 100%;
   position: relative;
@@ -161,21 +167,6 @@
       width: 40px;
       height: 40px;
     }
-  }
-}
-
-/* Horizontal Line */
-.horizontal-line {
-  position: absolute;
-  bottom: 12%;
-  left: 0;
-  height: 10px;
-  background-color: #FF6363;
-  z-index: 20;
-
-  @media (max-width: 768px) {
-    bottom: 5%;
-    height: 5px;
   }
 }
 
