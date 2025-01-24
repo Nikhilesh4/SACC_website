@@ -1,37 +1,53 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import NavBarComponent from '@components/navbar';
+import Bottom from '@components/footer';
 
 import '@styles/yearbook.scss';
-import Bottom from '@components/footer';
-import NavBarComponent from '@components/navbar';
-import '@styles/globals.scss'
-import '@styles/embla.css'
+import '@styles/globals.scss';
+import '@styles/embla.css';
 
-import { useRouter } from 'next/router';
-
-// Update Yearbook component to accept year prop
 export default function Yearbook() {
   const router = useRouter();
   const { year = "2k19" } = router.query;
   
   const [authenticated, setAuthenticated] = useState(false);
+  const [iframeHeight, setIframeHeight] = useState('100vh');
 
   useEffect(() => {
-    var arrayb = document.cookie;
-    arrayb = arrayb.split(';');
-    for (const item of arrayb) {
-      if (item.includes("Authorization_YearBook")) {
-        setAuthenticated(true);
-      }
-    }
+    const cookies = document.cookie.split(';');
+    const isAuthorized = cookies.some(cookie => 
+      cookie.trim().includes("Authorization_YearBook")
+    );
+    setAuthenticated(isAuthorized);
   }, []);
+
+  useEffect(() => {
+    if (!authenticated) return;
+
+    const handleResize = () => {
+      const iframe = document.querySelector('iframe');
+      if (iframe) {
+        try {
+          const contentHeight = iframe.contentWindow.document.body.scrollHeight;
+          setIframeHeight(`${contentHeight}px`);
+        } catch (error) {
+          console.error('Could not access iframe content:', error);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleResize, 1000);
+
+    return () => clearTimeout(timer);
+  }, [authenticated, year]);
 
   return (
     <section>
       <NavBarComponent isSticky={true} />
       <section>
         {authenticated ? (
-          <section style={{ height: "100vh" }}>
+          <section style={{ height: iframeHeight }}>
             <iframe
               src={`/${year}.html`}
               width="100%"

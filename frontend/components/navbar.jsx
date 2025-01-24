@@ -39,7 +39,7 @@ const NavbarComponent = ({ isSticky = false }) => {
           src="/assets/images/collegeLogo.png"
           alt="Logo"
           className="logo"
-          style={{ width: "137px", height: "50px" }}
+          style={{ width: "150px", height: "50px" }}
         />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
