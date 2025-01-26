@@ -1,4 +1,3 @@
-import '@styles/globals.scss';
 import '@styles/events_page/events.scss';
 import React, { useState, useEffect } from 'react';
 import Bottom from '@components/footer';

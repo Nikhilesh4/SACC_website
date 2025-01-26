@@ -1,5 +1,3 @@
-import '@styles/globals.scss';
-
 export const metadata = {
 	title: 'SACC',
 	description: 'Student Alumni Connect Cell',

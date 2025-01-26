@@ -1,10 +1,8 @@
-import Head from "next/head";
 import ParentBox from "../components/parent_box";
 import NavbarComponent from "../components/navbar";
-import { Box, CssBaseline, Container } from "@mui/material";
-import "@styles/globals.scss";
+import { Box, CssBaseline } from "@mui/material";
 import Bottom from "@components/footer";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // const ameyimg = "/assets/images/amey.png";
 

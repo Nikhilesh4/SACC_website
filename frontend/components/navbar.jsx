@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Nav, Navbar } from "react-bootstrap";
 import "@styles/navbar.scss";
+import "@styles/globals.scss";
 
 const NavbarComponent = ({ isSticky = false }) => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -12,6 +12,7 @@ const NavbarComponent = ({ isSticky = false }) => {
     for (const cookie of cookies) {
       if (cookie.includes("Authorization_YearBook")) {
         setAuthenticated(true);
+        break;
       }
     }
   }, []);
@@ -22,61 +23,90 @@ const NavbarComponent = ({ isSticky = false }) => {
     window.location.href = "/";
   };
 
-  const handleToggle = (expanded) => {
-    setIsMenuOpen(expanded);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/event', label: 'Events' },
+    { href: '/team', label: 'Team' },
+    {
+      href: authenticated ? '/yearbooks' : '/api/login',
+      label: 'Yearbooks'
+    }
+  ];
+
   return (
-    <Navbar
-      className={`header-nav ${isSticky ? "sticky" : ""} ${isMenuOpen ? "menu-open" : ""}`}
-      fixed="top"
-      bg="dark"
-      expand="lg"
-      onToggle={handleToggle}
-    >
-      <Navbar.Brand href="/">
-        <img
-          src="/assets/images/collegeLogo.png"
-          alt="Logo"
-          className="logo"
-          style={{ width: "150px", height: "50px" }}
-        />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center">
-        <Nav className="mx-auto">
-          <Nav.Link className="px-4 text-white" href="/">
-            Home
-          </Nav.Link>
-          <Nav.Link className="px-4 text-white" href="/about">
-            About
-          </Nav.Link>
-          <Nav.Link className="px-4 text-white" href="/event">
-            Events
-          </Nav.Link>
-          <Nav.Link className="px-4 text-white" href="/team">
-            Team
-          </Nav.Link>
-          <Nav.Link
-            className="px-4 text-white active"
-            href={authenticated ? "/yearbooks" : "/api/login"}
+    <nav className={`header-nav ${isSticky ? "sticky" : ""}`}>
+      <div className="navbar-container">
+        <a href="/" className="navbar-brand">
+          <img
+            src="/assets/images/collegeLogo.png"
+            alt="Logo"
+            className="logo"
+          />
+        </a>
+
+        <div className="navbar-content">
+          <button
+            className="navbar-toggler"
+            onClick={toggleMenu}
           >
-            Yearbooks
-          </Nav.Link>
-        </Nav>
-        <Nav className="justify-content-end">
+            {isMenuOpen ? '✕' : '☰'}
+          </button>
+
+          <div className={`navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
+            <div className="navbar-nav">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="nav-link"
+                >
+                  {item.label}
+                </a>
+              ))}
+              {authenticated && (
+                <button
+                  onClick={handleLogout}
+                  className="logout-btn mobile-logout"
+                >
+                  Logout
+                </button>
+              )}
+              {!authenticated && (
+                <a
+                  href="/api/login"
+                  className="login-link mobile-login"
+                >
+                  Login
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="navbar-auth">
           {authenticated ? (
-            <Nav.Link className="px-4 text-white loginButton" onClick={handleLogout}>
+            <button
+              onClick={handleLogout}
+              className="logout-btn desktop-logout"
+            >
               Logout
-            </Nav.Link>
+            </button>
           ) : (
-            <Nav.Link className="px-4 text-white loginButton" href="/api/login">
+            <a
+              href="/api/login"
+              className="login-link desktop-login"
+            >
               Login
-            </Nav.Link>
+            </a>
           )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+        </div>
+      </div>
+    </nav>
   );
 };
 

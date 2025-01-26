@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 import NavBarComponent from '@components/navbar';
 import Bottom from '@components/footer';
 
-import '@styles/yearbook.scss';
-import '@styles/globals.scss';
 import '@styles/embla.css';
 
 export default function Yearbook() {

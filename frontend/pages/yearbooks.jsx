@@ -1,7 +1,6 @@
 import NavbarComponent from "../components/navbar";
 import { Box, Grid } from "@mui/material";
 import "@styles/yearbooks.scss";
-import "@styles/globals.scss";
 import Bottom from "@components/footer";
 import { useMediaQuery, useTheme } from "@mui/material";
 const yearbookData = [
