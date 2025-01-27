@@ -36,9 +36,14 @@
     justify-content: center;
     align-items: center;
 
+    .title-letters {
+      font-size: 3rem;
+    } 
+
     .underline {
       height: 2px;
-      margin-top: 9vh;
+      margin-top: 11vh;
+      width: 30vw !important;
     }
   }
 }
@@ -104,7 +109,7 @@
     &.not-active.mobile {
       .large-card-title {
         font-family: "Roboto", sans-serif;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
     }
 
