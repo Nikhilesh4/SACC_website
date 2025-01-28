@@ -62,21 +62,20 @@ const Home = () => {
           </div>
         </section>
       </section>
-      <div className="bottom-circle">
-        <div className="footer-content">
-          <div className="social-links">
-            <a href="https://www.facebook.com/iiith.alumnicell" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/fb.png" alt="Facebook" />
-            </a>
-            <a href="https://www.instagram.com/alumnicell_iiith/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/insta.png" alt="Instagram" />
-            </a>
-            <a href="https://www.linkedin.com/company/alumni-cell-iiit-h/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/linkedin.png" alt="LinkedIn" />
-            </a>
-          </div>
-          <p>&copy; Student Alumni Connect Cell 2025</p>
+      <div className="bottom-circle"></div>
+      <div className="footer-content">
+        <div className="social-links">
+          <a href="https://www.facebook.com/iiith.alumnicell" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/fb.png" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/alumnicell_iiith/" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/insta.png" alt="Instagram" />
+          </a>
+          <a href="https://www.linkedin.com/company/alumni-cell-iiit-h/" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/linkedin.png" alt="LinkedIn" />
+          </a>
         </div>
+        <p>&copy; Student Alumni Connect Cell 2025</p>
       </div>
     </section>
   );

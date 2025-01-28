@@ -101,15 +101,16 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar-container {
     align-items: space-between;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .navbar-content {
-    justify-content: right;
     align-items: center;
+    justify-content: right;
   }
 
   .navbar-toggler {
@@ -118,11 +119,11 @@
 
   .navbar-collapse {
     display: flex;
-    flex-direction: column;
-    position: absolute;
+    flex-direction: row;
+    position: center;
     top: 100%;
     left: 0;
-    width: 100%;
+    width: 0;
     background-color: rgba(46, 33, 42);
     max-height: 0;
     overflow: hidden;
@@ -147,25 +148,10 @@
 
   .mobile-logout,
   .mobile-login {
-    display: block;
-    font-size: 1.3rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    display: none;
   }
 
   .navbar-auth {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .navbar-collapse {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .mobile-logout,
-  .mobile-login {
     display: none;
   }
 
