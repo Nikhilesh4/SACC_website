@@ -57,19 +57,19 @@ video {
 }
 
 .content h1 {
-    font-size: 9rem;
+    font-size: 10vh;
     font-weight: 900;
     margin: 0;
 }
 
 .content p {
-    font-size: 3rem;
+    font-size: 5vh;
     font-weight: 200;
     margin: 0;
 }
 
 .content h3 {
-    font-size: 3rem;
+    font-size: 7vh;
     font-weight: 600;
     margin: 0;
 }
@@ -142,9 +142,6 @@ video {
 }
 
 @media (max-width: 768px) {
-    .nav-link {
-        margin: 0.5rem;
-    }
     .content {
         margin-top: 15vh;
     }
@@ -173,9 +170,5 @@ video {
 
     .footer-content p {
         font-size: 1rem;
-    }
-
-    .login-link {
-        margin-right: 0;
     }
 }

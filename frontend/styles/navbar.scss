@@ -39,7 +39,7 @@
 .navbar-toggler {
   display: none;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.25rem;
   color: white;
   padding: 0.25rem 0.75rem;
@@ -81,7 +81,8 @@
   justify-content: flex-end;
 }
 
-.logout-btn, .login-link {
+.logout-btn,
+.login-link {
   color: white;
   background: transparent;
   border: none;
@@ -95,7 +96,8 @@
   cursor: pointer;
 }
 
-.mobile-logout, .mobile-login {
+.mobile-logout,
+.mobile-login {
   display: none;
 }
 
@@ -138,11 +140,13 @@
     margin-top: 1rem;
   }
 
-  .desktop-logout, .desktop-login {
+  .desktop-logout,
+  .desktop-login {
     display: none;
   }
 
-  .mobile-logout, .mobile-login {
+  .mobile-logout,
+  .mobile-login {
     display: block;
     font-size: 1.3rem;
     margin-top: 1rem;
@@ -160,7 +164,16 @@
     align-items: center;
   }
 
-  .mobile-logout, .mobile-login {
+  .mobile-logout,
+  .mobile-login {
     display: none;
+  }
+
+  .nav-link {
+    margin: 0.5rem;
+  }
+
+  .login-link {
+    margin-right: 0;
   }
 }
