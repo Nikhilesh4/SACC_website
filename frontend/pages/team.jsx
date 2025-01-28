@@ -315,7 +315,7 @@ export default function Home() {
 
   const Design = [
     {
-      name: "Deekistha",
+      name: "Deekshitha",
       imgSrc: "/assets/images/Deekshitha.jpg",
       InstaID: "./team",
       linkedinLink:
