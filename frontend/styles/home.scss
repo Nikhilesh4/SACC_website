@@ -142,6 +142,9 @@ video {
 }
 
 @media (max-width: 768px) {
+    .nav-link {
+        margin: 0.5rem;
+    }
     .content {
         margin-top: 15vh;
     }
