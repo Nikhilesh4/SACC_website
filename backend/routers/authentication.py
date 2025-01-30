@@ -8,7 +8,7 @@ from os import getenv
 
 CAS_SERVER_URL = getenv("CAS_SERVER_URL")
 SERVICE_URL = getenv("SERVICE_URL")
-REDIRECT_URL = getenv("REDIRECT_URL", "/yearbook")
+REDIRECT_URL = getenv("REDIRECT_URL", "/")
 JWT_SECRET_KEY = getenv("JWT_SECRET_KEY", "jwt-secret")
 
 blueprint = Blueprint("authentication", __name__)

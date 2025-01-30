@@ -249,7 +249,7 @@ export default function Home() {
     {
       name: "Pritika Sinharay",
       imgSrc: "/assets/images/SACC_logo.png",
-      InstaID: "https://www.instagram.com/_pritika.s/",
+      InstaID: "./team",
       linkedinLink: "./team",
       githubLink: "./team",
       position: "Member",

@@ -10,6 +10,7 @@ import {
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
+import { Scale } from "@mui/icons-material";
 
 type MemberBoxProps = {
   name: string;
@@ -59,20 +60,16 @@ const MemberBox: React.FC<MemberBoxProps> = ({
     <Box
       sx={{
         flex: "1 1 auto",
-        margin: "2%",
-        backgroundColor: "#ccc",
-        color: "#3a4052",
-        padding: "2vh",
-        border: "1px solid white",
-        borderRadius: "8px",
+        margin: "2rem",
+        backgroundColor: "#eee",
+        color: "#373737",
+        padding: "1.5rem",
+        borderRadius: "13px",
         boxSizing: "border-box",
-        boxShadow: "0 0 0px",
         transition: "background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
-          transform: "scale(1.1)",
-          backgroundColor: "transparent",
-          color: "#e2e4e5",
-          border: "1px solid white",
+          transform: "scale(1.03)",
+          backgroundColor: "#bbb",
           boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.15)",
         },
       }}
@@ -81,7 +78,7 @@ const MemberBox: React.FC<MemberBoxProps> = ({
       <Box
         sx={{
           width: "100%",
-          paddingTop: "100%", // Ensures a 1:1 aspect ratio
+          paddingTop: "100%",
           position: "relative",
           overflow: "hidden",
           borderRadius: "8px",
@@ -108,7 +105,6 @@ const MemberBox: React.FC<MemberBoxProps> = ({
         align="center"
         ref={nameRef}
         sx={{
-          fontFamily: "anona",
           fontSize: `${fontSize}px`,
           lineHeight: 1.2,
           marginBottom: "0.25rem",
@@ -127,7 +123,6 @@ const MemberBox: React.FC<MemberBoxProps> = ({
         variant="h3"
         align="center"
         sx={{
-          fontFamily: "Roboto",
           fontSize: isPhone ? "1rem" : "1.5rem",
           marginBottom: "0.25rem",
         }}
@@ -141,19 +136,19 @@ const MemberBox: React.FC<MemberBoxProps> = ({
             color: "#3a4052",
             justifyContent: "center",
             "&:hover": {
-              color: "#e2e4e5",
+              color: "#6699ee",
             },
           },
         }}
       >
+        <IconButton href={githubLink} color="inherit">
+          <GitHubIcon />
+        </IconButton>
         <IconButton href={InstaID} color="inherit">
           <InstagramLogoIcon />
         </IconButton>
         <IconButton href={linkedinLink} color="inherit">
           <LinkedInIcon />
-        </IconButton>
-        <IconButton href={githubLink} color="inherit">
-          <GitHubIcon />
         </IconButton>
       </Box>
     </Box>
