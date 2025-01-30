@@ -7,7 +7,7 @@ import '@styles/embla.css';
 
 export default function Yearbook() {
   const router = useRouter();
-  const { year = "2k19" } = router.query;
+  const { year = "2k20" } = router.query;
   
   const [authenticated, setAuthenticated] = useState(false);
   const [iframeHeight, setIframeHeight] = useState('100vh');

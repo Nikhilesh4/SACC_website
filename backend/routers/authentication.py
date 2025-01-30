@@ -8,7 +8,7 @@ from os import getenv
 
 CAS_SERVER_URL = getenv("CAS_SERVER_URL")
 SERVICE_URL = getenv("SERVICE_URL")
-REDIRECT_URL = getenv("REDIRECT_URL", "/")
+REDIRECT_URL = getenv("REDIRECT_URL", "/home")
 JWT_SECRET_KEY = getenv("JWT_SECRET_KEY", "jwt-secret")
 
 blueprint = Blueprint("authentication", __name__)
@@ -60,7 +60,7 @@ def verify_token() -> bool:
 def login():
     # Already logged in
     if request.cookies.get("Authorization_YearBook"):
-        return redirect("/")
+        return redirect("/home")
 
     next = request.args.get("next")
     ticket = request.args.get("ticket")
