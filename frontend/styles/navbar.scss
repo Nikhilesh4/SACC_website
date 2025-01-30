@@ -18,7 +18,6 @@
 .navbar-brand .logo {
   width: 150px;
   height: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,10 +38,6 @@
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
-}
-
-.navbar-collapse {
-  display: flex;
 }
 
 .navbar-nav {
@@ -83,7 +78,6 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin-right: 1rem;
-
   font-size: 1.2rem;
   border: 1px solid white;
   border-radius: 10px;
@@ -113,19 +107,21 @@
 
   .navbar-collapse {
     display: flex;
-    flex-direction: row;
-    position: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(46, 33, 42);
+    position: absolute;
     top: 100%;
     left: 0;
-    width: 0;
-    background-color: rgba(46, 33, 42);
+    z-index: 1000;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
   }
 
   .navbar-collapse.show {
-    max-height: 500px;
+    max-height: 500px; /* Adjust this value based on the content height */
   }
 
   .navbar-nav {
@@ -142,7 +138,10 @@
 
   .mobile-logout,
   .mobile-login {
-    display: none;
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+    margin-right: 0;
   }
 
   .navbar-auth {
@@ -151,9 +150,5 @@
 
   .nav-link {
     margin: 0.5rem;
-  }
-
-  .login-link {
-    margin-right: 0;
   }
 }

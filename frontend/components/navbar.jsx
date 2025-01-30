@@ -49,42 +49,40 @@ const NavbarComponent = ({ isSticky = false }) => {
           />
         </a>
 
-        <div className="navbar-content">
-          <button
-            className="navbar-toggler"
-            onClick={toggleMenu}
-          >
-            {isMenuOpen ? '✕' : '☰'}
-          </button>
+        <button
+          className="navbar-toggler"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </button>
 
-          <div className={`navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
-            <div className="navbar-nav">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="nav-link"
-                >
-                  {item.label}
-                </a>
-              ))}
-              {authenticated && (
-                <button
-                  onClick={handleLogout}
-                  className="logout-btn mobile-logout"
-                >
-                  Logout
-                </button>
-              )}
-              {!authenticated && (
-                <a
-                  href="/api/login"
-                  className="login-link mobile-login"
-                >
-                  Login
-                </a>
-              )}
-            </div>
+        <div className={`navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
+          <div className="navbar-nav">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+              >
+                {item.label}
+              </a>
+            ))}
+            {authenticated && (
+              <button
+                onClick={handleLogout}
+                className="logout-btn mobile-logout"
+              >
+                Logout
+              </button>
+            )}
+            {!authenticated && (
+              <a
+                href="/api/login"
+                className="login-link mobile-login"
+              >
+                Login
+              </a>
+            )}
           </div>
         </div>
 
