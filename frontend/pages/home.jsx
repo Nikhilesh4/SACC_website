@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => {
+    return () => {-
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
