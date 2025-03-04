@@ -1,7 +1,7 @@
 .about-container {
   background-color: #1D141A;
   color: white;
-  min-height: calc(100vh - 68px);
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -31,7 +31,7 @@
 /* Title Styling */
 .aboutTitle {
   margin-left: 11vw;
-  margin-top: 10vh;
+  margin-top: 15vh;
 
   .title-container {
       display: flex;
@@ -78,8 +78,8 @@
 .description-container {
   margin-left: 11vw;
   margin-top: 11vh;
+  margin-bottom: 11vh;
   width: 69%;
-  // font-size: 3rem;
 
   @media (max-width: 768px) {
     margin-left: 3vw;
@@ -92,6 +92,7 @@
   color: #EAEAEA;
   line-height: 1.8;
   text-align: justify;
+  font-size: 1.5rem;
   
   @media (max-width: 768px) {
     width: 100%;
@@ -103,7 +104,7 @@
 /* SACC Logo */
 .logo-container {
   position: absolute;
-  top: 11vh;
+  top: 15vh;
   right: 3.7%;
 
   @media (max-width: 768px) {

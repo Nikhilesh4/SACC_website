@@ -124,34 +124,6 @@ export default function AboutSACC() {
               memories into legacies..
             </Typography>
           </motion.div>
-          <motion.div
-            className="social-section"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            <Typography variant="h6" component="h2">
-              Follow us on social media
-            </Typography>
-            <Box className="social-icons">
-              {['insta', 'fb', 'linkedin'].map((platform) => (
-                <motion.a
-                  key={platform}
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <Image
-                    src={`/assets/images/${platform}.png`}
-                    alt={platform}
-                    width={60}
-                    height={60}
-                  />
-                </motion.a>
-              ))}
-            </Box>
-          </motion.div>
         </div>
       </Box>
       <Bottom />
