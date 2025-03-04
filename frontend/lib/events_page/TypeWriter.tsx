@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import '@styles/events_page/typeWriter.scss';
+import '@styles/events.scss';
 
 interface TypeWriterProps {
   text: string;
