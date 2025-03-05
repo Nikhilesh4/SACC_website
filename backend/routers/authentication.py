@@ -3,7 +3,7 @@ from flask import current_app as app
 from urllib.parse import quote_plus
 from functools import wraps
 from jwt import encode, decode
-from cas import 
+from cas import CASClient
 
 from os import getenv
 
