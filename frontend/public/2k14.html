@@ -8,23 +8,25 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <button class="arrow-btn prev-btn" onclick="$('#book').turn('previous')">
+    <button class="arrow-btn prev-btn" onclick="goToPreviousPage()">
         <i class="arrow arrow-left"></i>
     </button>
     <div id="book"></div>
-    <button class="arrow-btn next-btn" onclick="$('#book').turn('next')">
+    <button class="arrow-btn next-btn" onclick="goToNextPage()">
         <i class="arrow arrow-right"></i>
     </button>
 
     <div id="controls">
         <div id="page-controls">
-            <label for="page-number">Page:</label>
-            <input type="text" size="2" id="page-number">
-            of <span id="number-pages"></span>
-        </div>
-        <div>
-            <input type="number" id="specific-page-number" placeholder="Page Num">
-            <button id="download-btn">Download Page</button>
+            <div>
+                <label for="page-number">Page:</label>
+                <input type="text" size="2" id="page-number">
+                of <span id="number-pages"></span>
+            </div>
+            <div>
+                <input type="number" id="specific-page-number" placeholder="Page Num">
+                <button id="download-btn">Download Page</button>
+            </div>
         </div>
     </div>
 

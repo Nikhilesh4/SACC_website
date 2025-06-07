@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding-top: 60px;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 .heading {
@@ -11,21 +12,60 @@ body {
     height: 69px;
     margin-top: 2vh;
     color: white;
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     font-weight: 600;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 10px;
+    text-align: center;
 }
 
 #book {
     width: 63vw;
     aspect-ratio: 4/3;
     margin: 20px auto;
+    margin-top: 40px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     overflow: hidden;
+    max-width: 90vw;
+    transition: all 0.3s ease;
+}
+
+/* Mobile one-page view */
+@media (max-width: 768px) {
+    body {
+        padding-top: 20px;
+    }
+    
+    .heading {
+        height: auto;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        font-size: clamp(1.2rem, 6vw, 2rem);
+    }
+    
+    #book {
+        width: 75vw;
+        max-width: 75vw;
+        aspect-ratio: 3/4;
+        margin-top: 80px;
+        border-radius: 8px;
+    }
+    
+    /* Single page view for mobile */
+    #book.mobile-single-page {
+        aspect-ratio: 3/4;
+    }
+    
+    /* Single page display styles for mobile */
+    #book.mobile-single-page .turn-page {
+        float: none !important;
+        margin: 0 !important;
+    }
+    
 }
 
 #book div {
@@ -54,8 +94,9 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding-bottom: 17px;
+    padding: 10px 20px 17px;
     color: white;
+    box-sizing: border-box;
 }
 
 #page-controls {
@@ -65,31 +106,95 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px 15px;
     border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #page-number, #specific-page-number {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 5px 10px;
-    width: 50px;
+    padding: 8px 12px;
+    width: 60px;
     text-align: center;
     border-radius: 4px;
     margin: 0 5px;
+    font-size: 14px;
 }
 
 #download-btn {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 #download-btn:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile controls responsiveness */
+@media (max-width: 768px) {
+    #controls {
+        gap: 8px;
+        padding: 8px 10px 15px;
+    }
+    
+    #page-controls {
+        gap: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    #page-number, #specific-page-number {
+        width: 50px;
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+    
+    #download-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    #controls {
+        gap: 6px;
+        padding: 6px 8px 12px;
+    }
+    
+    #page-controls {
+        flex-direction: column;
+        gap: 6px;
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    #page-controls > div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #page-number, #specific-page-number {
+        width: 45px;
+        padding: 5px 6px;
+        font-size: 12px;
+        margin: 0 3px;
+    }
+    
+    #download-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
 }
 
 .arrow-btn {
@@ -106,6 +211,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: background 0.3s ease;
+    z-index: 10;
 }
 
 .arrow-btn:hover {
@@ -133,4 +239,54 @@ body {
 
 .arrow-right {
     transform: rotate(-45deg);
+}
+
+/* Mobile arrow button responsiveness */
+@media (max-width: 768px) {
+    .arrow-btn {
+        width: 45px;
+        height: 45px;
+        top: 45%;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .arrow {
+        border-width: 0 2px 2px 0;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .arrow-btn {
+        width: 40px;
+        height: 40px;
+        top: 40%;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+    
+    .arrow {
+        border-width: 0 2px 2px 0;
+        padding: 4px;
+    }
+}
+
+/* Hide arrow buttons on very small screens to avoid overlap */
+@media (max-width: 360px) {
+    .arrow-btn {
+        display: none;
+    }
 }
