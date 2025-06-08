@@ -6,9 +6,20 @@ import Flipbook from "@components/flipbook";
 
 import "@styles/embla.css";
 
+// Mapping of year identifiers to PDF paths
+const yearPdfMapping = {
+  "2k20": "./assets/yearbooks/2k20.pdf",
+  "2k19": "./assets/yearbooks/2k19.pdf",
+  "2k15": "./assets/yearbooks/2k15.pdf",
+  "2k14": "./assets/yearbooks/2k14.pdf",
+};
+
+// Get latest year (first in the mapping)
+const latestYearKey = Object.keys(yearPdfMapping)[0];
+
 export default function Yearbook() {
   const router = useRouter();
-  const { year = "2k20" } = router.query;
+  const { year = latestYearKey } = router.query;
 
   const [authenticated, setAuthenticated] = useState(false);
   // const [iframeHeight, setIframeHeight] = useState("100vh");
@@ -20,6 +31,9 @@ export default function Yearbook() {
     );
     setAuthenticated(isAuthorized);
   }, []);
+
+  // Get the appropriate yearbook path based on the year parameter
+  const yearbookPath = yearPdfMapping[year] || yearPdfMapping[latestYearKey];
 
   // useEffect(() => {
   //   if (!authenticated) return;
@@ -47,7 +61,7 @@ export default function Yearbook() {
       <section>
         {authenticated ? (
           <section>
-            <Flipbook />
+            <Flipbook yearbookPath={yearbookPath} />
           </section>
         ) : (
           <section

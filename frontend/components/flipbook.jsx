@@ -332,7 +332,7 @@ function Flipbook(props) {
       }}
     >
       <Document
-        file={yearbookPath || "./assets/yearbooks/2020/Yearbook_2020.pdf"}
+        file={yearbookPath}
         onLoadSuccess={onDocumentLoadSuccess}
         loading={
           <Box
@@ -508,9 +508,9 @@ function Flipbook(props) {
                       {currentPage === 0
                         ? `Page 1 of ${numPages || 0}`
                         : `Pages ${currentPage + 1}-${Math.min(
-                            currentPage + 2,
-                            numPages || 0
-                          )} of ${numPages || 0}`}
+                          currentPage + 2,
+                          numPages || 0
+                        )} of ${numPages || 0}`}
                     </Typography>
                   )}
                 </Box>
