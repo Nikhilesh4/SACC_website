@@ -53,8 +53,8 @@ const FlipBookPage = React.forwardRef((props, ref) => {
 FlipBookPage.displayName = "FlipBookPage";
 
 const pageStyles = {
-  width: 500,
-  height: 707,
+  width: 600,
+  height: 850,
   backgroundColor: "#2D1B2E",
   display: "flex",
   alignItems: "center",
@@ -267,8 +267,8 @@ function Flipbook(props) {
   function pagesList() {
     if (!numPages) return [];
 
-    const pageWidth = isMobile ? 300 : 500;
-    const pageHeight = isMobile ? 424 : 707;
+    const pageWidth = isMobile ? 375 : 600;
+    const pageHeight = isMobile ? 530 : 850;
 
     var pages = [];
     for (var i = 1; i <= numPages; i++) {
@@ -326,7 +326,7 @@ function Flipbook(props) {
       sx={{
         backgroundColor: "#1D141A",
         minHeight: "100vh",
-        padding: isMobile ? "20px 10px" : "40px 20px",
+        padding: isMobile ? "20px 10px" : "69px 20px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -336,7 +336,7 @@ function Flipbook(props) {
         onLoadSuccess={onDocumentLoadSuccess}
         loading={
           <Box
-            sx={{ color: "#EAEAEA", textAlign: "center", paddingTop: "50vh" }}
+            sx={{ color: "#EAEAEA", textAlign: "center", paddingTop: "50vh"}}
           >
             <Typography variant="h6">Loading PDF...</Typography>
           </Box>
@@ -384,15 +384,15 @@ function Flipbook(props) {
               style={{
                 position: "relative",
                 height: "100%",
-                paddingTop: "calc(50vh - 400px)",
+                paddingTop: "calc(50vh - 530px)",
               }}
             >
               <HTMLFlipBook
                 ref={flipBookRef}
-                width={500}
-                height={707}
+                width={600}
+                height={850}
                 minWidth={300}
-                maxWidth={500}
+                maxWidth={600}
                 size="fixed"
                 flippingTime={600}
                 usePortrait={true}
@@ -572,14 +572,14 @@ function Flipbook(props) {
             style={{
               width: "100%",
               textAlign: "center",
-              paddingTop: "calc(50vh - 300px)",
+              paddingTop: "calc(50vh - 375px)",
             }}
           >
             <div style={{ display: "inline-block" }}>
               <HTMLFlipBook
                 ref={flipBookRef}
-                width={300}
-                height={424}
+                width={375}
+                height={530}
                 minWidth={250}
                 maxWidth={350}
                 size="fixed"

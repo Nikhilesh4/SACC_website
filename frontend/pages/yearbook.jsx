@@ -22,7 +22,6 @@ export default function Yearbook() {
   const { year = latestYearKey } = router.query;
 
   const [authenticated, setAuthenticated] = useState(false);
-  // const [iframeHeight, setIframeHeight] = useState("100vh");
 
   useEffect(() => {
     const cookies = document.cookie.split(";");
@@ -34,26 +33,6 @@ export default function Yearbook() {
 
   // Get the appropriate yearbook path based on the year parameter
   const yearbookPath = yearPdfMapping[year] || yearPdfMapping[latestYearKey];
-
-  // useEffect(() => {
-  //   if (!authenticated) return;
-
-  //   const handleResize = () => {
-  //     const iframe = document.querySelector("iframe");
-  //     if (iframe) {
-  //       try {
-  //         const contentHeight = iframe.contentWindow.document.body.scrollHeight;
-  //         setIframeHeight(`${contentHeight}px`);
-  //       } catch (error) {
-  //         console.error("Could not access iframe content:", error);
-  //       }
-  //     }
-  //   };
-
-  //   const timer = setTimeout(handleResize, 1000);
-
-  //   return () => clearTimeout(timer);
-  // }, [authenticated, year]);
 
   return (
     <section>
