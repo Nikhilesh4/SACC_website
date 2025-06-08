@@ -10,33 +10,43 @@
 }
 
 .title {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     color: #EFDFC2;
-    margin-top: 100px;
+    margin-top: clamp(50px, 12vw, 100px);
+    text-align: center;
 }
 
 .subtitle {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     color: #F87272;
     margin-top: 7px;
-    margin-bottom: 69px;
+    margin-bottom: clamp(35px, 8vw, 69px);
+    text-align: center;
 }
 
 .yearbooksGrid {
     width: 95%;
-    margin-bottom: 123px;
+    margin-bottom: clamp(60px, 15vw, 123px);
+    padding: 0 10px;
 }
 
 .yearbookPreview {
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
     aspect-ratio: 3/4;
     border: 2px solid #8F5A33;
     border-radius: 13px;
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     
     background-size: 100% auto;  // Width 100%, height auto to maintain ratio
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.yearbookPreview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .yearbookLabel {
@@ -45,11 +55,11 @@
     border-radius: 11px;
 
     color: #D7C8AD;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     background-color: #C87D48;
 
-    padding: 10px;
-    padding-right: 20px;
+    padding: clamp(8px, 2vw, 10px);
+    padding-right: clamp(15px, 4vw, 20px);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -59,14 +69,16 @@
     bottom: 0;
 
     h2 {
-        font-size: 4rem;
+        font-size: clamp(2.5rem, 6vw, 4rem);
         font-weight: 700;
         margin: 0;
+        line-height: 1;
     }
 
     h4 {
-        font-size: 2rem;
+        font-size: clamp(1.2rem, 3vw, 2rem);
         margin: 0;
+        line-height: 1.2;
     }
 }
 .yearbook-container {
@@ -87,19 +99,117 @@
     object-fit: contain; /* Ensures image doesn't distort */
   }
   
+  /* Enhanced responsive breakpoints */
+  @media (max-width: 1200px) {
+    .backdrop {
+      padding-top: 60px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .yearbooksGrid {
+      padding: 0 15px;
+    }
+    
+    .yearbookPreview {
+      max-width: 300px;
+    }
+  }
+
   @media (max-width: 768px) {
+    .backdrop {
+      padding-top: 50px;
+    }
+
     .yearbook-container {
-      flex-direction: column; /* Stack text and image vertically */
-      align-items: center; /* Center-aligns content */
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
     }
   
     .text-content {
-      max-width: 100%; /* Full width for text */
-      text-align: center; /* Optional: Center text */
+      max-width: 100%;
+      text-align: center;
     }
   
     .image {
-      display: none; /* Hides the image on smaller screens */
+      display: none;
+    }
+
+    .yearbooksGrid {
+      width: 98%;
+      padding: 0 10px;
+    }
+    
+    .yearbookPreview {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .backdrop {
+      padding-top: 40px;
+    }
+
+    .yearbook-container {
+      padding: 0 15px;
+    }
+
+    .yearbooksGrid {
+      width: 100%;
+      padding: 0 5px;
+    }
+    
+    .yearbookPreview {
+      max-width: 250px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .backdrop {
+      padding-top: 30px;
+    }
+
+    .yearbook-container {
+      padding: 0 10px;
+    }
+
+    .yearbooksGrid {
+      margin-bottom: clamp(40px, 10vw, 80px);
+    }
+    
+    .yearbookPreview {
+      max-width: 220px;
+      border-radius: 10px;
+    }
+
+    .yearbookLabel {
+      border-radius: 8px;
+      padding: 6px;
+      padding-right: 12px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .backdrop {
+      padding-top: 25px;
+    }
+
+    .yearbook-container {
+      padding: 0 8px;
+    }
+    
+    .yearbookPreview {
+      max-width: 200px;
+      border-radius: 8px;
+    }
+
+    .yearbookLabel {
+      height: 40%;
+      border-radius: 6px;
+      padding: 5px;
+      padding-right: 10px;
     }
   }
   

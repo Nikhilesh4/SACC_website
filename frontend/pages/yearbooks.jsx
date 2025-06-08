@@ -6,23 +6,19 @@ import { useMediaQuery, useTheme } from "@mui/material";
 const yearbookData = [
   {
     year: "2k20",
-    previewImage: "/assets/yearbooks/2020/pageImages/0.jpg",
-    yearbookLink: "/2k20.html",
+    previewImage: "/assets/yearbooks/2k20_preview.jpg",
   },
   {
     year: "2k19",
-    previewImage: "/assets/yearbooks/2019/pageImages/0.jpg",
-    yearbookLink: "/2k19.html",
+    previewImage: "/assets/yearbooks/2k19_preview.jpg",
   },
   {
     year: "2k15",
-    previewImage: "/assets/yearbooks/2015/pageImages/0.jpg",
-    yearbookLink: "/2k15.html",
+    previewImage: "/assets/yearbooks/2k15_preview.jpg",
   },
   {
     year: "2k14",
-    previewImage: "/assets/yearbooks/2014/pageImages/0.jpg",
-    yearbookLink: "/2k14.html",
+    previewImage: "/assets/yearbooks/2k14_preview.jpg",
   },
 ];
 
