@@ -327,6 +327,7 @@ function Flipbook(props) {
         backgroundColor: "#1D141A",
         minHeight: "100vh",
         padding: isMobile ? "20px 10px" : "69px 20px",
+        marginTop: "37px",
         position: "relative",
         overflow: "hidden",
       }}
