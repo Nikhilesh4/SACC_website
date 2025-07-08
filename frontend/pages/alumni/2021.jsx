@@ -4,21 +4,23 @@ import Bottom from "@components/footer";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Link from "next/link";
 import alumni2021 from "../../public/alumni_2021.json";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 export default function Batch2021() {
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down("sm"));
     const [search, setSearch] = useState("");
 
-    // Shuffle alumni on each render
-    const shuffledAlumni = useMemo(() => {
+
+    // Shuffle alumni only on client to avoid hydration mismatch
+    const [shuffledAlumni, setShuffledAlumni] = useState(alumni2021);
+    useEffect(() => {
         const arr = [...alumni2021];
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        return arr;
+        setShuffledAlumni(arr);
     }, []);
 
     // Filter alumni by search
