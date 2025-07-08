@@ -89,22 +89,22 @@ export default function Batch2021() {
                                     maxWidth: 260,
                                     minHeight: 320,
                                     maxHeight: 320,
-                                    background: '#fff',
-                                    borderRadius: 16,
-                                    boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
-                                    padding: 20,
-                                    margin: '0 auto',
+                                    background: 'linear-gradient(135deg, #2a1533 60%, #3a1c4a 100%)',
+                                    borderRadius: 18,
+                                    boxShadow: '0 4px 24px rgba(60,0,80,0.18)',
+                                    padding: 22,
+                                    margin: '0 auto 32px auto', // Add bottom margin
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
                                     transition: 'transform 0.15s, box-shadow 0.15s',
-                                    border: '1.5px solid #e5e7eb',
+                                    border: '1.5px solid #3a1c4a',
                                     boxSizing: 'border-box',
                                     justifyContent: 'flex-start',
                                     overflow: 'hidden',
                                 }}
-                                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.13)'; }}
-                                    onMouseOut={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,0.08)'; }}
+                                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(60,0,80,0.28)'; }}
+                                    onMouseOut={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(60,0,80,0.18)'; }}
                                 >
                                     <Box className="alumniCardLabel" style={{ alignItems: 'center', textAlign: 'center', width: '100%' }}>
                                         <div style={{
@@ -121,8 +121,8 @@ export default function Batch2021() {
                                         }}>
                                             <img src={`/assets/images/2021/${user.pfp.replace('images/', '')}`} alt={user.name} style={{ width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '1/1', display: 'block' }} />
                                         </div>
-                                        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600, color: '#222', wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word' }}>{user.name}</h2>
-                                        <p style={{ color: '#888', margin: 0, fontSize: 16, wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word' }}>{user.branch}</p>
+                                        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600, color: '#fff', wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.2 }}>{user.name}</h2>
+                                        <p style={{ color: '#c7a6e5', margin: 0, fontSize: 16, wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.1 }}>{user.branch}</p>
                                     </Box>
                                 </div>
                             </Link>
