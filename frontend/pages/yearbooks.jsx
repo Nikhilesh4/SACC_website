@@ -5,6 +5,10 @@ import Bottom from "@components/footer";
 import { useMediaQuery, useTheme } from "@mui/material";
 const yearbookData = [
   {
+    year: "2k21",
+    previewImage: "/assets/yearbooks/2k21_preview.png",
+  },
+  {
     year: "2k20",
     previewImage: "/assets/yearbooks/2k20_preview.jpg",
   },

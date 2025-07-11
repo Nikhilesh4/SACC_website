@@ -8,6 +8,7 @@ import "@styles/embla.css";
 
 // Mapping of year identifiers to PDF paths
 const yearPdfMapping = {
+  "2k21": "./assets/yearbooks/2k21.pdf",
   "2k20": "./assets/yearbooks/2k20.pdf",
   "2k19": "./assets/yearbooks/2k19.pdf",
   "2k15": "./assets/yearbooks/2k15.pdf",

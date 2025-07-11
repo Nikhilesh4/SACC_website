@@ -51,7 +51,7 @@ const Home = () => {
             <div className="content">
               <h1>SACC</h1>
               <p>Presents</p>
-              <h3>Yearbook of 2020</h3>
+              <h3>Yearbook of 2021</h3>
               <a
                 href={authenticated ? "/yearbooks" : "/api/login"}
                 className="btn"
