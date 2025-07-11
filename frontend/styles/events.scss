@@ -121,7 +121,7 @@
   // Large card (description)
   .large-card {
     flex: 7;
-    background-color: var(--card-bg-color);
+    background-color: #2e212a;
     padding: 2rem;
     overflow-y: auto;
     
@@ -187,6 +187,7 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    background-color: #2e212a; // changed to a darker purple
     
     &.active {
       box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
@@ -200,15 +201,6 @@
     &.mobile {
       display: none;
     }
-  }
-
-  // Alternating background colors
-  &:nth-child(odd) .small-card {
-    background-color: var(--primary-bg-color);
-  }
-  
-  &:nth-child(even) .small-card {
-    background-color: var(--secondary-bg-color);
   }
 
   // Mobile row styling
