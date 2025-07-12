@@ -7,7 +7,7 @@ import Flipbook from "@components/flipbook";
 import "@styles/embla.css";
 
 // Mapping of year identifiers to PDF paths
-const yearPdfMapping = {
+const viewerPdfMapping = {
   "2k21": "./assets/yearbooks/2k21.pdf",
   "2k20": "./assets/yearbooks/2k20.pdf",
   "2k19": "./assets/yearbooks/2k19.pdf",
@@ -15,8 +15,12 @@ const yearPdfMapping = {
   "2k14": "./assets/yearbooks/2k14.pdf",
 };
 
+const downloadPdfMapping = {
+  "2k21": "./assets/yearbooks/Yearbook_2k21.pdf",
+};
+
 // Get latest year (first in the mapping)
-const latestYearKey = Object.keys(yearPdfMapping)[0];
+const latestYearKey = Object.keys(viewerPdfMapping)[0];
 
 export default function Yearbook() {
   const router = useRouter();
@@ -33,7 +37,8 @@ export default function Yearbook() {
   }, []);
 
   // Get the appropriate yearbook path based on the year parameter
-  const yearbookPath = yearPdfMapping[year] || yearPdfMapping[latestYearKey];
+  const ybViewPath = viewerPdfMapping[year] || viewerPdfMapping[latestYearKey];
+  const ybDownloadPath = downloadPdfMapping[year] || ybViewPath;
 
   return (
     <section>
@@ -41,7 +46,7 @@ export default function Yearbook() {
       <section>
         {authenticated ? (
           <section>
-            <Flipbook yearbookPath={yearbookPath} page={page} />
+            <Flipbook yearbookViewerPath={ybViewPath} yearbookDownloadPath={ybDownloadPath} page={page} />
           </section>
         ) : (
           <section
