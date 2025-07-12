@@ -15,77 +15,83 @@ export default function User2021() {
     }
 
     return (
-        <section style={{ background: '#1f121A', minHeight: '100vh', color: 'white' }}>
+        <section style={{ background: '#18101A', minHeight: '100vh', color: 'white' }}>
             <NavbarComponent isSticky={true} />
-            <Box className="backdrop" style={{ backgroundColor: '#1f121A', color: 'white', minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: 80 }}>
+            <Box className="backdrop" style={{ backgroundColor: '#201824', color: 'white', minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: 120, paddingBottom: 40, paddingLeft: 40, border: '1.5px solid #32243a' }}>
                 <Link href="/alumni/2021" style={{
-                    color: 'white',
-                    marginBottom: 24,
+                    color: '#e0d7f7',
+                    marginBottom: 32,
                     alignSelf: 'flex-start',
                     fontWeight: 600,
-                    fontSize: 16,
+                    fontSize: 17,
                     textDecoration: 'none',
-                    backgroundColor: '#2d1e29',
-                    padding: '10px 16px',
-                    borderRadius: '8px',
+                    backgroundColor: '#23172b',
+                    padding: '12px 22px',
+                    borderRadius: '10px',
                     display: 'flex',
                     alignItems: 'center',
                     transition: 'all 0.2s ease',
-                    boxShadow: '0 3px 10px rgba(0,0,0,0.2)',
-                    border: '1px solid rgba(255,255,255,0.1)'
+                    boxShadow: '0 3px 10px rgba(0,0,0,0.18)',
+                    border: '1.5px solid #2a1533',
+                    marginLeft: 0
                 }}>
-                    <span style={{ marginRight: '8px', fontSize: '18px' }}>←</span> Back to Batch
+                    <span style={{ marginRight: '10px', fontSize: '20px' }}>  </span> Back to Batch
                 </Link>
-                <div style={{ background: '#fff', borderRadius: 18, padding: 40, boxShadow: '0 2px 24px rgba(0,0,0,0.10)', maxWidth: 600, width: '100%', textAlign: 'center', border: '1.5px solid #e5e7eb', wordBreak: 'break-word' }}>
+                <div style={{ background: 'linear-gradient(135deg, #22192A 60%, #2a1a2c 100%)', borderRadius: 22, padding: '48px 48px 32px 48px', boxShadow: '0 6px 32px rgba(60,0,80,0.22)', maxWidth: 1200, width: '100%', textAlign: 'center', border: '1.5px solid #3a1c4a', wordBreak: 'break-word', margin: '0 auto', color: '#e0d7f7', display: 'flex', flexDirection: 'row', gap: 40, alignItems: 'flex-start', justifyContent: 'center' }}>
                     <div style={{
-                        width: 200,
+                        width: 260,
+                        minWidth: 180,
                         aspectRatio: '1/1',
-                        background: '#f3f4f6',
+                        background: '#2a1533',
                         borderRadius: '50%',
                         overflow: 'hidden',
-                        margin: '0 auto 24px auto',
+                        margin: '0 0 0 0',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.10)'
                     }}>
                         <img src={`/assets/images/2021/${user.pfp.replace('images/', '')}`} alt={user.name} style={{ width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '1/1' }} />
                     </div>
-                    <h1 style={{ margin: 0, color: '#222', fontWeight: 700, fontSize: 32, wordBreak: 'break-word', textAlign: 'center' }}>{user.name}</h1>
-                    <p style={{ color: '#888', margin: 0, fontSize: 18, wordBreak: 'break-word', textAlign: 'center' }}>{user.branch}</p>
-                    <p style={{ color: '#888', margin: 0, fontSize: 16 }}>{user.tagline}</p>
-                    <p style={{ color: '#888', margin: 0, fontSize: 16 }}>Nickname: {user.nickname}</p>
-                    <p style={{ color: '#888', margin: 0, fontSize: 16 }}>DOB: {user.dob}</p>
-                    <div style={{ margin: '18px 0' }}>
-                        {user.instagram && (
-                            <a href={`https://instagram.com/${user.instagram}`} target="_blank" rel="noopener noreferrer" style={{ marginRight: 20, color: '#E4405F', fontWeight: 500, fontSize: 18 }}>
-                                Instagram
-                            </a>
-                        )}
-                        {user.linkedin && (
-                            <a href={user.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: '#1976d2', fontWeight: 500, fontSize: 18 }}>
-                                LinkedIn
-                            </a>
-                        )}
+                    <div style={{ flex: 1, textAlign: 'left', minWidth: 0 }}>
+                        <h1 style={{ margin: 0, color: '#e0d7f7', fontWeight: 800, fontSize: 36, wordBreak: 'break-word', textAlign: 'left', letterSpacing: 0.5 }}>{user.name}</h1>
+                        <p style={{ color: '#bba6d6', margin: '4px 0 12px 0', fontSize: 22, fontWeight: 500 }}>{user.branch}</p>
+                        {user.tagline && <p style={{ color: '#e0d7f7', margin: '0 0 12px 0', fontSize: 18, fontStyle: 'italic' }}>&ldquo;{user.tagline}&rdquo;</p>}
+                        <div style={{ color: '#bba6d6', marginBottom: 10, fontSize: 16 }}>
+                            {user.nickname && <span style={{ marginRight: 18 }}>Nickname: <b style={{ color: '#e0d7f7' }}>{user.nickname}</b></span>}
+                            {user.dob && <span>DOB: <b style={{ color: '#e0d7f7' }}>{user.dob}</b></span>}
+                        </div>
+                        <div style={{ margin: '18px 0' }}>
+                            {user.instagram && (
+                                <a href={`https://instagram.com/${user.instagram}`} target="_blank" rel="noopener noreferrer" style={{ marginRight: 24, color: '#E4405F', fontWeight: 600, fontSize: 19, textDecoration: 'none' }}>
+                                    Instagram
+                                </a>
+                            )}
+                            {user.linkedin && (
+                                <a href={user.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: '#1976d2', fontWeight: 600, fontSize: 19, textDecoration: 'none' }}>
+                                    LinkedIn
+                                </a>
+                            )}
+                        </div>
+                        <Box style={{ textAlign: 'left', margin: '32px 0 16px 0' }}>
+                            <h2 style={{ fontSize: 22, color: '#e0d7f7', fontWeight: 700, marginBottom: 12 }}>Journal</h2>
+                            {user.journal && user.journal.length > 0 ? user.journal.map((entry, idx) => (
+                                <div key={idx} style={{ marginBottom: 16, background: '#201724', borderRadius: 8, padding: 14, color: '#e0d7f7', border: '1px solid #32243a' }}>
+                                    <strong style={{ color: '#bba6d6' }}>{entry.question}</strong>
+                                    <div style={{ color: '#e0d7f7', marginTop: 4 }}>{entry.answer}</div>
+                                </div>
+                            )) : <div style={{ color: '#aaa' }}>No journal entries.</div>}
+                        </Box>
+                        <Box style={{ textAlign: 'left', margin: '32px 0 0 0' }}>
+                            <h2 style={{ fontSize: 22, color: '#e0d7f7', fontWeight: 700, marginBottom: 12 }}>Testimonials</h2>
+                            {user.testimonials && user.testimonials.length > 0 ? user.testimonials.map((t, idx) => (
+                                <div key={idx} style={{ marginBottom: 16, background: '#201724', borderRadius: 8, padding: 14, color: '#e0d7f7', border: '1px solid #32243a' }}>
+                                    <div style={{ color: '#e0d7f7', fontStyle: 'italic' }}>&quot;{t.text}&quot;</div>
+                                    <div style={{ textAlign: 'right', color: '#ffb347', fontWeight: 700 }}>- {t.from}</div>
+                                </div>
+                            )) : <div style={{ color: '#aaa' }}>No testimonials.</div>}
+                        </Box>
                     </div>
-                    <Box style={{ textAlign: 'left', margin: '32px 0 16px 0' }}>
-                        <h2 style={{ fontSize: 22, color: '#222', fontWeight: 600, marginBottom: 12 }}>Journal</h2>
-                        {user.journal && user.journal.length > 0 ? user.journal.map((entry, idx) => (
-                            <div key={idx} style={{ marginBottom: 16, background: '#f7f9fb', borderRadius: 8, padding: 12 }}>
-                                <strong style={{ color: '#1976d2' }}>{entry.question}</strong>
-                                <div style={{ color: '#444', marginTop: 4 }}>{entry.answer}</div>
-                            </div>
-                        )) : <div style={{ color: '#aaa' }}>No journal entries.</div>}
-                    </Box>
-                    <Box style={{ textAlign: 'left', margin: '32px 0 0 0' }}>
-                        <h2 style={{ fontSize: 22, color: '#222', fontWeight: 600, marginBottom: 12 }}>Testimonials</h2>
-                        {user.testimonials && user.testimonials.length > 0 ? user.testimonials.map((t, idx) => (
-                            <div key={idx} style={{ marginBottom: 16, background: '#f7f9fb', borderRadius: 8, padding: 12 }}>
-                                <div style={{ color: '#444', fontStyle: 'italic' }}>&quot;{t.text}&quot;</div>
-                                <div style={{ textAlign: 'right', color: '#888', fontWeight: 500 }}>- {t.from}</div>
-                            </div>
-                        )) : <div style={{ color: '#aaa' }}>No testimonials.</div>}
-                    </Box>
                 </div>
             </Box>
             <Bottom />

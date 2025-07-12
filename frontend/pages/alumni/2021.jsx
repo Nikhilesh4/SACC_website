@@ -34,13 +34,13 @@ export default function Batch2021() {
     }, [search, shuffledAlumni]);
 
     return (
-        <section style={{ background: '#1f121A', minHeight: '100vh', color: 'white', paddingTop: isXs ? 60 : 72 }}>
+        <section style={{ background: '#18101A', minHeight: '100vh', color: 'white', paddingTop: isXs ? 60 : 72 }}>
             <NavbarComponent isSticky={true} />
-            <Box className="backdrop" style={{ backgroundColor: '#1f121A', color: 'white' }}>
-                <div className="yearbook-container" style={{ paddingTop: 48, paddingBottom: 16 }}>
-                    <div className="text-content" style={{ textAlign: 'center', marginBottom: 16 }}>
-                        <h1 className="title" style={{ fontSize: 40, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Batch of 2021</h1>
-                        <p className="subtitle" style={{ fontSize: 20, color: '#666' }}>Meet the 2021 Alumni!</p>
+            <Box className="backdrop" style={{ backgroundColor: '#18101A', color: 'white' }}>
+                <div className="yearbook-container" style={{ paddingTop: 32, paddingBottom: 8 }}>
+                    <div className="text-content" style={{ textAlign: 'center', marginBottom: 12 }}>
+                        <h1 className="title" style={{ fontSize: 40, fontWeight: 700, color: '#e0d7f7', marginBottom: 4, letterSpacing: 0.5 }}>Batch of 2021</h1>
+                        <p className="subtitle" style={{ fontSize: 20, color: '#bba6d6', marginBottom: 0 }}>Meet the 2021 Alumni!</p>
                     </div>
                 </div>
                 {/* Search Bar */}
@@ -53,12 +53,13 @@ export default function Batch2021() {
                         style={{
                             padding: '14px 22px',
                             borderRadius: 12,
-                            border: '1.5px solid #d1d5db',
+                            border: '1.5px solid #2a1533',
                             fontSize: 18,
                             width: isXs ? '90%' : 420,
                             outline: 'none',
                             boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                            background: '#fff',
+                            background: '#23172b',
+                            color: '#e0d7f7',
                         }}
                     />
                 </div>
@@ -68,7 +69,7 @@ export default function Batch2021() {
                     justifyContent="center"
                     alignItems="flex-start"
                     className="yearbooksGrid"
-                    style={{ maxWidth: 1400, margin: '0 auto' }}
+                    style={{ maxWidth: 1600, margin: '0 auto' }}
                 >
                     {filteredAlumni.map((user, index) => (
                         <Grid
@@ -76,8 +77,8 @@ export default function Batch2021() {
                             key={user.email || `user-${index}`}
                             xs={12}
                             sm={6}
-                            md={3}
-                            lg={2}
+                            md={4}
+                            lg={3}
                             display="flex"
                             justifyContent="center"
                             alignItems="stretch"
@@ -86,14 +87,15 @@ export default function Batch2021() {
                                 <div className="alumniCard" style={{
                                     cursor: 'pointer',
                                     width: '100%',
-                                    maxWidth: 260,
-                                    minHeight: 320,
-                                    maxHeight: 320,
-                                    background: 'linear-gradient(135deg, #2a1533 60%, #3a1c4a 100%)',
+                                    maxWidth: 340,
+                                    // minHeight: 320,
+                                    // maxHeight: 340,
+                                    height: '100%',
+                                    background: 'linear-gradient(135deg, #23172b 60%, #2a1533 100%)',
                                     borderRadius: 18,
                                     boxShadow: '0 4px 24px rgba(60,0,80,0.18)',
-                                    padding: 22,
-                                    margin: '0 auto 32px auto', // Add bottom margin
+                                    padding: 28,
+                                    margin: '0 auto 24px auto',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
@@ -110,19 +112,22 @@ export default function Batch2021() {
                                         <div style={{
                                             width: '100%',
                                             aspectRatio: '1/1',
-                                            background: '#f3f4f6',
-                                            borderRadius: 12,
+                                            background: '#2a1533',
+                                            borderRadius: 16,
                                             overflow: 'hidden',
-                                            marginBottom: 14,
+                                            marginBottom: 16,
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            maxHeight: 140,
+                                            maxWidth: 180,
+                                            maxHeight: 180,
+                                            marginLeft: 'auto',
+                                            marginRight: 'auto',
                                         }}>
                                             <img src={`/assets/images/2021/${user.pfp.replace('images/', '')}`} alt={user.name} style={{ width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '1/1', display: 'block' }} />
                                         </div>
-                                        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600, color: '#fff', wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.2 }}>{user.name}</h2>
-                                        <p style={{ color: '#c7a6e5', margin: 0, fontSize: 16, wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.1 }}>{user.branch}</p>
+                                        <h2 style={{ margin: '8px 0 2px 0', fontSize: 24, fontWeight: 700, color: '#e0d7f7', wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.2 }}>{user.name}</h2>
+                                        <p style={{ color: '#bba6d6', margin: '0 0 8px 0', fontSize: 17, wordBreak: 'break-word', textAlign: 'center', width: '100%', overflowWrap: 'break-word', letterSpacing: 0.1 }}>{user.branch}</p>
                                     </Box>
                                 </div>
                             </Link>
