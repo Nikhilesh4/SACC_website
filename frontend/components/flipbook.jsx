@@ -65,7 +65,7 @@ const pageStyles = {
 };
 
 function Flipbook(props) {
-  const { yearbookPath } = props;
+  const { yearbookPath, page } = props;
   const [numPages, setNumPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageInput, setPageInput] = useState("1");
@@ -74,6 +74,27 @@ function Flipbook(props) {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(() => {
+    if (page && numPages) {
+      const pageNum = parseInt(page, 10);
+
+      if (pageNum >= 1 && pageNum <= numPages) {
+        const intervalId = setInterval(() => {
+          if (
+            flipBookRef.current &&
+            typeof flipBookRef.current.pageFlip === 'function' &&
+            flipBookRef.current.pageFlip()
+          ) {
+            flipBookRef.current.pageFlip().turnToPage(pageNum - 1);
+            clearInterval(intervalId);
+          }
+        }, 100);
+
+        return () => clearInterval(intervalId);
+      }
+    }
+  }, [page, numPages]);
 
   // Navigation functions
   const goToPreviousPage = useCallback(() => {
