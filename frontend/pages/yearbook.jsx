@@ -20,7 +20,7 @@ const latestYearKey = Object.keys(yearPdfMapping)[0];
 
 export default function Yearbook() {
   const router = useRouter();
-  const { year = latestYearKey } = router.query;
+  const { year = latestYearKey, page } = router.query;
 
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Yearbook() {
       <section>
         {authenticated ? (
           <section>
-            <Flipbook yearbookPath={yearbookPath} />
+            <Flipbook yearbookPath={yearbookPath} page={page} />
           </section>
         ) : (
           <section
