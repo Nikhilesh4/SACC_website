@@ -36,7 +36,7 @@ export default function Yearbook() {
   const yearbookPath = yearPdfMapping[year] || yearPdfMapping[latestYearKey];
 
   return (
-    <section>
+    <section style={{ paddingTop: "45px" }}>
       <NavBarComponent isSticky={true} />
       <section>
         {authenticated ? (
