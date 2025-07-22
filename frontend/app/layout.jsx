@@ -5,6 +5,9 @@ export const metadata = {
 const Rootlayout = ({ children }) => {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="icon" href="/favicon.ico" />
+			</head>
 			<body>
 				<div className="main">
 					<div className="gradient" />
