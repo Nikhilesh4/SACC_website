@@ -41,7 +41,7 @@ export default function Yearbook() {
   const ybDownloadPath = downloadPdfMapping[year] || ybViewPath;
 
   return (
-    <section>
+    <section style={{ paddingTop: "45px" }}>
       <NavBarComponent isSticky={true} />
       <section>
         {authenticated ? (

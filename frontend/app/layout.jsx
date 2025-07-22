@@ -1,7 +1,5 @@
-export const metadata = {
-	title: 'SACC',
-	description: 'Student Alumni Connect Cell',
-}
+import ClientTitleUpdater from './ClientTitleUpdater';
+
 const Rootlayout = ({ children }) => {
 	return (
 		<html lang="en">
@@ -9,6 +7,7 @@ const Rootlayout = ({ children }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</head>
 			<body>
+				<ClientTitleUpdater />
 				<div className="main">
 					<div className="gradient" />
 

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "@styles/navbar.scss";
-import "@styles/globals.scss";
 
 const NavbarComponent = ({ isSticky = false }) => {
   const [authenticated, setAuthenticated] = useState(false);

@@ -10,7 +10,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 import {
   ChevronLeft,
   ChevronRight,
-  Download,
   FileDownload,
   FileDownloadOutlined,
   NavigateBefore,
@@ -76,7 +75,20 @@ function Flipbook(props) {
   const flipBookRef = useRef();
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check aspect ratio to determine mobile vs desktop view
+  useEffect(() => {
+    const checkAspectRatio = () => {
+      const aspectRatio = window.innerWidth / window.innerHeight;
+      // Switch to single page (mobile) view when aspect ratio is less than 1.2 (portrait or narrow landscape)
+      setIsMobile(aspectRatio < 1.2);
+    };
+
+    checkAspectRatio();
+    window.addEventListener("resize", checkAspectRatio);
+    return () => window.removeEventListener("resize", checkAspectRatio);
+  }, []);
 
   useEffect(() => {
     if (page && numPages) {
@@ -86,7 +98,7 @@ function Flipbook(props) {
         const intervalId = setInterval(() => {
           if (
             flipBookRef.current &&
-            typeof flipBookRef.current.pageFlip === 'function' &&
+            typeof flipBookRef.current.pageFlip === "function" &&
             flipBookRef.current.pageFlip()
           ) {
             flipBookRef.current.pageFlip().turnToPage(pageNum - 1);
@@ -185,11 +197,11 @@ function Flipbook(props) {
   const downloadPdf = () => {
     if (yearbookDownloadPath) {
       // Create a link element
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = yearbookDownloadPath;
 
       // Extract filename from path or use a default name
-      const filename = yearbookDownloadPath.split('/').pop() || 'yearbook.pdf';
+      const filename = yearbookDownloadPath.split("/").pop() || "yearbook.pdf";
       link.download = filename;
 
       // Append to the document, click and remove
@@ -197,88 +209,96 @@ function Flipbook(props) {
       link.click();
       document.body.removeChild(link);
     } else {
-      console.error('Download path not provided');
-      alert('Sorry, the PDF download is not available.');
+      console.error("Download path not provided");
+      alert("Sorry, the PDF download is not available.");
     }
   };
 
-  const downloadCurrentPage = () => {
+  const downloadCurrentPage = async () => {
     try {
-      // Find all canvas elements within page containers
-      const flipBookContainer = document.querySelector(".stf__parent");
-      if (!flipBookContainer) {
-        alert("Unable to find flipbook container. Please try again.");
+      if (!yearbookViewerPath || !numPages) {
+        alert("PDF not loaded yet. Please wait for the document to load.");
         return;
       }
 
-      // Get all page elements that are currently visible
-      const allCanvasParentElements = flipBookContainer.querySelectorAll(
-        ".stf__item.--active, .stf__item.--left, .stf__item.--right"
-      );
+      // Load the PDF document directly for high-resolution rendering
+      const loadingTask = pdfjs.getDocument(yearbookViewerPath);
+      const pdf = await loadingTask.promise;
 
-      // Filter out any elements with display:none
-      const visiblePageParents = Array.from(allCanvasParentElements).filter(
-        (parent) => window.getComputedStyle(parent).display !== "none"
-      );
+      // Calculate DPI scale factor (300 DPI = 4.17x scale from default 72 DPI)
+      const scale = 300 / 72;
 
-      // Get the canvas elements from these visible parents
-      const visiblePages = visiblePageParents
-        .map((parent) => parent.querySelector("canvas"))
-        .filter((canvas) => canvas && canvas instanceof HTMLCanvasElement);
+      if (isMobile) {
+        // Mobile: download single page only
+        const pageNum = currentPage + 1;
+        const page = await pdf.getPage(pageNum);
+        const viewport = page.getViewport({ scale });
 
-      if (visiblePages.length === 0) {
-        // Fallback: try to find canvas elements in a different way
-        const allCanvases = flipBookContainer.querySelectorAll("canvas");
-        if (allCanvases.length > 0) {
-          // For desktop, try to find the canvas that corresponds to the current page
-          let targetCanvas;
-          if (isMobile) {
-            // On mobile, find the canvas closest to the current page
-            targetCanvas =
-              allCanvases[Math.min(currentPage, allCanvases.length - 1)];
-          } else {
-            // On desktop, we might have multiple visible canvases
-            // Try to get the one that's currently in focus
-            const currentCanvasIndex = Math.min(
-              currentPage,
-              allCanvases.length - 1
-            );
-            targetCanvas = allCanvases[currentCanvasIndex];
-          }
+        // Create a high-resolution canvas
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
 
-          if (targetCanvas) {
-            const link = document.createElement("a");
-            link.download = `yearbook-page-${currentPage + 1}.png`;
-            link.href = targetCanvas.toDataURL("image/png");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            return;
-          }
-        }
-        alert("Unable to find the current page. Please try again.");
-        return;
-      }
+        // Render the page at high resolution
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+        await page.render(renderContext).promise;
 
-      // If we found visible pages, download both for desktop with appropriate numbering
-      // only one canvas is visible at a time in mobile
-
-      for (let i = 0; i < visiblePages.length; i++) {
-        const canvas = visiblePages[i];
+        // Download the high-resolution image
         const link = document.createElement("a");
-        var pageNumber = currentPage + 1 + i;
-        // For multi-page, ensure index addition happens correctly - parity
-        pageNumber -= visiblePages.length > 1 ? (currentPage + 1) % 2 : 0;
-        link.download = `yearbook-page-${pageNumber}.png`;
+        link.download = `yearbook-page-${pageNum}.png`;
         link.href = canvas.toDataURL("image/png");
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+      } else {
+        // Desktop: download visible pages with appropriate numbering
+        const pagesToDownload = [];
 
-        // Add a small delay
-        if (i < visiblePages.length - 1) {
-          // Avoid delay on the last page
-          new Promise((resolve) => setTimeout(resolve, 100));
+        if (currentPage === 0) {
+          // First page only
+          pagesToDownload.push(1);
+        } else {
+          // Two pages: current and next (if exists)
+          pagesToDownload.push(currentPage + 1);
+          if (currentPage + 2 <= numPages) {
+            pagesToDownload.push(currentPage + 2);
+          }
+        }
+
+        for (let i = 0; i < pagesToDownload.length; i++) {
+          const pageNum = pagesToDownload[i];
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale });
+
+          // Create a high-resolution canvas
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          // Render the page at high resolution
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+          await page.render(renderContext).promise;
+
+          // Download the high-resolution image
+          const link = document.createElement("a");
+          link.download = `yearbook-page-${pageNum}.png`;
+          link.href = canvas.toDataURL("image/png");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Add a small delay between downloads
+          if (i < pagesToDownload.length - 1) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+          }
         }
       }
     } catch (error) {
@@ -312,8 +332,8 @@ function Flipbook(props) {
   function pagesList() {
     if (!numPages) return [];
 
-    const pageWidth = isMobile ? 375 : 600;
-    const pageHeight = isMobile ? 530 : 850;
+    const pageWidth = isMobile ? 300 : 480;
+    const pageHeight = isMobile ? 420 : 680;
 
     var pages = [];
     for (var i = 1; i <= numPages; i++) {
@@ -370,8 +390,8 @@ function Flipbook(props) {
       className="flipbook-container"
       sx={{
         backgroundColor: "#1D141A",
-        minHeight: "100vh",
-        padding: isMobile ? "20px 10px" : "69px 20px",
+        minHeight: "calc(100vh - 30px)",
+        padding: isMobile ? "20px 10px" : "20px",
         marginTop: "37px",
         position: "relative",
         overflow: "hidden",
@@ -395,7 +415,7 @@ function Flipbook(props) {
               position: "relative",
               width: "100%",
               margin: "0 auto",
-              height: "calc(100vh - 40px)",
+              minHeight: "calc(100vh - 40px)",
             }}
           >
             {/* Left Navigation Button */}
@@ -430,15 +450,15 @@ function Flipbook(props) {
               style={{
                 position: "relative",
                 height: "100%",
-                paddingTop: "calc(50vh - 530px)",
+                paddingTop: "calc(50vh - 420px)",
               }}
             >
               <HTMLFlipBook
                 ref={flipBookRef}
-                width={600}
-                height={850}
-                minWidth={300}
-                maxWidth={600}
+                width={480}
+                height={680}
+                minWidth={240}
+                maxWidth={480}
                 size="fixed"
                 flippingTime={600}
                 usePortrait={true}
@@ -461,13 +481,14 @@ function Flipbook(props) {
                   gap: 2,
                 }}
               >
-
                 {/* Download Page Button */}
                 <Tooltip title="Download Current Page" arrow>
                   <span>
                     <button className="button" onClick={downloadCurrentPage}>
                       <span className="svg">
-                        <FileDownloadOutlined sx={{ color: 'white', width: '24px', height: '24px' }} />
+                        <FileDownloadOutlined
+                          sx={{ color: "white", width: "24px", height: "24px" }}
+                        />
                       </span>
                       <span className="text">Current Page</span>
                     </button>
@@ -564,12 +585,14 @@ function Flipbook(props) {
                         userSelect: "none",
                       }}
                     >
-                      {currentPage === 0
+                      {isMobile
+                        ? `Page ${currentPage + 1} of ${numPages || 0}`
+                        : currentPage === 0
                         ? `Page 1 of ${numPages || 0}`
                         : `Pages ${currentPage + 1}-${Math.min(
-                          currentPage + 2,
-                          numPages || 0
-                        )} of ${numPages || 0}`}
+                            currentPage + 2,
+                            numPages || 0
+                          )} of ${numPages || 0}`}
                     </Typography>
                   )}
                 </Box>
@@ -579,7 +602,9 @@ function Flipbook(props) {
                   <span>
                     <button className="button" onClick={downloadPdf}>
                       <span className="svg">
-                        <FileDownload sx={{ color: 'white', width: '24px', height: '24px' }} />
+                        <FileDownload
+                          sx={{ color: "white", width: "24px", height: "24px" }}
+                        />
                       </span>
                       <span className="text">Full PDF</span>
                     </button>
@@ -626,16 +651,16 @@ function Flipbook(props) {
             style={{
               width: "100%",
               textAlign: "center",
-              paddingTop: "calc(50vh - 375px)",
+              paddingTop: "calc(50vh - 300px)",
             }}
           >
             <div style={{ display: "inline-block" }}>
               <HTMLFlipBook
                 ref={flipBookRef}
-                width={375}
-                height={530}
-                minWidth={250}
-                maxWidth={350}
+                width={300}
+                height={420}
+                minWidth={200}
+                maxWidth={300}
                 size="fixed"
                 flippingTime={600}
                 usePortrait={true}
@@ -804,7 +829,7 @@ function Flipbook(props) {
                 display: "flex",
                 justifyContent: "center",
                 marginTop: "24px",
-                gap: 2
+                gap: 2,
               }}
             >
               {/* Download Page Button */}
@@ -812,7 +837,9 @@ function Flipbook(props) {
                 <span>
                   <button className="button" onClick={downloadCurrentPage}>
                     <span className="svg">
-                      <FileDownloadOutlined sx={{ color: 'white', width: '24px', height: '24px' }} />
+                      <FileDownloadOutlined
+                        sx={{ color: "white", width: "24px", height: "24px" }}
+                      />
                     </span>
                     <span className="text">Current Page</span>
                   </button>
@@ -824,7 +851,9 @@ function Flipbook(props) {
                 <span>
                   <button className="button" onClick={downloadPdf}>
                     <span className="svg">
-                      <FileDownload sx={{ color: 'white', width: '24px', height: '24px' }} />
+                      <FileDownload
+                        sx={{ color: "white", width: "24px", height: "24px" }}
+                      />
                     </span>
                     <span className="text">Full PDF</span>
                   </button>
@@ -837,4 +866,5 @@ function Flipbook(props) {
     </Box>
   );
 }
+
 export default Flipbook;
