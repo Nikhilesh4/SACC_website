@@ -394,7 +394,7 @@ function Flipbook(props) {
         padding: isMobile ? "20px 10px" : "20px",
         marginTop: "37px",
         position: "relative",
-        // overflow: "scroll",
+        overflow: "hidden",
       }}
     >
       <Document
@@ -415,7 +415,7 @@ function Flipbook(props) {
               position: "relative",
               width: "100%",
               margin: "0 auto",
-              height: "calc(100vh - 40px)",
+              minHeight: "calc(100vh - 40px)",
             }}
           >
             {/* Left Navigation Button */}
