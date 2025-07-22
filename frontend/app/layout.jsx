@@ -3,6 +3,9 @@ import ClientTitleUpdater from './ClientTitleUpdater';
 const Rootlayout = ({ children }) => {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="icon" href="/favicon.ico" />
+			</head>
 			<body>
 				<ClientTitleUpdater />
 				<div className="main">
