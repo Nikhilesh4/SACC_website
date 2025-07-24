@@ -5,6 +5,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import Link from "next/link";
 import alumni2021 from "../../public/alumni_2021.json";
 import React, { useState, useMemo, useEffect } from "react";
+import "@styles/yearbooks.scss";
 
 export default function Batch2021() {
     const theme = useTheme();
@@ -38,9 +39,9 @@ export default function Batch2021() {
             <NavbarComponent isSticky={true} />
             <Box className="backdrop" style={{ backgroundColor: '#18101A', color: 'white' }}>
                 <div className="yearbook-container" style={{ paddingTop: 32, paddingBottom: 8 }}>
-                    <div className="text-content" style={{ textAlign: 'center', marginBottom: 12 }}>
-                        <h1 className="title" style={{ fontSize: 40, fontWeight: 700, color: '#e0d7f7', marginBottom: 4, letterSpacing: 0.5 }}>Batch of 2021</h1>
-                        <p className="subtitle" style={{ fontSize: 20, color: '#bba6d6', marginBottom: 0 }}>Meet the 2021 Alumni!</p>
+                    <div className="text-content">
+                        <h1 className="title">Batch of 2021</h1>
+                        <p className="subtitle">Meet the 2021 Alumni!</p>
                     </div>
                 </div>
                 {/* Search Bar */}
@@ -88,9 +89,7 @@ export default function Batch2021() {
                                     cursor: 'pointer',
                                     width: '100%',
                                     maxWidth: 340,
-                                    // minHeight: 320,
-                                    // maxHeight: 340,
-                                    height: '100%',
+                                    maxHeight: 380,
                                     background: 'linear-gradient(135deg, #23172b 60%, #2a1533 100%)',
                                     borderRadius: 18,
                                     boxShadow: '0 4px 24px rgba(60,0,80,0.18)',
