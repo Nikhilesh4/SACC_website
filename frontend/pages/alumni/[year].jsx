@@ -72,7 +72,7 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
     }, [search, shuffledAlumni]);
 
     return (
-        <section style={{ background: '#18101A', minHeight: '100vh', color: 'white', paddingTop: isXs ? 60 : 72, paddingLeft: isXs ? 12 : 48, paddingRight: isXs ? 12 : 48 }}>
+        <section style={{ background: '#18101A', minHeight: '100vh', color: 'white', paddingTop: isXs ? 60 : 72 }}>
             <NavbarComponent isSticky={true} />
             <Box className="backdrop" style={{ backgroundColor: '#18101A', color: 'white' }}>
                 <div className="yearbook-container" style={{ paddingTop: 32, paddingBottom: 8 }}>
@@ -143,7 +143,7 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                                     width: '100%',
                                     maxWidth: 340,
                                     maxHeight: 380,
-                                    background: 'linear-gradient(135deg, #23172b 60%, #2a1533 100%)',
+                                    background: '#241726ff',
                                     borderRadius: 18,
                                     boxShadow: '0 4px 24px rgba(60,0,80,0.18)',
                                     padding: 28,

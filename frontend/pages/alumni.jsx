@@ -2,8 +2,8 @@ import NavbarComponent from "../components/navbar";
 import { Box, Grid } from "@mui/material";
 import "@styles/yearbooks.scss";
 import Bottom from "@components/footer";
-import { useMediaQuery, useTheme } from "@mui/material";
 import { getAlumniYears } from "../lib/alumni";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 // Get all alumni years at build time
 export async function getStaticProps() {
@@ -21,6 +21,7 @@ export async function getStaticProps() {
 export default function Alumni({ alumniYears }) {
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down("sm"));
+
     return (
         <section>
             <NavbarComponent isSticky={true} />
@@ -30,8 +31,8 @@ export default function Alumni({ alumniYears }) {
                         <h1 className="title">Alumni</h1>
                         <p className="subtitle">Meet Our Alumni Batches!</p>
                     </div>
-                    <img className="image" src="/assets/images/fly.webp" alt="Butterfly" />
                 </div>
+
                 <Grid
                     container
                     spacing={9}
@@ -44,28 +45,30 @@ export default function Alumni({ alumniYears }) {
                             <Grid
                                 item
                                 key={index}
-                                xs={12}
-                                sm={6}
-                                md={4.15}
-                                lg={4.01}
+                                xs={8}
+                                sm={4}
+                                md={3}
+                                lg={2.5}
                                 display="flex"
                                 justifyContent="center"
                                 alignItems="center"
+                                className="yearbookContainer"
                             >
-                                <a href={`/alumni/${year}`} style={{ textDecoration: 'none', width: '100%' }}>
-                                    <div className="alumniCard">
-                                        <Box className="alumniCardLabel">
-                                            <h4>Batch of</h4>
-                                            <h2>{year}</h2>
-                                        </Box>
-                                    </div>
+                                <a
+                                    href={`/alumni/${year}`}
+                                    className="alumniPreview"
+                                >
+                                    <Box className="alumniLabel">
+                                        <h2>{year}</h2>
+                                    </Box>
+                                    <div className="alumni-pattern-overlay"></div>
                                 </a>
                             </Grid>
                         ))
                     ) : (
-                        <Grid item xs={12} style={{ textAlign: 'center', marginTop: '40px' }}>
-                            <h3 style={{ color: '#bba6d6' }}>No alumni batches found</h3>
-                        </Grid>
+                        <div className="no-alumni-message">
+                            <h3>No alumni batches found</h3>
+                        </div>
                     )}
                 </Grid>
             </Box>
