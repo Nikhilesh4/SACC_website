@@ -3,12 +3,22 @@ import { Box, Grid } from "@mui/material";
 import "@styles/yearbooks.scss";
 import Bottom from "@components/footer";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { getAlumniYears } from "../lib/alumni";
 
-const alumniData = [
-    { year: "2021" },
-];
+// Get all alumni years at build time
+export async function getStaticProps() {
+    const years = getAlumniYears();
 
-export default function Alumni() {
+    return {
+        props: {
+            alumniYears: years
+        },
+        // Revalidate every hour to pick up new alumni files
+        revalidate: 3600
+    };
+}
+
+export default function Alumni({ alumniYears }) {
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down("sm"));
     return (
@@ -29,37 +39,34 @@ export default function Alumni() {
                     alignItems="center"
                     className="yearbooksGrid"
                 >
-                    {alumniData.map((alumni, index) => (
-                        <Grid
-                            item
-                            key={index}
-                            xs={12}
-                            sm={6}
-                            md={4.15}
-                            lg={4.01}
-                            display="flex"
-                            justifyContent="center"
-                            alignItems="center"
-                        >
-                            {alumni.year === "2021" ? (
-                                <a href="/alumni/2021" style={{ textDecoration: 'none', width: '100%' }}>
+                    {alumniYears.length > 0 ? (
+                        alumniYears.map((year, index) => (
+                            <Grid
+                                item
+                                key={index}
+                                xs={12}
+                                sm={6}
+                                md={4.15}
+                                lg={4.01}
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <a href={`/alumni/${year}`} style={{ textDecoration: 'none', width: '100%' }}>
                                     <div className="alumniCard">
                                         <Box className="alumniCardLabel">
                                             <h4>Batch of</h4>
-                                            <h2>{alumni.year}</h2>
+                                            <h2>{year}</h2>
                                         </Box>
                                     </div>
                                 </a>
-                            ) : (
-                                <div className="alumniCard">
-                                    <Box className="alumniCardLabel">
-                                        <h4>Batch of</h4>
-                                        <h2>{alumni.year}</h2>
-                                    </Box>
-                                </div>
-                            )}
+                            </Grid>
+                        ))
+                    ) : (
+                        <Grid item xs={12} style={{ textAlign: 'center', marginTop: '40px' }}>
+                            <h3 style={{ color: '#bba6d6' }}>No alumni batches found</h3>
                         </Grid>
-                    ))}
+                    )}
                 </Grid>
             </Box>
             <Bottom />
