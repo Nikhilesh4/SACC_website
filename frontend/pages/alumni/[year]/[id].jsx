@@ -115,7 +115,7 @@ export default function UserPage({ year, user, hasImagesDir }) {
                     fontWeight: 600,
                     fontSize: 17,
                     textDecoration: 'none',
-                    backgroundColor: '#23172b',
+                    backgroundColor: '#1f121A',
                     padding: '12px 22px',
                     borderRadius: '10px',
                     display: 'flex',
@@ -130,7 +130,7 @@ export default function UserPage({ year, user, hasImagesDir }) {
 
                 {/* Personal Details Card */}
                 <div style={{
-                    background: 'linear-gradient(135deg, #22192A 60%, #2a1a2c 100%)',
+                    background: '#1f121A',
                     borderRadius: 22,
                     padding: '48px',
                     boxShadow: '0 6px 32px rgba(60,0,80,0.22)',
@@ -152,7 +152,7 @@ export default function UserPage({ year, user, hasImagesDir }) {
                         <div style={{
                             width: 200,
                             height: 200,
-                            background: '#2a1533',
+                            background: '#1f121A',
                             borderRadius: '50%',
                             overflow: 'hidden',
                             display: 'flex',
@@ -229,7 +229,7 @@ export default function UserPage({ year, user, hasImagesDir }) {
                 {/* Journal Entries */}
                 {user.journal && user.journal.length > 0 && (
                     <div style={{
-                        background: 'linear-gradient(135deg, #22192A 60%, #2a1a2c 100%)',
+                        background: '#1f121A',
                         borderRadius: 22,
                         padding: '38px',
                         boxShadow: '0 6px 32px rgba(60,0,80,0.22)',
@@ -253,7 +253,7 @@ export default function UserPage({ year, user, hasImagesDir }) {
                 {/* Testimonials */}
                 {user.testimonials && user.testimonials.length > 0 && (
                     <div style={{
-                        background: 'linear-gradient(135deg, #22192A 60%, #2a1a2c 100%)',
+                        background: '#1f121A',
                         borderRadius: 22,
                         padding: '38px',
                         boxShadow: '0 6px 32px rgba(60,0,80,0.22)',

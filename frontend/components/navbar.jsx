@@ -72,7 +72,7 @@ const NavbarComponent = ({ isSticky = false }) => {
               <a
                 href="/alumni"
                 className="nav-link"
-                style={{ order: 5 }}
+                style={{ order: 4 }}
               >
                 Alumni
               </a>
@@ -81,6 +81,7 @@ const NavbarComponent = ({ isSticky = false }) => {
               <button
                 onClick={handleLogout}
                 className="logout-btn mobile-logout"
+                style={{ order: 5 }}
               >
                 Logout
               </button>

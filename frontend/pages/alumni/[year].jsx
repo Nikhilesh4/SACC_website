@@ -74,9 +74,9 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
     return (
         <section style={{ background: '#18101A', minHeight: '100vh', color: 'white', paddingTop: isXs ? 60 : 72 }}>
             <NavbarComponent isSticky={true} />
-            <Box className="backdrop" style={{ backgroundColor: '#18101A', color: 'white' }}>
-                <div className="yearbook-container" style={{ paddingTop: 32, paddingBottom: 8 }}>
-                    <div className="text-content">
+            <Box className="backdrop" >
+                <div className="yearbook-container" style={{ paddingBottom: 8 }}>
+                    <div className="text-content" style={{ marginTop: isXs ? -10 : -45 }}>
                         <h1 className="title">Batch of {year}</h1>
                         <p className="subtitle">Meet the {year} Alumni!</p>
                     </div>
@@ -89,15 +89,16 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                         value={search}
                         onChange={e => setSearch(e.target.value)}
                         style={{
-                            padding: '14px 22px',
+                            padding: '18px 22px',
                             borderRadius: 12,
                             border: '1.5px solid #2a1533',
                             fontSize: 18,
                             width: isXs ? '90%' : 420,
                             outline: 'none',
                             boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                            background: '#23172b',
+                            background: '#1f121A',
                             color: '#e0d7f7',
+                            marginBottom: isXs ? 18 : 24,
                         }}
                     />
                 </div>
@@ -108,8 +109,8 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                         display: 'flex',
                         flexWrap: 'wrap',
                         justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: isXs ? 18 : 28,
+                        alignItems: 'stretch',
+                        gap: isXs ? 18 : 24 ,
                         maxWidth: 1600,
                         margin: '0 auto',
                         width: '100%'
@@ -143,7 +144,7 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                                     width: '100%',
                                     maxWidth: 340,
                                     maxHeight: 380,
-                                    background: '#241726ff',
+                                    background: '#1f121A',
                                     borderRadius: 18,
                                     boxShadow: '0 4px 24px rgba(60,0,80,0.18)',
                                     padding: 28,
@@ -151,7 +152,7 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
-                                    justifyContent: 'center',
+                                    justifyContent: 'space-between', // Changed from 'center' to 'space-between'
                                     transition: 'all 0.3s ease',
                                     border: '1.5px solid #2a1533',
                                     color: '#e0d7f7'
@@ -183,7 +184,7 @@ export default function BatchPage({ year, alumniData, hasImagesDir }) {
                                     <h3 style={{ margin: 0, color: '#e0d7f7', fontWeight: 700, fontSize: 22, textAlign: 'center', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}>
                                         {user.name}
                                     </h3>
-                                    {user.branch && <p style={{ margin: '4px 0 0 0', color: '#bba6d6', fontSize: 16 }}>{user.branch}</p>}
+                                    {user.branch && <p style={{ margin: '4px 0 0 0', color: '#bba6d6', fontSize: 16, textAlign: 'center' }}>{user.branch}</p>}
                                 </div>
                             </Link>
                         </div>
